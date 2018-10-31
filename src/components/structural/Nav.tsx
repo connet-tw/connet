@@ -8,19 +8,15 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import styles from "../../styles/components/nav-styles";
-import Link from "gatsby-link";
+import { Link } from "../../i18n";
 import CloseIcon from "@material-ui/icons/Close";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 
-const navLinks: any[] = [
-  {to: "/", label: "Home"},
-];
-
 export interface NavLink {
   to: string;
-  label: string;
-  links: Array<{to: string, label: string}>;
+  id: string;
+  links?: Array<{to: string, id: string}>;
 }
 
 export interface ContactGroup {
@@ -33,10 +29,11 @@ export interface NavProps  {
   handleClose: any;
   open: any;
   logo: any;
+  navLinks: NavLink[];
 }
 
 const Nav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
-  open, handleClose, classes, logo,
+  open, handleClose, classes, logo, navLinks
 }) => (
   <Drawer anchor="right" open={open} onClose={handleClose}>
     <div
@@ -84,13 +81,7 @@ const Nav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
               :
               <ListItem key={x.to} button className={classes.listItem}>
                 <Link to={x.to} className={classes.link}>
-                  <Typography
-                    variant="body1"
-                    color="inherit"
-                    className={classes.linkText}
-                  >
-                    {x.label}
-                  </Typography>
+                  <ListItemText primary={<FormattedMessage id={x.id}/>}/>
                 </Link>
               </ListItem>
             );

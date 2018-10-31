@@ -29,6 +29,7 @@ class Redirect extends React.PureComponent<RedirectProps, {}> {
 
 export default Redirect;
 
-function guardLanguage(xs: string[], y: string) {
-  return xs.indexOf(y) > -1 ? y : "en";
+// Return user language if supporter or default to English
+function guardLanguage(xs: {code: string, name: string}[], y: string) {
+  return xs.find((x) => x.code === y) || "en";
 }

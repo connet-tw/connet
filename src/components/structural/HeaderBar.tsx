@@ -2,6 +2,7 @@ import * as React from "react";
 import { injectIntl, InjectedIntlProps } from "react-intl";
 import { FormattedMessage } from "react-intl";
 import Typography from "@material-ui/core/Typography";
+import Hidden from "@material-ui/core/Hidden";
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,7 +14,12 @@ import Nav from "./Nav";
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/styles";
 import { Link } from "../../i18n";
 
-const navItems = ["services", "about", "contact", "technology"];
+const navLinks = [
+  {to: "/technology", id: "nav.technology"},
+  {to: "/services", id: "nav.services"},
+  {to: "/about", id: "nav.about"},
+  {to: "/contact", id: "nav.contact"},
+];
 
 const styles = (theme: Theme) => createStyles({
   bar: {
@@ -70,37 +76,52 @@ export interface HeaderBarProps {
 
 const HeaderBar: React.SFC<HeaderBarProps & InjectedIntlProps & WithStyles<typeof styles>> = ({
   classes, open, handleClose, toggleMenu, logo, intl,
-}) => (
+}) => {
+  const brand = (
+    <Link to={"/"} className={classes.brand}>
+      <img className={classes.logo} src={logo.childImageSharp.fixed.src}/>
+      <Typography className={classes.title} variant="title">
+        <FormattedMessage id="app.title"/>
+      </Typography>
+    </Link>
+  );
+
+  const links = (
+    <List className={classes.items}>
+      {navLinks.map((x) =>
+      <ListItem button={true} className={classes.item}>
+        <Link to={x.to}>
+          <ListItemText primary={<FormattedMessage id={x.id}/>}/>
+        </Link>
+      </ListItem>
+      ) }
+    </List>
+  );
+
+  const hamburger = (
+    <IconButton color="primary" onClick={toggleMenu}>
+      <MenuIcon/>
+    </IconButton>
+  );
+
+  return (
     <div>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Link to={"/"} className={classes.brand}>
-            <img className={classes.logo} src={logo.childImageSharp.fixed.src}/>
-            <Typography className={classes.title} variant="title">
-              <FormattedMessage id="app.title"/>
-            </Typography>
-          </Link>
+          {brand}
           <div className={classes.grow}/>
-          <List className={classes.items}>
-            {navItems.map((x) =>
-            <ListItem button={true} className={classes.item}>
-              <Link to={"/" + x}>
-                <ListItemText primary={<FormattedMessage id={`nav.${x}`}/>}/>
-              </Link>
-            </ListItem>
-            ) }
-          </List>
-          <IconButton color="primary" onClick={toggleMenu}>
-            <MenuIcon/>
-          </IconButton>
+          <Hidden smDown>{links}</Hidden>
+          <Hidden mdUp>{hamburger}</Hidden>
         </Toolbar>
       </AppBar>
       <Nav
         logo={logo}
+        navLinks={navLinks}
         open={open}
         handleClose={handleClose}
       />
     </div>
-);
+  );
+};
 
 export default injectIntl(withStyles(styles)(HeaderBar));

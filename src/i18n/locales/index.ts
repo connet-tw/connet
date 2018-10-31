@@ -4,6 +4,6 @@ export const localeData = [
 ];
 
 export const languages = [
-  "en",
-  "zh",
+  {code: "en", name: "English"},
+  {code: "zh", name: "中文"},
 ];
