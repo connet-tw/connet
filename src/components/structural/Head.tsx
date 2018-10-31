@@ -1,9 +1,10 @@
 import * as React from "react";
 import Helmet from "react-helmet";
+import { injectIntl, InjectedIntlProps } from "react-intl";
 
-const Head: React.SFC<{}> = () => (
+const Head: React.SFC<InjectedIntlProps> = ({ intl }) => (
   <Helmet
-    title={"Valen International"}
+    title={intl.formatMessage({id: "app.title"})}
     htmlAttributes={{lang: "en"}}
     meta={[
       {name: "description", content: "Valen International"},
@@ -15,4 +16,4 @@ const Head: React.SFC<{}> = () => (
   />
 );
 
-export default Head;
+export default injectIntl(Head);
