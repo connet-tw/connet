@@ -10,9 +10,13 @@ export type WithLangsProps = {
 export const withLangs = <P extends WithLangsProps>(Component: React.ComponentType<P>) =>
   injectIntl(class WithLangs extends React.Component<P> {
     handleClick = (code: string) => {
-      console.log(code);
       localStorage.setItem("language", code);
-      return navigate("/" + code);
+      const path = window.location.pathname
+        .split("/")
+        .map((x,i) => (i===1) ? code : x)
+        .join("/");
+        console.log(path);
+      return navigate(path);
     }
     render() {
       return (

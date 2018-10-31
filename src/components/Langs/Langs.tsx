@@ -8,9 +8,14 @@ import ListItemText from "@material-ui/core/ListItemText";
 const styles = ({palette, spacing, breakpoints}: Theme) => createStyles({
   list: {
     color: palette.common.white,
-    width: 200,
     display: "flex",
+    justifyContent: "center",
   },
+  item: {
+  },
+  text: {
+    padding: 0,
+  }
 });
 
 type Props = WithLangsProps & WithStyles<typeof styles>;
@@ -25,6 +30,7 @@ export const Langs: React.SFC<Props> = ({ classes, handleClick, locale }) => {
     >
       {languages.map((x) =>
         <ListItem
+          className={classes.item}
           key={x.code}
           button={true}
           onClick={() => handleClick(x.code)}
@@ -32,8 +38,9 @@ export const Langs: React.SFC<Props> = ({ classes, handleClick, locale }) => {
         >
           <ListItemText
             primary={x.name}
+            className={classes.text}
             primaryTypographyProps={
-              {color: "inherit", align: "center"}
+              {color: "inherit"}
             }
           />
         </ListItem>
