@@ -1,9 +1,20 @@
 {
   "app.title": "Controlnet International",
+  "app.learnMore": "Learn More",
   "contact.email": "info@connet.com.tw",
   "contact.phone": "+886-2-8791-2889",
   "nav.services": "Services",
   "nav.technology": "Technology",
   "nav.about": "About",
-  "nav.contact": "Contact"
+  "nav.contact": "Contact",
+  "index.hero.heading": "Controlnet International",
+  "index.hero.subheading": "Expert in power engineering",
+  "index.hero.paragraph1": "Some text to describe what we do",
+  "index.hero.paragraph2": "And we can do some more things too",
+  "index.services.heading": "Our services",
+  "index.services.subheading": "We specialize in the following engineering services",
+  "services.scada": "SCADA",
+  "services.microgrid": "Microgrid",
+  "services.energyManagement": "Energy Management",
+  "services.floodControl": "Flood Control"
 }

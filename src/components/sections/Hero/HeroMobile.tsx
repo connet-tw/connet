@@ -1,11 +1,8 @@
 import * as React from "react";
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import classnames from "classnames";
 import Img from "gatsby-image";
 import { HeroProps } from "./index";
-
-const Header = <div>Header</div>;
 
 const styles = (theme: Theme) => createStyles({
   section: {
@@ -56,7 +53,7 @@ const styles = (theme: Theme) => createStyles({
     left: 0,
     width: "100%",
     height: "100%",
-    opacity: 0.6,
+    opacity: 0.8,
     background: "linear-gradient(60deg, #fff, #eee)",
     zIndex: -1,
   },
@@ -70,7 +67,9 @@ const styles = (theme: Theme) => createStyles({
   content: {
     padding: theme.spacing.unit * 3,
   },
-  text: {},
+  text: {
+    textAlign: "center",
+  },
   paragraph: {},
 });
 
@@ -97,18 +96,26 @@ const HeroMobile: React.SFC<Props> = ({
           {before && before}
           <Typography
             className={classes.heading}
-            variant="display2"
+            variant="h4"
           >
             {heading}
           </Typography>
-          <Typography variant="title">
+          <Typography variant="h6">
             {subheading}
           </Typography>
         </div>
       </div>
     </div>
     <div className={classes.content}>
-      {text && text}
+      { text &&
+        <div className={classes.text}>
+          {text.map((t, i) =>
+            <Typography key={i} variant="body2" color="inherit" className={classes.paragraph}>
+              {t}
+            </Typography>,
+          )}
+        </div>
+      }
       {after && after}
     </div>
   </section>

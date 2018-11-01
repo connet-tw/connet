@@ -1,9 +1,20 @@
 {
   "app.title": "健格科技有限股份公司",
+  "app.learnMore": "了解更多",
   "contact.email": "info@connet.com.tw",
   "contact.phone": "+886-2-8791-2889",
   "nav.services": "服務",
   "nav.technology": "技術",
   "nav.about": "關於",
-  "nav.contact": "聯絡"
+  "nav.contact": "聯絡",
+  "index.hero.heading": "健格科技",
+  "index.hero.subheading": "Expert in power engineering",
+  "index.hero.paragraph1": "Some text to describe what we do",
+  "index.hero.paragraph2": "And we can do some more things too",
+  "index.services.heading": "我們的服務",
+  "index.services.subheading": "We specialize in the following engineering services",
+  "services.scada": "SCADA",
+  "services.microgrid": "微電網",
+  "services.energyManagement": "EMS",
+  "services.floodControl": "抽水站自動化"
 }

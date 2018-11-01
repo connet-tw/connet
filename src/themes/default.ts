@@ -11,7 +11,7 @@ const colors = {
 };
 
 const primary = colors.deepSkyBlue;
-const secondary = colors.orange;
+const secondary = colors.apache;
 
 const theme = createMuiTheme({
   palette: {

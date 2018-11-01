@@ -3,6 +3,7 @@ import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/s
 import Typography from "@material-ui/core/Typography";
 import classnames from "classnames";
 import Img from "gatsby-image";
+import { HeroProps } from "./index";
 
 const styles = (theme: Theme) => createStyles({
   section: {
@@ -24,6 +25,7 @@ const styles = (theme: Theme) => createStyles({
     minHeight: "calc(100vh - 64px)",
   },
   container: {
+    margin: "3rem 0",
     textAlign: "center",
     position: "relative",
     width: "100%",
@@ -49,25 +51,15 @@ const styles = (theme: Theme) => createStyles({
   header: {
     marginBottom: "1em",
   },
-  heading: {},
+  heading: {
+  },
   subheading: {
     marginTop: "1rem",
   },
   paragraph: {},
 });
 
-export interface SectionFeaturedProps {
-  image?: any;
-  gradient?: string;
-  heading?: string;
-  subheading?: string;
-  text?: string[];
-  before?: any;
-  after?: any;
-  fullHeight?: boolean;
-}
-
-type Props = WithStyles<typeof styles> & SectionFeaturedProps;
+type Props = WithStyles<typeof styles> & HeroProps;
 
 const HeroDesktop: React.SFC<Props> = ({
   classes, before, after, gradient, heading, subheading, text, image, fullHeight,
@@ -83,12 +75,12 @@ const HeroDesktop: React.SFC<Props> = ({
       {before && before}
       <div className={classes.header}>
         { heading &&
-          <Typography variant="display2" className={classes.heading}>
+          <Typography variant="h3" className={classes.heading}>
             {heading}
           </Typography>
         }
         { subheading &&
-          <Typography variant="title" className={classes.subheading}>
+          <Typography variant="h5" className={classes.subheading}>
             {subheading}
           </Typography>
         }

@@ -6,9 +6,9 @@ import HeroMobile from "./HeroMobile";
 export interface HeroProps {
   image?: any;
   gradient?: string;
-  heading?: string;
-  subheading?: string;
-  text?: string[];
+  heading?: React.ReactNode;
+  subheading?: React.ReactNode;
+  text?: React.ReactNode[];
   before?: any;
   after?: any;
   fullHeight?: boolean;
@@ -26,4 +26,6 @@ const Hero: React.SFC<HeroProps> = (props) => (
   </>
 );
 
-export default Hero;
+export {
+  Hero
+};
