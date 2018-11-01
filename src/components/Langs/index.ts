@@ -1,3 +1,4 @@
-import { StyledLangs as Langs } from "./Langs";
+import {  FooterLangs } from "./FooterLangs";
+import {  HeaderLangs } from "./HeaderLangs";
 
-export { Langs };
+export { FooterLangs, HeaderLangs };

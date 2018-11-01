@@ -13,27 +13,20 @@ import CloseIcon from "@material-ui/icons/Close";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 
-export interface NavLink {
+interface NavItem {
   to: string;
   id: string;
-  links?: Array<{to: string, id: string}>;
 }
 
-export interface ContactGroup {
-  name: string;
-  phone: string;
-  email: string;
-}
-
-export interface NavProps  {
+interface NavProps  {
   handleClose: any;
   open: any;
   logo: any;
-  navLinks: NavLink[];
+  navItems: NavItem[];
 }
 
-const Nav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
-  open, handleClose, classes, logo, navLinks
+const UnstyledNav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
+  open, handleClose, classes, logo, navItems
 }) => (
   <Drawer anchor="right" open={open} onClose={handleClose}>
     <div
@@ -52,7 +45,7 @@ const Nav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
       </Typography>
       <List className={classes.list}>
         {
-          navLinks.map((x: any) => {
+          navItems.map((x: any) => {
             return (
               x.links ?
               <ListItem key={x.to} className={classes.listItem}>
@@ -106,4 +99,8 @@ const Nav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
   </Drawer>
 );
 
-export default withStyles(styles)(Nav);
+const Nav = withStyles(styles)(UnstyledNav);
+
+export {
+  Nav, NavItem, NavProps
+};

@@ -1,15 +1,18 @@
 import * as React from "react";
-import HeaderBar from "./HeaderBar";
+import { HeaderBar, NavItem } from "./HeaderBar";
+
+export { NavItem };
 
 export interface HeaderProps {
   logo: string;
+  navItems: NavItem[];
 }
 
 interface State {
   menu: boolean;
 }
 
-class Header extends React.Component<HeaderProps, State> {
+export class Header extends React.Component<HeaderProps, State> {
   state: State = {
     menu: false,
   };
@@ -23,17 +26,16 @@ class Header extends React.Component<HeaderProps, State> {
   }
 
   render() {
-    const { logo } = this.props;
+    const { logo, navItems } = this.props;
 
     return (
       <HeaderBar
         logo={logo}
+        navItems={navItems}
         toggleMenu={this.toggleMenu}
         handleClose={this.handleClose}
         open={this.state.menu}
       />
     );
   }
-}
-
-export default Header;
+};

@@ -1,9 +1,7 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
-import { Langs } from "../Langs";
+import { FooterLangs } from "../Langs";
 
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/styles";
 
@@ -13,15 +11,12 @@ const styles = ({palette, spacing, breakpoints}: Theme) => createStyles({
   },
   main: {
     position: "relative",
+    padding: 0,
     overflow: "hidden",
-    backgroundColor: palette.secondary.dark,
+    backgroundColor: palette.primary.main,
     backgroundImage: `
       linear-gradient(to top, rgba(0,0,0,0.4), transparent)
     `,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
   },
   mainOverlay: {
     position: "absolute",
@@ -29,7 +24,7 @@ const styles = ({palette, spacing, breakpoints}: Theme) => createStyles({
     height: "100%",
     top: 0,
     left: 0,
-    backgroundColor: palette.secondary.dark,
+    backgroundColor: palette.grey[700],
     backgroundImage: `
       url(${require("../../images/patterns/cairo-pentagon-32.png")})
     `,
@@ -42,29 +37,22 @@ const styles = ({palette, spacing, breakpoints}: Theme) => createStyles({
     paddingRight: spacing.unit * 3,
     paddingBottom: "0.4rem",
     zIndex: 1,
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    width: "100%",
-    display: "flex",
-  },
-  logoPane: {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    borderRight: `1px solid rgba(255,255,255,0.4)`,
-  },
-  logo: {
-    width: 150,
-    marginRight: "2rem",
   },
   contact: {
-    marginLeft: "2rem",
     color: palette.common.white,
+  },
+  langs: {
+    marginTop: "1rem",
   },
   footerCopy: {
     padding: "0.8rem",
-    backgroundColor: palette.primary.dark,
+    backgroundColor: palette.grey[900],
     textAlign: "center",
   },
   titleSpan: {
@@ -81,21 +69,20 @@ const Footer: React.SFC<Props> = ({ classes, logo }) => (
     <div className={classes.main}>
       <div className={classes.mainOverlay}/>
       <div className={classes.mainInner}>
-        <Grid container alignItems="center" justify="center" direction="column">
-          <div className={classes.contact}>
-            <Typography variant="title" color="inherit" gutterBottom>
-              <FormattedMessage id="app.title"/>
-            </Typography>
-            <Typography variant="caption" color="inherit">
-              <FormattedMessage id="contact.phone"/>
-            </Typography>
-            <Typography variant="caption" color="inherit">
-              <FormattedMessage id="contact.email"/>
-            </Typography>
-          </div>
-          <Divider/>
-          <Langs/>
-        </Grid>
+        <div className={classes.contact}>
+          <Typography variant="title" color="inherit" gutterBottom>
+            <FormattedMessage id="app.title"/>
+          </Typography>
+          <Typography variant="caption" color="inherit">
+            <FormattedMessage id="contact.phone"/>
+          </Typography>
+          <Typography variant="caption" color="inherit">
+            <FormattedMessage id="contact.email"/>
+          </Typography>
+        </div>
+        <div className={classes.langs}>
+          <FooterLangs/>
+        </div>
       </div>
     </div>
     <div className={classes.footerCopy}>

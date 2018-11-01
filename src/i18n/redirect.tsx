@@ -31,5 +31,6 @@ export default Redirect;
 
 // Return user language if supporter or default to English
 function guardLanguage(xs: {code: string, name: string}[], y: string) {
-  return xs.find((x) => x.code === y) || "en";
+  const detected = xs.find((x) => x.code === y);
+  return (detected ? detected.code : "en");
 }

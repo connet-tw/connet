@@ -2,12 +2,18 @@ import * as React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import withRoot from "../../utils/withRoot";
 
-import { App } from "./App";
+import { App, NavItem } from "./App";
 
 interface Data {
   logo: any;
   logoWhite: any;
 }
+
+const navItems: NavItem[] = [
+  {to: "/services", id: "nav.services"},
+  {to: "/about", id: "nav.about"},
+  {to: "/contact", id: "nav.contact"},
+];
 
 export const Layout: React.SFC<{}> = ({ children }) => (
   <StaticQuery
@@ -32,6 +38,7 @@ export const Layout: React.SFC<{}> = ({ children }) => (
     render={(data: Data) => {
       return (
         <App
+          navItems={navItems}
           logo={data.logo}
           logoWhite={data.logoWhite}
         >
