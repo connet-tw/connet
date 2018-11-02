@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withIntl } from "../i18n/withIntl";
 import { Layout } from "../components/Layout";
 
 const NotFound: React.SFC<{}> = (() => {
@@ -9,4 +10,4 @@ const NotFound: React.SFC<{}> = (() => {
   );
 });
 
-export default NotFound;
+export default withIntl(NotFound);

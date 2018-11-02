@@ -30,21 +30,21 @@ const styles = ({spacing, palette, breakpoints}: Theme) => createStyles({
     display: "flex",
     justifyContent: "center",
   },
-  content: {
-    flexGrow: 1,
-    justifyContent: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
   image: {
     width: "100%",
     height: 120,
   },
+  content: {
+    width: "100%",
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+  },
   label: {
     color: palette.secondary.main,
     width: "100%",
-    textAlign: "center",
+  },
+  text: {
   },
 });
 

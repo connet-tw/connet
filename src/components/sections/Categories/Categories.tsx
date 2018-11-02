@@ -9,12 +9,19 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import { Link } from "../../../i18n";
 import Img from "gatsby-image";
-import { FormattedMessage } from "react-intl";
+
+interface CategoryLink {
+  label: React.ReactNode;
+  text?: React.ReactNode;
+  buttonText: React.ReactNode;
+  image: any;
+  to: string;
+}
 
 type Props = WithStyles<typeof styles> & {
   heading: React.ReactNode;
   subheading?: React.ReactNode;
-  categoryLinks: Array<{label: React.ReactNode, image: any, to: string}>;
+  categoryLinks: CategoryLink[];
   image?: any;
   gradient?: string;
 };
@@ -25,7 +32,7 @@ const Component: React.SFC<Props> = ({ classes, image, gradient, heading, subhea
       <Typography variant="h5" className={classes.heading}>
         {heading}
       </Typography>
-      <Typography variant="subtitle1" className={classes.subheading}>
+      <Typography variant="body2" className={classes.subheading}>
         {subheading}
       </Typography>
     </div>
@@ -43,10 +50,19 @@ const Component: React.SFC<Props> = ({ classes, image, gradient, heading, subhea
                 >
                   {x.label}
                 </Typography>
+                {x.text &&
+                  <Typography
+                    color="inherit"
+                    className={classes.text}
+                    variant="subtitle1"
+                  >
+                    {x.text}
+                  </Typography>
+                }
               </CardContent>
               <CardActions className={classes.actions}>
                 <Button variant="outlined">
-                  {<FormattedMessage id="app.learnMore"/>}
+                  {x.buttonText}
                 </Button>
               </CardActions>
             </Card>
