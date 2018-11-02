@@ -39,6 +39,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "manage:translations": "node ./translationRunner.js",
     "build": "gatsby build",
     "start": "gatsby develop --host 192.168.0.17 --port 8000",
     "develop": "gatsby develop",
@@ -54,7 +55,8 @@
     "babel-plugin-react-intl": "^3.0.1",
     "graphql-code-generator": "^0.12.6",
     "graphql-codegen-typescript-template": "^0.12.6",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "react-intl-translations-manager": "^5.0.3"
   },
   "repository": {
     "type": "git",
