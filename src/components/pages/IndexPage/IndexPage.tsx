@@ -1,49 +1,82 @@
 import * as React from "react";
-import { Data, query } from "./IndexPage.query";
-import { StaticQuery } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 import { Hero } from "../../sections/Hero";
 import { AboutSummary, Highlight } from "../../sections/About";
 import { Categories } from "../../sections/Categories";
 import { FormattedMessage } from "react-intl";
-import { messages } from "./IndexPage.messages";
+import { hero, services, about, highlights } from "./IndexPage.messages";
 
-const highlights: Highlight[] = [
+const hs: Highlight[] = [1,2,3,4].map((x) => (
   {
-    heading: <FormattedMessage {...messages.highlightHeading1}/>,
-    subheading: <FormattedMessage {...messages.highlightSubheading1 }/>,
-  },
-  {
-    heading: <FormattedMessage {...messages.highlightHeading2}/>,
-    subheading: <FormattedMessage {...messages.highlightSubheading3 }/>,
-  },
-  {
-    heading: <FormattedMessage {...messages.highlightHeading3}/>,
-    subheading: <FormattedMessage {...messages.highlightSubheading3 }/>,
-  },
-  {
-    heading: <FormattedMessage {...messages.highlightHeading4}/>,
-    subheading: <FormattedMessage {...messages.highlightSubheading4 }/>,
-  },
-];
+    heading: <FormattedMessage {...highlights["heading" + x]}/>,
+    subheading: <FormattedMessage {...highlights["subheading" + x]}/>,
+  })
+);
+
+interface Data {
+  headerImg: any;
+  microgridImg: any;
+  scadaImg: any;
+  floodControlImg: any;
+  emsImg: any;
+}
 
 const IndexPage: React.SFC<{}> = (() => (
   <StaticQuery
-    query={query}
+    query={graphql`
+      query IndexPageQuery {
+        headerImg: file(relativePath: {eq: "359340-gradient-wallpaper-blue.png"}) {
+          childImageSharp {
+            fluid(maxWidth: 1400) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        microgridImg: file(relativePath: {eq: "fushan__overview.jpg"}) {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        scadaImg: file(relativePath: {eq: "header/scada.jpg"}) {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        emsImg: file(relativePath: {eq: "header/energy-management.jpg"}) {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        floodControlImg: file(relativePath: {eq: "header/flood-control.jpg"}) {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
     render={(data: Data) =>
       <>
         <Hero
-          heading={<FormattedMessage id="index.hero.heading"/>}
-          subheading={<FormattedMessage id="index.hero.subheading"/>}
+          heading={<FormattedMessage {...hero.heading}/>}
+          subheading={<FormattedMessage {...hero.subheading}/>}
           image={data.headerImg}
         />
         <AboutSummary
-          heading={<FormattedMessage id="about.heading"/>}
-          subheading={<FormattedMessage id="about.heading"/>}
-          highlights={highlights}
+          heading={<FormattedMessage {...about.heading }/>}
+          subheading={<FormattedMessage {...about.subheading } />}
+          highlights={hs}
         />
         <Categories
-          heading={<FormattedMessage id="index.services.heading"/>}
-          subheading={<FormattedMessage id="index.services.subheading"/>}
+          heading={<FormattedMessage {...services.heading}/>}
+          subheading={<FormattedMessage {...services.subheading}/>}
           categoryLinks={[
             {
               image: data.scadaImg,
@@ -76,7 +109,6 @@ const IndexPage: React.SFC<{}> = (() => (
     }
   />)
 );
-
 
 export {
   IndexPage,

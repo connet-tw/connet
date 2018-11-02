@@ -1,0 +1,50 @@
+[
+  {
+    "id": "index.hero.heading",
+    "defaultMessage": "Heading"
+  },
+  {
+    "id": "index.hero.subheading",
+    "defaultMessage": "Subheading"
+  },
+  {
+    "id": "about.heading",
+    "defaultMessage": "About ControlNet"
+  },
+  {
+    "id": "about.subheading",
+    "defaultMessage": "Short subtitle"
+  },
+  {
+    "id": "about.highlight1.heading",
+    "defaultMessage": "Heading"
+  },
+  {
+    "id": "about.highlight1.subheading",
+    "defaultMessage": "Subheading"
+  },
+  {
+    "id": "about.highlight2.heading",
+    "defaultMessage": "Heading"
+  },
+  {
+    "id": "about.highlight2.subheading",
+    "defaultMessage": "Subheading"
+  },
+  {
+    "id": "about.highlight3.heading",
+    "defaultMessage": "Heading"
+  },
+  {
+    "id": "about.highlight3.subheading",
+    "defaultMessage": "Subheading"
+  },
+  {
+    "id": "about.highlight4.heading",
+    "defaultMessage": "Heading"
+  },
+  {
+    "id": "about.highlight4.subheading",
+    "defaultMessage": "Subheading"
+  }
+]
