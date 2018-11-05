@@ -1,11 +1,55 @@
 [
   {
     "id": "index.hero.heading",
-    "defaultMessage": "Heading"
+    "defaultMessage": "Controlnet International"
   },
   {
     "id": "index.hero.subheading",
-    "defaultMessage": "Subheading"
+    "defaultMessage": "Expert in Power System Integration"
+  },
+  {
+    "id": "services.heading",
+    "defaultMessage": "Our Services"
+  },
+  {
+    "id": "services.subheading",
+    "defaultMessage": "Short line about our services"
+  },
+  {
+    "id": "services.microgrid.heading",
+    "defaultMessage": "Microgrid"
+  },
+  {
+    "id": "services.microgrid.subheading",
+    "defaultMessage": "What is a microgid?"
+  },
+  {
+    "id": "services.ems.heading",
+    "defaultMessage": "EMS"
+  },
+  {
+    "id": "services.ems.subheading",
+    "defaultMessage": "Energy Management System"
+  },
+  {
+    "id": "services.scada.heading",
+    "defaultMessage": "SCADA"
+  },
+  {
+    "id": "services.scada.subheading",
+    "defaultMessage": "One line about SCADA"
+  },
+  {
+    "id": "services.floodControl.heading",
+    "defaultMessage": "Flood Control"
+  },
+  {
+    "id": "services.floodControl.subheading",
+    "defaultMessage": "About Flood Control System"
+  },
+  {
+    "id": "services.learnMore",
+    "defaultMessage": "Learn More"
   },
   {
     "id": "about.heading",

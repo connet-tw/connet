@@ -4,7 +4,7 @@ import { Hero } from "../../sections/Hero";
 import { AboutSummary, Highlight } from "../../sections/About";
 import { Categories } from "../../sections/Categories";
 import { FormattedMessage } from "react-intl";
-import { hero, services, about, highlights } from "./IndexPage.messages";
+import { indexHero, services, microgrid, scada, floodControl, ems, about, highlights } from "../messages";
 
 const hs: Highlight[] = [1,2,3,4].map((x) => (
   {
@@ -65,8 +65,8 @@ const IndexPage: React.SFC<{}> = (() => (
     render={(data: Data) =>
       <>
         <Hero
-          heading={<FormattedMessage {...hero.heading}/>}
-          subheading={<FormattedMessage {...hero.subheading}/>}
+          heading={<FormattedMessage {...indexHero.heading}/>}
+          subheading={<FormattedMessage {...indexHero.subheading}/>}
           image={data.headerImg}
         />
         <AboutSummary
@@ -81,27 +81,30 @@ const IndexPage: React.SFC<{}> = (() => (
             {
               image: data.scadaImg,
               to: "/services#scada",
-              label: <FormattedMessage id="services.scada.heading"/>,
-              text: <FormattedMessage id="services.scada.subheading"/>,
-              buttonText: "Learn More"
+              label: <FormattedMessage {...scada.heading}/>,
+              text: <FormattedMessage {...scada.subheading}/>,
+              buttonText: <FormattedMessage {...services.learnMore}/>,
             },
             {
               image: data.microgridImg,
-              to: "/services#id",
-              label: <FormattedMessage id="services.microgrid.heading"/>,
-              buttonText: "Learn More"
+              to: "/services#microgrid",
+              label: <FormattedMessage {...microgrid.heading}/>,
+              text: <FormattedMessage {...microgrid.subheading}/>,
+              buttonText: <FormattedMessage {...services.learnMore}/>,
             },
             {
               image: data.emsImg,
               to: "/services#ems",
-              label: <FormattedMessage id="services.ems.heading"/>,
-              buttonText: "Learn More"
+              label: <FormattedMessage {...ems.heading}/>,
+              text: <FormattedMessage {...ems.subheading}/>,
+              buttonText: <FormattedMessage {...services.learnMore}/>,
             },
             {
               image: data.floodControlImg,
               to: "/services#floodControl",
-              label: <FormattedMessage id="services.floodControl.heading"/>,
-              buttonText: "Learn More"
+              label: <FormattedMessage {...floodControl.heading}/>,
+              text: <FormattedMessage {...floodControl.subheading}/>,
+              buttonText: <FormattedMessage {...services.learnMore}/>,
             },
           ]}
         />
