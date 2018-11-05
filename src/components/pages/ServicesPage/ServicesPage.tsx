@@ -5,7 +5,6 @@ import { ImageSplit } from "../../sections/ImageSplit";
 import { scada, ems, microgrid, floodControl } from "../messages";
 
 interface Data {
-  headerImg: any;
   microgridImg: any;
   scadaImg: any;
   floodControlImg: any;

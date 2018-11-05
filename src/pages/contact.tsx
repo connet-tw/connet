@@ -1,22 +1,14 @@
 import * as React from "react";
 import { Layout } from "../components/Layout";
-import { defineMessages  } from "react-intl";
 import { withIntl } from "../i18n/withIntl";
+import { ContactPage } from "../components/pages";
 
-defineMessages({
-  title: {
-    id: "app.title",
-    description: "fake description",
-    defaultMessage: "ctn"
-  }
-});
-
-const ContactPage: React.SFC<{}> = (() => {
+const Contact: React.SFC<{}> = (() => {
   return (
     <Layout>
-      ContactPage
+      <ContactPage/>
     </Layout>
   );
 });
 
-export default withIntl(ContactPage);
+export default withIntl(Contact);
