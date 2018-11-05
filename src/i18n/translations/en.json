@@ -9,6 +9,10 @@
   "about.highlight4.heading": "4",
   "about.highlight4.subheading": "Regional offices",
   "about.subheading": "Some more info Controlnet",
+  "app.title": "Controlnet International",
   "index.hero.heading": "Controlnet International",
-  "index.hero.subheading": "Expert in power engineering"
+  "index.hero.subheading": "Expert in power engineering",
+  "nav.about": "About",
+  "nav.contact": "Contact",
+  "nav.services": "Services"
 }

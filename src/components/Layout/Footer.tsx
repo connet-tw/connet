@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
+import { messages } from "./Footer.messages";
 import Typography from "@material-ui/core/Typography";
 import { FooterLangs } from "../Langs";
 
@@ -74,10 +75,10 @@ const Footer: React.SFC<Props> = ({ classes, logo }) => (
             <FormattedMessage id="app.title"/>
           </Typography>
           <Typography variant="caption" color="inherit">
-            <FormattedMessage id="contact.phone"/>
+            <FormattedMessage {...messages.phoneNumber}/>
           </Typography>
           <Typography variant="caption" color="inherit">
-            <FormattedMessage id="contact.email"/>
+            <FormattedMessage {...messages.emailAddress}/>
           </Typography>
         </div>
         <div className={classes.langs}>
@@ -87,7 +88,9 @@ const Footer: React.SFC<Props> = ({ classes, logo }) => (
     </div>
     <div className={classes.footerCopy}>
       <Typography variant="caption" color="secondary">
-        © 2018 Copyright: <span className={classes.titleSpan}><FormattedMessage id="app.title"/></span>
+        © 2018 Copyright: <span className={classes.titleSpan}>
+          <FormattedMessage {...messages.title}/>
+        </span>
       </Typography>
     </div>
   </footer>

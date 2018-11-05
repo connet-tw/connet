@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
+import { messages } from "./Nav.messages";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -15,7 +16,7 @@ import EmailIcon from "@material-ui/icons/Email";
 
 interface NavItem {
   to: string;
-  id: string;
+  label: React.ReactNode;
 }
 
 interface NavProps  {
@@ -41,7 +42,7 @@ const UnstyledNav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
       </IconButton>
       <img className={classes.logo} src={logo.childImageSharp.fixed.src}/>
       <Typography variant="title" className={classes.title}>
-        <FormattedMessage id="app.title"/>
+        <FormattedMessage {...messages.title}/>
       </Typography>
       <List className={classes.list}>
         {
@@ -52,7 +53,7 @@ const UnstyledNav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
                 <List className={classes.list}>
                   <ListItem button className={classes.listItem}>
                     <Link to={x.to} className={classes.link}>
-                      <ListItemText primary={x.to}>
+                      <ListItemText primary={x.label}>
                       </ListItemText>
                     </Link>
                   </ListItem>
@@ -74,7 +75,7 @@ const UnstyledNav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
               :
               <ListItem key={x.to} button className={classes.listItem}>
                 <Link to={x.to} className={classes.link}>
-                  <ListItemText primary={<FormattedMessage id={x.id}/>}/>
+                  <ListItemText primary={x.label}/>
                 </Link>
               </ListItem>
             );
@@ -85,13 +86,13 @@ const UnstyledNav: React.SFC<NavProps & WithStyles<typeof styles>> = ({
         <div className={classes.details}>
           <PhoneIcon className={classes.icon}/>
           <Typography color="inherit" gutterBottom>
-            <FormattedMessage id="contact.phone"/>
+            <FormattedMessage {...messages.phoneNumber}/>
           </Typography>
         </div>
         <div className={classes.details}>
           <EmailIcon className={classes.icon}/>
           <Typography color="inherit">
-            <FormattedMessage id="contact.email"/>
+            <FormattedMessage {...messages.emailAddress}/>
           </Typography>
         </div>
       </div>

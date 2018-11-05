@@ -41,7 +41,7 @@ const Component: React.SFC<Props> = ({
           </Typography>
         }
         {!!body && body.map((x, i) =>
-          <Typography variant="body1">
+          <Typography key={i} variant="body1">
             {x}
           </Typography>
         )}
@@ -50,7 +50,7 @@ const Component: React.SFC<Props> = ({
         <div className={classes.highlights}>
           <Grid container spacing={16}>
             {highlights.map((h, i) =>
-              <Grid direction="column" alignItems="center" className={classes.highlight}>
+              <Grid item key={i} className={classes.highlight}>
                 <Typography variant="h4">
                   {h.heading}
                 </Typography>

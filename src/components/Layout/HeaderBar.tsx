@@ -1,6 +1,7 @@
 import * as React from "react";
 import { injectIntl, InjectedIntlProps } from "react-intl";
 import { FormattedMessage } from "react-intl";
+import { messages } from "./HeaderBar.messages";
 import Typography from "@material-ui/core/Typography";
 import Hidden from "@material-ui/core/Hidden";
 import AppBar from "@material-ui/core/AppBar";
@@ -16,6 +17,7 @@ import { Link } from "../../i18n";
 import { HeaderLangs } from "../Langs/HeaderLangs";
 
 export { NavItem };
+
 const styles = (theme: Theme) => createStyles({
   bar: {
     backgroundColor: theme.palette.common.white,
@@ -68,7 +70,7 @@ const UnstyledHeaderBar: React.SFC<HeaderBarProps & InjectedIntlProps & WithStyl
       <img className={classes.logo} src={logo.childImageSharp.fixed.src}/>
       <Hidden smDown>
         <Typography className={classes.title} variant="title">
-          <FormattedMessage id="app.title"/>
+          <FormattedMessage {...messages.title}/>
         </Typography>
       </Hidden>
     </Link>
@@ -77,9 +79,9 @@ const UnstyledHeaderBar: React.SFC<HeaderBarProps & InjectedIntlProps & WithStyl
   const links = (
     <List className={classes.items}>
       {navItems.map((x) =>
-      <ListItem button={true} className={classes.item}>
+      <ListItem key={x.to} button={true} className={classes.item}>
         <Link to={x.to}>
-          <ListItemText primary={<FormattedMessage id={x.id}/>}/>
+          <ListItemText primary={x.label}/>
         </Link>
       </ListItem>
       ) }

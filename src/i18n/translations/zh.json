@@ -9,6 +9,10 @@
   "about.highlight4.heading": "Heading",
   "about.highlight4.subheading": "Subheading",
   "about.subheading": "Short subtitle",
+  "app.title": "健格科技有限股份公司",
   "index.hero.heading": "健格科技",
-  "index.hero.subheading": "Expert in power engineering"
+  "index.hero.subheading": "Expert in power engineering",
+  "nav.about": "About",
+  "nav.contact": "Contact",
+  "nav.services": "Services"
 }
