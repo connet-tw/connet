@@ -5,11 +5,25 @@ import { createStyles, Theme, WithStyles, withStyles }  from "@material-ui/core/
 
 const styles = ({breakpoints, palette, spacing}: Theme) => createStyles({
   root: {
+    borderTop: `2px solid ${palette.primary.main}`,
+    marginBottom: spacing.unit * 3,
+    background: palette.common.white,
+    padding: spacing.unit * 3,
   },
   header: {
+    margin: "1rem 0",
+    textAlign: "center",
   },
-  highlights: {},
-  highlight: {},
+  heading: {},
+  subheading: {
+    marginTop: "1rem",
+  },
+  highlights: {
+    marginTop: "2rem",
+  },
+  highlight: {
+    textAlign: "center",
+  },
 });
 
 interface Highlight {
@@ -32,11 +46,11 @@ const Component: React.SFC<Props> = ({
   return (
     <section className={classes.root}>
       <div className={classes.header}>
-        <Typography variant="h4">
+        <Typography className={classes.heading} variant="h4">
           {heading}
         </Typography>
         {!!subheading &&
-          <Typography variant="h6">
+          <Typography color="textSecondary" className={classes.subheading} variant="h6">
             {subheading}
           </Typography>
         }
@@ -50,8 +64,8 @@ const Component: React.SFC<Props> = ({
         <div className={classes.highlights}>
           <Grid container spacing={16}>
             {highlights.map((h, i) =>
-              <Grid item key={i} className={classes.highlight}>
-                <Typography variant="h4">
+              <Grid item key={i} xs={12} sm={6} md={3} className={classes.highlight}>
+                <Typography color="primary" variant="h4">
                   {h.heading}
                 </Typography>
                 <Typography variant="overline">

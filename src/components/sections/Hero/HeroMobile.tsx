@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 import { HeroProps } from "./index";
 
 const styles = (theme: Theme) => createStyles({
-  section: {
+  root: {
     position: "relative",
     display: "flex",
     flexDirection: "column",
@@ -30,21 +30,20 @@ const styles = (theme: Theme) => createStyles({
     width: "100%",
   },
   headerContent: {
+    textTransform: "uppercase",
     height: "100%",
     width: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    paddingTop: theme.spacing.unit * 6,
     textAlign: "center",
-    paddingTop: theme.spacing.unit * 3,
-    paddingBottom: theme.spacing.unit * 3,
   },
   container: {
     position: "relative",
     width: "100%",
     padding: theme.spacing.unit * 3,
     borderTop: `1px solid ${theme.palette.common.white}`,
-    borderBottom: `1px solid ${theme.palette.common.white}`,
     zIndex: 1,
   },
   overlay: {
@@ -53,19 +52,18 @@ const styles = (theme: Theme) => createStyles({
     left: 0,
     width: "100%",
     height: "100%",
-    opacity: 0.8,
-    background: "linear-gradient(60deg, #fff, #eee)",
+    background: "linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9))",
     zIndex: -1,
   },
   heading: {
     color: theme.palette.primary.main,
   },
   subheading: {
-    color: theme.palette.secondary.main,
-    marginTop: "1rem",
+    marginTop: "0.5rem",
+    opacity: 0.8,
+    lineSpacing: 0.8,
   },
   content: {
-    padding: theme.spacing.unit * 3,
   },
   text: {
     textAlign: "center",
@@ -79,7 +77,7 @@ const HeroMobile: React.SFC<Props> = ({
   classes, before, after, gradient, heading, subheading, text, image, fullHeight,
 }) => (
   <section
-    className={classes.section}
+    className={classes.root}
   >
     <div className={classes.header}>
       {image &&
@@ -100,7 +98,7 @@ const HeroMobile: React.SFC<Props> = ({
           >
             {heading}
           </Typography>
-          <Typography variant="h6">
+          <Typography className={classes.subheading} variant="h6">
             {subheading}
           </Typography>
         </div>

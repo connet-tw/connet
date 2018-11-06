@@ -8,7 +8,6 @@ import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/s
 
 const styles = ({palette, spacing, breakpoints}: Theme) => createStyles({
   footer: {
-    marginTop: spacing.unit * 3,
   },
   main: {
     position: "relative",

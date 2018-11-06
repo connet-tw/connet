@@ -20,6 +20,7 @@ const styles = ({palette, spacing}: Theme) => createStyles({
   },
   selected: {
     opacity: 1,
+    color: palette.common.black,
   },
   text: {
     padding: 0,

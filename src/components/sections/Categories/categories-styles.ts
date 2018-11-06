@@ -2,10 +2,10 @@ import { createStyles, Theme } from "@material-ui/core/styles";
 
 const styles = ({spacing, palette, breakpoints}: Theme) => createStyles({
   root: {
-    paddingTop: "2em",
-    paddingBottom: "2em",
-    paddingLeft: spacing.unit * 3,
-    paddingRight: spacing.unit * 3,
+    borderTop: `2px solid ${palette.primary.main}`,
+    background: palette.common.white,
+    marginBottom: spacing.unit * 3,
+    padding: spacing.unit * 3,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -16,7 +16,9 @@ const styles = ({spacing, palette, breakpoints}: Theme) => createStyles({
   },
   heading: {
   },
-  subheading: {},
+  subheading: {
+    marginTop: "1rem",
+  },
   cards: {
     padding: "1em 0",
   },

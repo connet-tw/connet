@@ -29,10 +29,10 @@ type Props = WithStyles<typeof styles> & {
 const Component: React.SFC<Props> = ({ classes, image, gradient, heading, subheading, categoryLinks }) => (
   <section className={classes.root}>
     <div className={classes.header}>
-      <Typography variant="h5" className={classes.heading}>
+      <Typography variant="h4" className={classes.heading}>
         {heading}
       </Typography>
-      <Typography variant="body2" className={classes.subheading}>
+      <Typography variant="h6" className={classes.subheading}>
         {subheading}
       </Typography>
     </div>

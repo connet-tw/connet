@@ -5,7 +5,7 @@ import classnames from "classnames";
 import Img from "gatsby-image";
 import { HeroProps } from "./index";
 
-const styles = (theme: Theme) => createStyles({
+const styles = ({palette, spacing}: Theme) => createStyles({
   section: {
     position: "relative",
     display: "flex",
@@ -25,16 +25,15 @@ const styles = (theme: Theme) => createStyles({
     minHeight: "calc(100vh - 64px)",
   },
   container: {
-    margin: "3rem 0",
+    marginTop: "5rem",
     textAlign: "center",
     position: "relative",
     width: "100%",
-    paddingTop: theme.spacing.unit * 3,
-    paddingBottom: theme.spacing.unit * 3,
-    paddingRight: theme.spacing.unit * 6,
-    paddingLeft: theme.spacing.unit * 6,
-    borderTop: `1px solid ${theme.palette.common.white}`,
-    borderBottom: `1px solid ${theme.palette.common.white}`,
+    paddingTop: spacing.unit * 3,
+    paddingBottom: spacing.unit * 3,
+    paddingRight: spacing.unit * 6,
+    paddingLeft: spacing.unit * 6,
+    borderTop: `1px solid ${palette.common.white}`,
     zIndex: 1,
   },
   overlay: {
@@ -49,9 +48,11 @@ const styles = (theme: Theme) => createStyles({
   },
   text: {},
   header: {
-    marginBottom: "1em",
+    margin: "0.6rem 0",
+    textTransform: "uppercase",
   },
   heading: {
+    color: palette.primary.main,
   },
   subheading: {
     marginTop: "1rem",
