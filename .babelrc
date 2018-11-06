@@ -2,7 +2,7 @@
   "presets": ["babel-preset-gatsby"],
   "plugins": [
       ["react-intl", {
-          "messagesDir": "./src/messages/"
+          "messagesDir": "./dist/messages/"
       }]
     ]
 }

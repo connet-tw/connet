@@ -54,7 +54,7 @@ export interface ImageSplitProps {
   image?: any;
   heading?: React.ReactNode;
   subheading?: React.ReactNode;
-  body?: React.ReactNode[];
+  body?: React.ReactNode;
   before?: any;
   after?: any;
 }
@@ -88,15 +88,12 @@ const Component: React.SFC<Props> = ({
         }
         { body &&
           <div className={classes.body}>
-            {body.map((t, i) =>
             <Typography
-              key={i}
               variant="body2"
               className={classes.paragraph}
             >
-                {t}
-              </Typography>,
-            )}
+              {body}
+            </Typography>
           </div>
         }
         {after && <div className={classes.after}>{after}</div>}

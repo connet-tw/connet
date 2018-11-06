@@ -56,7 +56,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     createNodeField({node, name: "lang", value: lang});
     createNodeField({node, name: "type", value: type});
-    createNodeField({node, name: "slug", value: slug});
+    createNodeField({node, name: "slug", value: "/" + slug});
   }
 }
 
@@ -86,7 +86,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
-        path: `/${node.fields.lang}/${node.fields.slug}`,
+        path: `/${node.fields.lang}${node.fields.slug}`,
         component: path.resolve(`src/templates/${matchTemplate(node.fields.type)}`),
         context: {
           languages,

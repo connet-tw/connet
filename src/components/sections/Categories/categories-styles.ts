@@ -27,8 +27,6 @@ const styles = ({spacing, palette, breakpoints}: Theme) => createStyles({
     flexDirection: "column",
   },
   actions: {
-    display: "flex",
-    justifyContent: "center",
   },
   image: {
     width: "100%",
