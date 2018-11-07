@@ -1,4 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+
+const breakpoints = createBreakpoints({});
 
 const colors = {
   bahamaBlue: "rgb(22,73,112)",
@@ -27,11 +30,20 @@ const theme = createMuiTheme({
       "Muli",
       "sans-serif",
     ].join(","),
-    display2: {
-      color: primary,
+    h1: {
+      [breakpoints.down("sm")]: {
+        fontSize: "4.5rem",
+      },
     },
-    display1: {
-      color: primary,
+    h2: {
+      [breakpoints.down("sm")]: {
+        fontSize: "2.5rem",
+      },
+    },
+    h3: {
+      [breakpoints.down("sm")]: {
+        fontSize: "2.3rem",
+      },
     },
     button: {
       textTransform: "none",

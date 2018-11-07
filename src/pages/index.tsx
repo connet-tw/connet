@@ -4,7 +4,7 @@ import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
 import * as m from "../messages/index.messages";
 import { FormattedMessage } from "react-intl";
-import { Hero } from "../components/sections/Hero";
+import { Banner } from "../components/sections/Banner";
 import { AboutSummary } from "../components/sections/About";
 import { Categories } from "../components/sections/Categories";
 
@@ -34,7 +34,7 @@ interface IndexProps {
 const Index: React.SFC<IndexProps> = (({ data }) => {
   return (
     <Layout>
-      <Hero
+      <Banner
         heading={<FormattedMessage {...m.hero.heading}/>}
         subheading={<FormattedMessage {...m.hero.subheading}/>}
         image={data.headerImg}

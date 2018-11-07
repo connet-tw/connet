@@ -1,4 +1,5 @@
 import {  FooterLangs } from "./FooterLangs";
 import {  HeaderLangs } from "./HeaderLangs";
+import { Langs } from "./Langs";
 
-export { FooterLangs, HeaderLangs };
+export { Langs, FooterLangs, HeaderLangs };

@@ -14,7 +14,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Nav, NavItem } from "./Nav";
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/styles";
 import { Link } from "../../i18n";
-import { HeaderLangs } from "../Langs/HeaderLangs";
+import { Langs } from "../Langs/Langs";
 
 export { NavItem };
 
@@ -22,13 +22,13 @@ const styles = (theme: Theme) => createStyles({
   bar: {
     backgroundColor: theme.palette.common.white,
     height: 64,
+    justifyContent: "center",
   },
   grow: {
     flex: 1,
   },
   brand: {
     display: "flex",
-    flexShrink: 0,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -48,6 +48,7 @@ const styles = (theme: Theme) => createStyles({
   },
   item: {
     padding: "0 0.2rem",
+    width: "auto",
   },
   langs: {
     marginLeft: "1rem",
@@ -102,7 +103,7 @@ const UnstyledHeaderBar: React.SFC<HeaderBarProps & InjectedIntlProps & WithStyl
           <div className={classes.grow}/>
           <Hidden smDown>{links}</Hidden>
           <div className={classes.langs}>
-            <HeaderLangs/>
+            <Langs color="primary"/>
           </div>
           <Hidden mdUp>{hamburger}</Hidden>
         </Toolbar>

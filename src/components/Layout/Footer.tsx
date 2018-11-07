@@ -2,7 +2,7 @@ import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { messages } from "./Footer.messages";
 import Typography from "@material-ui/core/Typography";
-import { FooterLangs } from "../Langs";
+import { Langs } from "../Langs";
 
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/styles";
 
@@ -53,6 +53,7 @@ const styles = ({palette, spacing, breakpoints}: Theme) => createStyles({
   footerCopy: {
     padding: "0.8rem",
     backgroundColor: palette.grey[900],
+    color: "rgba(255,255,255, 0.4)",
     textAlign: "center",
   },
   titleSpan: {
@@ -81,12 +82,12 @@ const Footer: React.SFC<Props> = ({ classes, logo }) => (
           </Typography>
         </div>
         <div className={classes.langs}>
-          <FooterLangs/>
+          <Langs color="primary"/>
         </div>
       </div>
     </div>
     <div className={classes.footerCopy}>
-      <Typography variant="caption" color="secondary">
+      <Typography variant="caption" color="inherit">
         © 2018 Copyright: <span className={classes.titleSpan}>
           <FormattedMessage {...messages.title}/>
         </span>

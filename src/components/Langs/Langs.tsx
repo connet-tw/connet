@@ -1,52 +1,43 @@
 import * as React from "react";
-import { languages, withLangs, WithLangsProps } from "../../i18n";
 import { Theme, createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import { MakeLangs } from "./MakeLangs";
+import Button from "@material-ui/core/Button";
 
 const styles = ({palette, spacing, breakpoints}: Theme) => createStyles({
-  list: {
-    color: palette.common.white,
-    display: "flex",
-    justifyContent: "center",
+  root: {},
+  button: {
   },
-  item: {
-  },
-  text: {
-    padding: 0,
-  }
 });
 
-type Props = WithLangsProps & WithStyles<typeof styles>;
 
-export const Langs: React.SFC<Props> = ({ classes, handleClick, locale }) => {
+type Props = {
+  color?: "inherit" | "primary" | "secondary" | "default";
+} & WithStyles<typeof styles>;
+
+export const LangsBase: React.SFC<Props> = ({ classes, color }) => {
   return (
-    <List
-      dense
-      disablePadding
-      className={classes.list}
-      component={"nav"}
-    >
-      {languages.map((x) =>
-        <ListItem
-          className={classes.item}
-          key={x.code}
-          button={true}
-          onClick={() => handleClick(x.code)}
-          selected={x.code === locale}
-        >
-          <ListItemText
-            primary={x.name}
-            className={classes.text}
-            primaryTypographyProps={
-              {color: "inherit"}
-            }
-          />
-        </ListItem>
+    <MakeLangs>
+      {injectedProps => (
+      <nav>
+        {injectedProps.languages.map((x) =>
+          <Button
+            onClick={() => injectedProps.handleClick(x.code)}
+            variant={(x.code === injectedProps.locale ? "outlined" : "text")}
+            size="small"
+            color={color}
+            className={classes.button}
+          >
+            {x.name}
+          </Button>
+        )}
+      </nav>
       )}
-    </List>
+    </MakeLangs>
   );
 };
 
-export const StyledLangs = withLangs(withStyles(styles)(Langs));
+LangsBase.defaultProps = {
+  color: "inherit",
+};
+
+export const Langs = withStyles(styles)(LangsBase);
