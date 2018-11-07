@@ -36,6 +36,7 @@ export const LangsList: React.SFC<LangsListProps> = ({
           }
           key={x.code}
           onClick={() => handleClick(x.code)}
+          button={true}
         >
           <ListItemText
             primary={x.name}

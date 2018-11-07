@@ -2,11 +2,11 @@ import { defineMessages } from "react-intl";
 
 export const hero = defineMessages({
   heading: {
-    id: "intex.hero.heading",
+    id: "index.hero.heading",
     defaultMessage: "Controlnet International",
   },
   subheading: {
-    id: "intex.hero.subheading",
+    id: "index.hero.subheading",
     defaultMessage: "Expert in power system integration",
   },
 });
