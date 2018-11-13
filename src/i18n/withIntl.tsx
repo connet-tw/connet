@@ -1,12 +1,13 @@
 import * as React from "react";
 import { IntlProvider, addLocaleData } from "react-intl";
+import { Language } from "./locales/index";
 import { localeData } from "./locales";
 
 addLocaleData(localeData);
 
 interface WithLocaleProps {
   pageContext: {
-    languages: Array<{value: string, name: string}>,
+    languages: Language[],
     locale: string,
   };
 }

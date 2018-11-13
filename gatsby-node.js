@@ -1,9 +1,5 @@
 const path = require('path');
-
-const languages = [
-  {value: "en", text: "English"},
-  {value: "zh", text: "中文"},
-];
+const languages = require("./src/i18n/locales/languages.js");
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
@@ -27,14 +23,14 @@ exports.onCreatePage = ({ page, actions }) => {
     deletePage(page);
     createPage(redirectPage);
 
-    languages.forEach(({ value }) => {
+    languages.forEach(({ code }) => {
       const localePage = {
         ...page,
         originalPath: page.path,
-        path: `/${value}${page.path}`,
+        path: `/${code}${page.path}`,
         context: {
           languages,
-          locale: value,
+          locale: code,
           routed: true,
           originalPath: page.path,
         },
@@ -84,17 +80,19 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      createPage({
-        path: `/${node.fields.lang}${node.fields.slug}`,
-        component: path.resolve(`src/templates/${matchTemplate(node.fields.type)}`),
-        context: {
-          languages,
-          locale: node.fields.lang,
-          slug: node.fields.slug,
-        },
+    result.data.allMarkdownRemark.edges
+      .filter(({node}) => languages.find(({code}) => code === node.fields.lang))
+      .forEach(({ node }) => {
+        createPage({
+          path: `/${node.fields.lang}${node.fields.slug}`,
+          component: path.resolve(`src/templates/${matchTemplate(node.fields.type)}`),
+          context: {
+            languages,
+            locale: node.fields.lang,
+            slug: node.fields.slug,
+          },
+        });
       });
-    });
   });
 };
 
