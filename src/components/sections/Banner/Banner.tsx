@@ -48,7 +48,7 @@ const styles = ({breakpoints, palette, spacing}: Theme) => createStyles({
 
 interface BannerProps {
   heading: React.ReactNode;
-  subheading: React.ReactNode;
+  subheading?: React.ReactNode;
   image: any;
 }
 
@@ -66,9 +66,11 @@ const BannerBase: React.SFC<BaseProps> = ({
         <BannerHeading>
           {heading}
         </BannerHeading>
-        <BannerSubheading>
-          {subheading}
-        </BannerSubheading>
+        {subheading &&
+          <BannerSubheading>
+            {subheading}
+          </BannerSubheading>
+        }
       </div>
     </section>
   );

@@ -6,6 +6,9 @@ import { withIntl } from "../i18n";
 // import { FormattedMessage } from "react-intl";
 import { ImageSplit } from "../components/sections/ImageSplit";
 import { Link } from "../i18n";
+import Button from "@material-ui/core/Button";
+import * as m from "../messages/services.messages";
+import { FormattedMessage } from "react-intl";
 
 interface ServiceNode {
   node: {
@@ -44,7 +47,9 @@ const ServicesPage: React.SFC<ServicesProps> = (({ data }) => {
           image={node.frontmatter.image}
           after={
             <Link to={node.fields.slug}>
-              {node.frontmatter.heading}
+              <Button variant="outlined">
+                <FormattedMessage {...m.services.learnMore}/>
+              </Button>
             </Link>
           }
         />
