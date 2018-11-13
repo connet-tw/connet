@@ -21,7 +21,6 @@ interface ServiceNode {
       subheading: string,
       image: any,
     },
-    excerpt: string,
   }
 }
 
@@ -70,7 +69,6 @@ export const query = graphql`
             slug
             lang
           }
-          excerpt(pruneLength: 180)
           frontmatter {
             heading
             subheading
