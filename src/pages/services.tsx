@@ -43,7 +43,6 @@ const ServicesPage: React.SFC<ServicesProps> = (({ data }) => {
           reverse={i % 2 === 0}
           heading={node.frontmatter.heading}
           subheading={node.frontmatter.subheading}
-          body={node.excerpt}
           image={node.frontmatter.image}
           after={
             <Link to={node.fields.slug}>
