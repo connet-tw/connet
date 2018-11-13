@@ -5,6 +5,7 @@ import { withIntl } from "../i18n";
 // import * as m from "../messages/services.messages";
 // import { FormattedMessage } from "react-intl";
 import { ImageSplit } from "../components/sections/ImageSplit";
+import { Link } from "../i18n";
 
 interface ServiceNode {
   node: {
@@ -41,6 +42,11 @@ const ServicesPage: React.SFC<ServicesProps> = (({ data }) => {
           subheading={node.frontmatter.subheading}
           body={node.excerpt}
           image={node.frontmatter.image}
+          after={
+            <Link to={node.fields.slug}>
+              {node.frontmatter.heading}
+            </Link>
+          }
         />
       )}
     </Layout>

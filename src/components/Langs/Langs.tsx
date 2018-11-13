@@ -21,6 +21,7 @@ export const LangsBase: React.SFC<Props> = ({ classes, color }) => {
       <nav>
         {injectedProps.languages.map((x) =>
           <Button
+            key={x.code}
             onClick={() => injectedProps.handleClick(x.code)}
             variant={(x.code === injectedProps.locale ? "outlined" : "text")}
             size="small"

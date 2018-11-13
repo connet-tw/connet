@@ -23,8 +23,8 @@ class MakeLangsBase extends React.Component<MakeLangsProps, {}> {
     return navigate(path);
   }
   render() {
-    this.props.intl.messages
-    return this.props.children({
+    if (languages.length < 2) return null;
+    else return this.props.children({
       handleClick: this.handleClick,
       locale: this.props.intl.locale,
       languages: languages

@@ -57,7 +57,7 @@ const Index: React.SFC<IndexProps> = (({ data }) => {
             label: node.frontmatter.heading,
             text: node.frontmatter.subheading,
             image: node.frontmatter.image,
-            to: "/services#" + node.fields.slug,
+            to: node.fields.slug,
             buttonText: <FormattedMessage {...m.services.learnMore}/>
           })
         )}
