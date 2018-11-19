@@ -28,7 +28,7 @@ const defaultStyle = css<ButtonProps>`
   `}
 `;
 
-const primary = css<ButtonProps>`V
+const primary = css<ButtonProps>`
   ${props => css`
     border-color: ${props.theme.colors.primary.main};
     color: ${props.theme.colors.primary[props.contained ? "contrast" : "main"]};
@@ -46,7 +46,45 @@ const primary = css<ButtonProps>`V
   `}
 `;
 
+const secondary = css<ButtonProps>`
+  ${props => css`
+    border-color: ${props.theme.colors.secondary.main};
+    color: ${props.theme.colors.secondary[props.contained ? "contrast" : "main"]};
+    background: ${props.contained ? props.theme.colors.secondary.main : "transparent"};
+    &:hover {
+      border-color: ${props.theme.colors.secondary.light};
+      color: ${props.theme.colors.secondary.contrast};
+      background: ${props.theme.colors.secondary[props.contained ? "light" : "main"]};
+    }
+    &:focus {
+      outline: none;
+      color: ${props.theme.colors.secondary.contrast};
+      background: ${props.theme.colors.secondary[props.contained ? "dark" : "light"]};
+    }
+  `}
+`;
+
+const white = css<ButtonProps>`
+  ${props => css`
+    border-color: ${props.theme.colors.white.light};
+    color: ${props.theme.colors.white[props.contained ? "contrast" : "light"]};
+    background: ${props.contained ? props.theme.colors.white.light : "transparent"};
+    &:hover {
+      border-color: ${props.theme.colors.white.main};
+      color: ${props.contained ? props.theme.colors.white.contrast : "light"};
+      background: ${props.theme.colors.white[props.contained ? "light" : "main"]};
+    }
+    &:focus {
+      outline: none;
+      color: ${props.theme.colors.white.contrast};
+      background: ${props.theme.colors.white[props.contained ? "main" : "main"]};
+    }
+  `}
+`;
+
 export const Button = styled(Base)<ButtonProps>`
   ${defaultStyle}
   ${props => (props.variant === "primary") && primary}
+  ${props => (props.variant === "secondary") && secondary}
+  ${props => (props.variant === "white") && white}
 `;
