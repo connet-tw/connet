@@ -2,7 +2,7 @@ import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { app, contact } from "./Layout.messages";
 import { Box, Text, Flex } from "src/theme/primitives";
-import { styled, devices } from "src/theme";
+import { styled } from "src/theme";
 
 const Main = styled(Box)`
   position: relative;
@@ -17,12 +17,12 @@ const Main = styled(Box)`
     left: 0;
     background-image: url(${require("../../images/patterns/cairo-pentagon-32.png")});
     background-repeat: repeat;
-    opacity: 0.2;
+    opacity: 0.05;
   }
 `;
 
 const MainInner = styled(Flex)`
-  ${devices[2]} {
+  ${props => props.theme.devices[2]} {
     flex-direction: row;
   }
 `;
