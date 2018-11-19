@@ -37,7 +37,7 @@ export const devices = [
   `@media (min-width: 1440px)`,
 ];
 
-const maxWidth = 1440;
+const maxWidth = "1440px";
 
 const theme = {
   sizes,

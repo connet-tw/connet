@@ -2,6 +2,7 @@ import * as React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider } from "styled-components";
 import { styled, theme } from "src/theme";
+import { Flex, Box } from "src/theme/primitives";
 
 import { Normalize } from "styled-normalize";
 import { Head } from "./Head";
@@ -13,14 +14,13 @@ const Root = styled.div`
   overflow-x: hidden;
 `;
 
-const Content = styled.div`
-  display: flex;
+const Content = styled(Flex)`
   flex-direction: column;
   overflow-x: hidden;
   min-height: 100vh;
 `;
 
-const Main = styled.div`
+const Main = styled(Box)`
   max-width: ${props => props.theme.maxWidth};
   width: 100%;
   margin: 0 auto;
@@ -58,7 +58,7 @@ export const Layout: React.SFC<{}> = ({ children }) => (
           <Root>
             <Normalize/>
             <Head/>
-            <Content>
+            <Content bg="background.default">
               <Header logo={data.logo}/>
               <Main>{children}</Main>
               <Footer logo={data.logoWhite}/>

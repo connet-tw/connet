@@ -2,16 +2,14 @@ import * as React from "react";
 import { DrawerMenu } from "../DrawerMenu";
 import { FormattedMessage } from "react-intl";
 import { app } from "./Layout.messages";
-import { styled, theme } from "../../theme";
-import { Flex, Text } from "src/theme/primitives";
+import { styled } from "../../theme";
+import { Card, Flex, Text } from "src/theme/primitives";
 
-export const Wrapper = styled(Flex)`
+export const Wrapper = styled(Card)`
   z-index: ${props => props.theme.zIndexes[5]};
 `;
 
-export const Brand = styled.div`
-  display: flex;
-  align-items: center;
+export const Brand = styled(Flex)`
   cursor: pointer;
 `;
 
@@ -24,7 +22,7 @@ export const Logo = styled.img`
 `
 export const BrandName = styled(Text)`
   display: none;
-  ${theme.devices[3]} {
+  ${props => props.theme.devices[3]} {
     display: block;
   }
 `;
@@ -36,9 +34,14 @@ interface HeaderProps {
 export const Header: React.SFC<HeaderProps> = ({ logo }) => (
   <Wrapper
     bg="white.light"
-    px={3} py={2}
-    alignItems="center" justifyContent="space-between">
-    <Brand>
+    py={2}
+    px={3}
+    flexDirection="row"
+    alignItems="center"
+    justifyContent="space-between"
+    shadow={1}
+  >
+    <Brand alignItems="center">
       <LogoWrapper alignItems="center">
         <Logo src={logo.childImageSharp.fixed.src}/>
       </LogoWrapper>
