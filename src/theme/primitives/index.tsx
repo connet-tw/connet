@@ -1,4 +1,4 @@
-import { Scale, styled, css, theme } from "src/theme";
+import { Scale, styled, css, fns } from "src/theme";
 import { getP, getProperty, getLiteral, getWithDirections } from "./getters";
 import { prop } from "ramda";
 
@@ -10,11 +10,11 @@ const dps = [
   {dir: "bottom", l: ["b","y",""]},
 ];
 
-const getDirectionalProperty = getWithDirections(dps)(theme.space);
+const getDirectionalProperty = getWithDirections(dps)(fns.space);
 const getPadding = getDirectionalProperty("padding");
 const getMargins = getDirectionalProperty("margin");
 
-const getFromColor = getProperty(theme.color);
+const getFromColor = getProperty(fns.color);
 const getBackground = getFromColor(prop("bg"))("background");
 const getColor = getFromColor(prop("color"))("color");
 const getBorderColor = getFromColor(prop("borderColor"))("border-color");
@@ -23,28 +23,28 @@ const getBorderRightColor = getFromColor(prop("brc"))("border-right-color");
 const getBorderTopColor = getFromColor(prop("btc"))("border-top-color");
 const getBorderBottomColor = getFromColor(prop("bbc"))("border-bottom-color");
 
-const getBoxShadow = getProperty(theme.shadow)(prop("shadow"))("box-shadow");
-//const getBorder = getProperty(theme.border)(prop("border"))("border");
-const getBorder = getWithDirections(dps)(theme.border)("border");
-const getBorderRadius = getProperty(theme.radius)(prop("radius"))("border-radius");
+const getBoxShadow = getProperty(fns.shadow)(prop("shadow"))("box-shadow");
+//const getBorder = getProperty(fns.border)(prop("border"))("border");
+const getBorder = getWithDirections(dps)(fns.border)("border");
+const getBorderRadius = getProperty(fns.radius)(prop("radius"))("border-radius");
 
-const getFontWeight = getProperty(theme.fontWeight)(prop("fontWeight"))("font-weight");
-const getFontFamily = getProperty(theme.fontFamily)(prop("fontFamily"))("font-family");
+const getFontWeight = getProperty(fns.fontWeight)(prop("fontWeight"))("font-weight");
+const getFontFamily = getProperty(fns.fontFamily)(prop("fontFamily"))("font-family");
 
-const getLineHeight = getProperty(theme.lineHeight)(prop("lineHeight"))("line-height");
-const getLetterSpacing = getProperty(theme.letterSpacing)(prop("letterSpacing"))("letter-spacing");
+const getLineHeight = getProperty(fns.lineHeight)(prop("lineHeight"))("line-height");
+const getLetterSpacing = getProperty(fns.letterSpacing)(prop("letterSpacing"))("letter-spacing");
 const getTextTransform = getLiteral(prop("textTransform"))("text-transform");
 const getTextAlign = getLiteral(prop("textAlign"))("text-align");
 
 const getResponsive = getP((property: string, vals: any[], fn: any) =>
-  vals.map(v => `${property}: ${fn(v)}`).map(theme.media)
+  vals.map(v => `${property}: ${fn(v)}`).map(fns.media)
 );
 
 type Width = string | number;
 const parseWidth = (v: Width) => (typeof v === "number" ? `${v * 100}%` : v);
 const getWidth = getResponsive(parseWidth)(prop("width"))("width");
 
-const getFontSize = getResponsive(theme.fontSize)(prop("fontSize"))("font-size");
+const getFontSize = getResponsive(fns.fontSize)(prop("fontSize"))("font-size");
 
 interface SpaceProps {
   p?: Scale;
@@ -128,6 +128,9 @@ interface TextProps extends BoxProps {
 }
 
 const box = css<BoxProps>`
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   ${space}
   ${props => css`
     ${getBackground(props)};
@@ -135,23 +138,22 @@ const box = css<BoxProps>`
     ${getWidth(props)};
     `
   }
-  box-sizing: border-box;
 `;
 
 const flex = css<FlexProps>`
   display: flex;
+  ${props => (props.spacing && props.spacing > 0) && css`
+    padding: ${props.theme.sizes[(props.spacing)]};
+    & > * {
+      padding: ${props.theme.sizes[(props.spacing)]};
+    }
+  `}
   ${box}
   ${props => css`
     ${getLiteral(prop("flexDirection"))("flex-direction")(props)}
     ${getLiteral(prop("flexWrap"))("flex-wrap")(props)}
     ${getLiteral(prop("justifyContent"))("justify-content")(props)}
     ${getLiteral(prop("alignItems"))("align-items")(props)}
-  `}
-  ${props => (props.spacing && props.spacing > 0) && css`
-    padding: ${props.theme.space(props.spacing)};
-    & > * {
-      padding: ${props.theme.space(props.spacing)};
-    }
   `}
 `;
 
@@ -172,9 +174,7 @@ const card = css<CardProps>`
 `;
 
 const text = css<TextProps>`
-  font-family: ${theme.fontFamily("sans")};
-  margin: 0;
-  padding: 0;
+  font-family: ${props => props.theme.fonts.sans};
   ${box}
   ${props => css`
     ${getFontSize(props)}
@@ -188,6 +188,9 @@ const text = css<TextProps>`
 `;
 
 const button = css<ButtonProps>`
+  font-family: ${props => props.theme.fonts.sans};
+  text-decoration: none;
+  cursor: pointer;
   ${box}
   ${props => css`
     ${getBoxShadow(props)}
@@ -201,9 +204,6 @@ const button = css<ButtonProps>`
     ${getLetterSpacing(props)}
     ${getTextTransform(props)}
   `}
-  font-family: ${theme.fontFamily("sans")};
-  text-decoration: none;
-  cursor: pointer;
 `;
 
 export const Box = styled.div<BoxProps>`${box}`;

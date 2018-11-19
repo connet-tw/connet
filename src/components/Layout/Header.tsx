@@ -6,7 +6,7 @@ import { styled, theme } from "../../theme";
 import { Flex, Text } from "src/theme/primitives";
 
 export const Wrapper = styled(Flex)`
-  z-index: ${theme.zIndex(5)};
+  z-index: ${props => props.theme.zIndexes[5]};
 `;
 
 export const Brand = styled.div`
@@ -16,7 +16,7 @@ export const Brand = styled.div`
 `;
 
 export const LogoWrapper = styled(Flex)`
-  width: ${theme.dimension(2)};
+  width: ${props => props.theme.dimensions[2]};
 `;
 
 export const Logo = styled.img`

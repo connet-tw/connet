@@ -7,6 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
 import { AboutSummary } from "../components/sections/About";
 import { Categories } from "../components/sections/Categories";
+import { Box } from "src/theme/primitives";
 
 interface ServiceNode {
   node: {
@@ -34,6 +35,9 @@ interface IndexProps {
 const Index: React.SFC<IndexProps> = (({ data }) => {
   return (
     <Layout>
+      <Box m={5} bg="primary.main">
+        tesign
+      </Box>
       <Banner
         heading={<FormattedMessage {...m.hero.heading}/>}
         subheading={<FormattedMessage {...m.hero.subheading}/>}

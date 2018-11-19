@@ -31,17 +31,17 @@ const letterSpacings = {
   mega: "0.25em",
 };
 
-const space = (val: Scale) => sizes[val];
-const fontSize = (val: Scale) => fontSizes[val];
-const fontWeight = (val: Scale) => fontWeights[val];
-const dimension = (val: Scale) => dimensions[val];
-const shadow = (val: Scale) => shadows[val];
-const zIndex = (val: Scale) => zIndexes[val];
-const border = (val: Scale) => borders[val];
-const radius = (val: Scale) => radii[val];
-const fontFamily = (val: "sans" | "serif") => fonts[val];
-const lineHeight = (val: "solid" | "title" | "copy") => lineHeights[val];
-const letterSpacing = (val: "normal" | "tight" | "tracked" | "mega") => letterSpacings[val];
+const space = (theme: any) => (val: Scale) => theme.sizes[val];
+const fontSize = (theme: any) => (val: Scale) => theme.fontSizes[val];
+const fontWeight = (theme: any) => (val: Scale) => theme.fontWeights[val];
+const dimension = (theme: any) => (val: Scale) => theme.dimensions[val];
+const shadow = (theme: any) => (val: Scale) => theme.shadows[val];
+const zIndex = (theme: any) => (val: Scale) => theme.zIndexes[val];
+const border = (theme: any) => (val: Scale) => theme.borders[val];
+const radius = (theme: any) => (val: Scale) => theme.radii[val];
+const fontFamily = (theme: any) => (val: "sans" | "serif") => theme.fonts[val];
+const lineHeight = (theme: any) => (val: "solid" | "title" | "copy") => theme.lineHeights[val];
+const letterSpacing = (theme: any) => (val: "normal" | "tight" | "tracked" | "mega") => theme.letterSpacings[val];
 
 export const devices = [
   `@media (min-width: 0px)`,
@@ -51,19 +51,34 @@ export const devices = [
   `@media (min-width: 1440px)`,
 ];
 
-const device = (val: number) => devices[val];
-
 const maxWidth = 1440;
 
 const media = (s: string, i: number) => `${devices[i]} { ${s} }`;
-const color = (s: string) => pathOr(s, s.split("."), colors);
+
+const color = (theme: any) => (s: string) => pathOr(s, s.split("."), theme.colors);
 
 const theme = {
+  sizes,
+  colors,
+  borders,
+  radii,
+  devices,
+  dimensions,
+  fonts,
+  fontSizes,
+  fontWeights,
+  lineHeights,
+  letterSpacings,
+  maxWidth,
+  shadows,
+  zIndexes,
+};
+
+const fns = {
   color,
   border,
   radius,
   devices,
-  device,
   dimension,
   fonts,
   fontSize,
@@ -71,7 +86,6 @@ const theme = {
   fontWeight,
   lineHeight,
   letterSpacing,
-  maxWidth,
   media,
   space,
   shadow,
@@ -80,8 +94,7 @@ const theme = {
 
 export {
   theme,
-  colors,
-  space
+  fns,
 };
 
 export const styled = baseStyled as ThemedStyledInterface<typeof theme>;
