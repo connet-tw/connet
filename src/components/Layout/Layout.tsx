@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider } from "styled-components";
-import { styled, theme } from "../../theme";
+import { styled, theme } from "src/theme";
 
 import { Normalize } from "styled-normalize";
 import { Head } from "./Head";

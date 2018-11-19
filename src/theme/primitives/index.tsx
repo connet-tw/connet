@@ -29,7 +29,7 @@ const getBorder = getWithDirections(dps)(theme.border)("border");
 const getBorderRadius = getProperty(theme.radius)(prop("radius"))("border-radius");
 
 const getFontWeight = getProperty(theme.fontWeight)(prop("fontWeight"))("font-weight");
-const getFontFamily = getProperty(theme.fontWeight)(prop("fontFamily"))("font-family");
+const getFontFamily = getProperty(theme.fontFamily)(prop("fontFamily"))("font-family");
 
 const getLineHeight = getProperty(theme.lineHeight)(prop("lineHeight"))("line-height");
 const getLetterSpacing = getProperty(theme.letterSpacing)(prop("letterSpacing"))("letter-spacing");
