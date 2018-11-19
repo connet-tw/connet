@@ -1,7 +1,7 @@
 import { complement, isEmpty, compose, reduce, either, map, prop, concat, identity, ifElse, always,  isNil } from "ramda";
 
 // css property template
-const template = (key:string, val: string, fn: any) => `${key}: ${fn(val)};`;
+const template = (key:string, val: string, fn: any, theme: any) => `${key}: ${fn(val)};`;
 
 // parse props to build a css property as a string
 // fn is a function that interprets the property value,
@@ -10,7 +10,7 @@ const getP = (tfn: any) => (fn: any) => (getter: any) => (property: string) => (
   ifElse(
     isNil,
     always(""),
-    x => tfn(property, x, fn(props.theme))
+    x => tfn(property, x, fn(props.theme), props.theme)
   )(getter(props)
 );
 

@@ -36,9 +36,8 @@ const getLetterSpacing = getProperty(fns.letterSpacing)(prop("letterSpacing"))("
 const getTextTransform = getLiteral(prop("textTransform"))("text-transform");
 const getTextAlign = getLiteral(prop("textAlign"))("text-align");
 
-const getResponsive = getP((property: string, vals: any[], fn: any) =>
-  vals.map(v => `${property}: ${fn(v)}`).map(fns.media)
-);
+const getResponsive = getP((property: string, vals: any[], fn: any, theme: any) =>
+  vals.map((v, i) => `${theme.devices[i]} { ${property}: ${fn(v)} }`));
 
 type Width = string | number;
 const parseWidth = (v: Width) => (typeof v === "number" ? `${v * 100}%` : v);
