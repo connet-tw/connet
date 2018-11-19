@@ -3,8 +3,7 @@ import rehypeReact from "rehype-react";
 import { graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
-import { Banner } from "../components/sections/Banner";
-import Typography from "@material-ui/core/Typography";
+import { Text } from "src/theme/primitives";
 
 interface EventTemplateProps {
   data: {
@@ -13,9 +12,7 @@ interface EventTemplateProps {
 }
 
 const P = (props: any) => (
-  <Typography
-    variant="body1"
-    align="center"
+  <Text
     {...props}
   />
 );
@@ -31,13 +28,8 @@ const EventTemplate: React.SFC<EventTemplateProps> = (({ data }) => {
   const { markdownRemark: mk } = data;
   return (
     <Layout>
-      <Banner
-        heading={mk.frontmatter.heading}
-        subheading={mk.frontmatter.subheading}
-        image={mk.frontmatter.image}
-      />
       <div>
-        {renderAst(data.markdownRemark.htmlAst)}
+        {renderAst(mk.htmlAst)}
       </div>
     </Layout>
   );

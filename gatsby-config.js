@@ -39,6 +39,8 @@ module.exports = {
       }
     },
     'gatsby-plugin-sharp',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-root-import',
     'gatsby-transformer-sharp',
     'gatsby-transformer-javascript-frontmatter',
     'gatsby-transformer-remark',

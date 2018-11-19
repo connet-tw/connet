@@ -2,11 +2,8 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
-// import * as m from "../messages/services.messages";
-// import { FormattedMessage } from "react-intl";
 import { ImageSplit } from "../components/sections/ImageSplit";
 import { Link } from "../i18n";
-import Button from "@material-ui/core/Button";
 import * as m from "../messages/services.messages";
 import { FormattedMessage } from "react-intl";
 
@@ -45,9 +42,9 @@ const ServicesPage: React.SFC<ServicesProps> = (({ data }) => {
           image={node.frontmatter.image}
           after={
             <Link to={node.fields.slug}>
-              <Button variant="outlined">
+              <button>
                 <FormattedMessage {...m.services.learnMore}/>
-              </Button>
+              </button>
             </Link>
           }
         />

@@ -4,7 +4,7 @@ import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
 import * as m from "../messages/index.messages";
 import { FormattedMessage } from "react-intl";
-import { Banner } from "../components/sections/Banner";
+import { Banner } from "../components/Banner";
 import { AboutSummary } from "../components/sections/About";
 import { Categories } from "../components/sections/Categories";
 

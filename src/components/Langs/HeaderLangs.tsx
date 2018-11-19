@@ -10,7 +10,7 @@ const styles = ({palette, spacing}: Theme) => createStyles({
   },
   item: {
     width: "auto",
-    padding: "0.2rem 0.4rem", 
+    padding: "0.2rem 0.4rem",
     cursor: "pointer",
     flexShrink: 0,
     opacity: 0.5,
@@ -20,7 +20,6 @@ const styles = ({palette, spacing}: Theme) => createStyles({
   },
   selected: {
     opacity: 1,
-    color: palette.common.black,
   },
   text: {
     padding: 0,

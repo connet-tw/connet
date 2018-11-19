@@ -1,99 +1,66 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
-import { messages } from "./Footer.messages";
-import Typography from "@material-ui/core/Typography";
-import { Langs } from "../Langs";
+import { app, contact } from "./Layout.messages";
+import { Box, Text, Flex } from "src/theme/primitives";
+import { styled, devices } from "src/theme";
 
-import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/styles";
+const Main = styled(Box)`
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(${require("../../images/patterns/cairo-pentagon-32.png")});
+    background-repeat: repeat;
+    opacity: 0.2;
+  }
+`;
 
-const styles = ({palette, spacing, breakpoints}: Theme) => createStyles({
-  footer: {
-  },
-  main: {
-    position: "relative",
-    padding: 0,
-    overflow: "hidden",
-    backgroundColor: palette.primary.main,
-    backgroundImage: `
-      linear-gradient(to top, rgba(0,0,0,0.4), transparent)
-    `,
-  },
-  mainOverlay: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    top: 0,
-    left: 0,
-    backgroundColor: palette.grey[700],
-    backgroundImage: `
-      url(${require("../../images/patterns/cairo-pentagon-32.png")})
-    `,
-    backgroundRepeat: "repeat",
-    opacity: 0.06,
-  },
-  mainInner: {
-    paddingTop: "1.4rem",
-    paddingLeft: spacing.unit * 3,
-    paddingRight: spacing.unit * 3,
-    paddingBottom: "0.4rem",
-    zIndex: 1,
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-  },
-  contact: {
-    color: palette.common.white,
-  },
-  langs: {
-    marginTop: "1rem",
-  },
-  footerCopy: {
-    padding: "0.8rem",
-    backgroundColor: palette.grey[900],
-    color: "rgba(255,255,255, 0.4)",
-    textAlign: "center",
-  },
-  titleSpan: {
-    color: palette.common.white,
-  },
-});
+const MainInner = styled(Flex)`
+  ${devices[2]} {
+    flex-direction: row;
+  }
+`;
 
-type Props = WithStyles<typeof styles> & {
+interface Props {
   logo?: any;
 };
 
-const Footer: React.SFC<Props> = ({ classes, logo }) => (
-  <footer className={classes.footer}>
-    <div className={classes.main}>
-      <div className={classes.mainOverlay}/>
-      <div className={classes.mainInner}>
-        <div className={classes.contact}>
-          <Typography variant="title" color="inherit" gutterBottom>
+const Footer: React.SFC<Props> = ({ logo }) => (
+  <Box as="footer">
+    <Main bg="secondary.dark" color="white.light">
+      <MainInner spacing={3} justifyContent="center" alignItems="center" flexDirection="column">
+        {logo &&
+          <Flex style={{opacity: 0.9}} width={["220px"]}>
+            <img style={{width: "100%", height: "100%"}} src={logo.childImageSharp.fixed.src}/>
+          </Flex>
+        }
+        <Flex justifyContent="center" flexDirection="column">
+          <Text pb={1} fontSize={[3]} fontWeight={5}>
             <FormattedMessage id="app.title"/>
-          </Typography>
-          <Typography variant="caption" color="inherit">
-            <FormattedMessage {...messages.phoneNumber}/>
-          </Typography>
-          <Typography variant="caption" color="inherit">
-            <FormattedMessage {...messages.emailAddress}/>
-          </Typography>
-        </div>
-        <div className={classes.langs}>
-          <Langs color="primary"/>
-        </div>
-      </div>
-    </div>
-    <div className={classes.footerCopy}>
-      <Typography variant="caption" color="inherit">
-        © 2018 Copyright: <span className={classes.titleSpan}>
-          <FormattedMessage {...messages.title}/>
-        </span>
-      </Typography>
-    </div>
-  </footer>
+          </Text>
+          <Text fontSize={[2]} textAlign="center">
+            <FormattedMessage {...contact.phoneNumber}/>
+          </Text>
+          <Text fontSize={[2]} textAlign="center">
+            <FormattedMessage {...contact.emailAddress}/>
+          </Text>
+        </Flex>
+      </MainInner>
+    </Main>
+    <Flex bg="primary.dark" p={2} justifyContent="center">
+      <Text color="grey.600">
+        © 2018 Copyright: <Text as="span" color="primary.contrast">
+          <FormattedMessage {...app.title}/>
+        </Text>
+      </Text>
+    </Flex>
+  </Box>
 );
 
-export default withStyles(styles)(Footer);
+export { Footer };

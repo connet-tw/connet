@@ -6,8 +6,7 @@ import { withIntl } from "../i18n";
 // import { FormattedMessage } from "react-intl";
 import * as m from "../messages/contact.messages";
 import { FormattedMessage } from "react-intl";
-import { Banner } from "../components/sections/Banner";
-import { ContactDetails } from "../components/sections/ContactDetails";
+import { Banner } from "../components/Banner";
 
 interface ContactPageProps {
   data: {
@@ -21,15 +20,6 @@ const ContactPage: React.SFC<ContactPageProps> = (({data}) => {
       <Banner
         image={data.headerImg}
         heading={<FormattedMessage {...m.contact.heading}/>}
-      />
-      <ContactDetails
-        phone={<FormattedMessage {...m.contactDetails.phoneNumber}/>}
-        email={<FormattedMessage {...m.contactDetails.emailAddress}/>}
-        address={[
-          <FormattedMessage {...m.contactDetails.street}/>,
-          <FormattedMessage {...m.contactDetails.city}/>,
-          <FormattedMessage {...m.contactDetails.country}/>,
-        ]}
       />
     </Layout>
   );

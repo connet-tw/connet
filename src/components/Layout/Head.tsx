@@ -1,20 +1,19 @@
 import * as React from "react";
 import Helmet from "react-helmet";
 import { injectIntl, InjectedIntlProps } from "react-intl";
-import { messages } from "./Head.messages";
+import { app } from "./Layout.messages";
 
-const Head: React.SFC<InjectedIntlProps> = ({ intl }) => (
+const HeadBase: React.SFC<InjectedIntlProps> = ({ intl }) => (
   <Helmet
-    title={intl.formatMessage(messages.title)}
+    title={intl.formatMessage(app.title)}
     htmlAttributes={{lang: intl.locale}}
     meta={[
-      {name: "description", content: "Controlnet International"},
+      {name: "description", content: "Valen International"},
     ]}
     link={[
       {rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Muli:300,400,700"},
-      {rel: "stylesheet", href: "https://fonts.googleapis.com/icon?family=Material+Icons"},
     ]}
   />
 );
 
-export default injectIntl(Head);
+export const Head = injectIntl(HeadBase);

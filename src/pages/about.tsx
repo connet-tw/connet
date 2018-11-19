@@ -4,8 +4,7 @@ import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
 import * as m from "../messages/about.messages";
 import { FormattedMessage } from "react-intl";
-import { Banner } from "../components/sections/Banner";
-import Typography from "@material-ui/core/Typography";
+import { Banner } from "../components/Banner";
 
 interface AboutPageProps {
   data: {
@@ -22,12 +21,12 @@ const AboutPage: React.SFC<AboutPageProps> = (({data}) => {
         subheading={<FormattedMessage {...m.banner.subheading}/>}
       />
       <div>
-        <Typography variant="body1" gutterBottom>
+        <p>
           <FormattedMessage {...m.body.one}/>
-        </Typography>
-        <Typography variant="body2">
+        </p>
+        <p>
           <FormattedMessage {...m.body.two}/>
-        </Typography>
+        </p>
       </div>
     </Layout>
   );

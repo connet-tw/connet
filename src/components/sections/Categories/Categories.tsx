@@ -1,12 +1,4 @@
 import * as React from "react";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import { styles } from "./categories-styles";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
 import { Link } from "../../../i18n";
 import Img from "gatsby-image";
 
@@ -18,7 +10,7 @@ interface CategoryLink {
   to: string;
 }
 
-type Props = WithStyles<typeof styles> & {
+type Props = {
   heading: React.ReactNode;
   subheading?: React.ReactNode;
   categoryLinks: CategoryLink[];
@@ -26,51 +18,45 @@ type Props = WithStyles<typeof styles> & {
   gradient?: string;
 };
 
-const Component: React.SFC<Props> = ({ classes, image, gradient, heading, subheading, categoryLinks }) => (
-  <section className={classes.root}>
-    <div className={classes.header}>
-      <Typography variant="h4" className={classes.heading}>
+const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, categoryLinks }) => (
+  <section>
+    <div>
+      <p>
         {heading}
-      </Typography>
-      <Typography variant="h6" className={classes.subheading}>
+      </p>
+      <p>
         {subheading}
-      </Typography>
+      </p>
     </div>
-    <Grid container spacing={24} className={classes.cards}>
+    <div>
       {categoryLinks.map((x) =>
-        <Grid key={x.to}item xs={12} sm={6} md={3} xl={2}>
+        <div key={x.to}>
           <Link to={x.to}>
-            <Card className={classes.card}>
-              <Img className={classes.image} fluid={x.image.childImageSharp.fluid}/>
-              <CardContent className={classes.content}>
-                <Typography
-                  color="inherit"
-                  className={classes.label}
-                  variant="h6"
-                >
+            <div>
+              <Img fluid={x.image.childImageSharp.fluid}/>
+              <div>
+                <p>
                   {x.label}
-                </Typography>
+                </p>
                 {x.text &&
-                  <Typography
-                    color="inherit"
-                    className={classes.text}
-                    variant="subtitle1"
-                  >
+                  <p>
                     {x.text}
-                  </Typography>
+                  </p>
                 }
-              </CardContent>
-              <CardActions className={classes.actions}>
-                <Button variant="outlined">
+              </div>
+              <div>
+                <button>
                   {x.buttonText}
-                </Button>
-              </CardActions>
-            </Card>
+                </button>
+              </div>
+            </div>
           </Link>
-        </Grid>,
+        </div>,
       )}
-    </Grid>
+    </div>
   </section>
 );
 
-export const Categories = withStyles(styles)(Component);
+export {
+  Categories
+};

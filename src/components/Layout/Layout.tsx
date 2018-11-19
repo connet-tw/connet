@@ -1,50 +1,51 @@
 import * as React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import withRoot from "../../utils/withRoot";
-import { defineMessages, FormattedMessage } from "react-intl";
+import { ThemeProvider } from "styled-components";
+import { styled, theme } from "../../theme";
 
-import { App, NavItem } from "./App";
+import { Normalize } from "styled-normalize";
+import { Head } from "./Head";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
+
+const Root = styled.div`
+  position: relative;
+  overflow-x: hidden;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  min-height: 100vh;
+`;
+
+const Main = styled.div`
+  max-width: ${props => props.theme.maxWidth};
+  width: 100%;
+  margin: 0 auto;
+  flex-grow: 1;
+`;
 
 interface Data {
   logo: any;
   logoWhite: any;
 }
 
-const m = defineMessages({
-  services: {
-    id: "nav.services",
-    defaultMessage: "Services",
-  },
-  contact: {
-    id: "nav.contact",
-    defaultMessage: "Contact",
-  },
-  about: {
-    id: "nav.about",
-    defaultMessage: "About",
-  },
-});
-
-const navItems: NavItem[] = [
-  {to: "/services", label: <FormattedMessage {...m.services}/>},
-  {to: "/about", label: <FormattedMessage {...m.about}/>},
-  {to: "/contact", label: <FormattedMessage {...m.contact}/>},
-];
-
 export const Layout: React.SFC<{}> = ({ children }) => (
   <StaticQuery
     query={graphql`
-      query LayoutQuery {
+      query Layout2Query {
         logo: file(relativePath: {eq: "logos/logo.png"}) {
           childImageSharp {
-            fixed(width: 220) {
+            fixed(width: 250) {
               ...GatsbyImageSharpFixed
             }
           }
         }
-        logoWhite: file(relativePath: {eq: "logos/logo.png"}) {
+        logoWhite: file(relativePath: {eq: "logos/logo-white.png"}) {
           childImageSharp {
-            fixed(width: 220) {
+            fixed(width: 250) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -53,16 +54,20 @@ export const Layout: React.SFC<{}> = ({ children }) => (
     }
     render={(data: Data) => {
       return (
-        <App
-          navItems={navItems}
-          logo={data.logo}
-          logoWhite={data.logoWhite}
-        >
-          {children}
-        </App>
+        <ThemeProvider theme={theme}>
+          <Root>
+            <Normalize/>
+            <Head/>
+            <Content>
+              <Header logo={data.logo}/>
+              <Main>{children}</Main>
+              <Footer logo={data.logoWhite}/>
+            </Content>
+          </Root>
+        </ThemeProvider>
       ); }
     }
   />
 );
 
-export const RootLayout = withRoot(Layout);
+export const RootLayout = Layout;
