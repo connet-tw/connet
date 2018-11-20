@@ -3,11 +3,18 @@ import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider } from "styled-components";
 import { styled, theme } from "src/theme";
 import { Flex, Box } from "src/theme/primitives";
+import { createGlobalStyle } from "styled-components";
 
 import { Normalize } from "styled-normalize";
 import { Head } from "./Head";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    overflow-y: scroll;
+  }
+`;
 
 const Root = styled.div`
   position: relative;
@@ -57,6 +64,7 @@ export const Layout: React.SFC<{}> = ({ children }) => (
         <ThemeProvider theme={theme}>
           <Root>
             <Normalize/>
+            <GlobalStyle/>
             <Head/>
             <Content bg="background.default">
               <Header logo={data.logo}/>
