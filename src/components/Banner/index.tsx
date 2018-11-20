@@ -76,7 +76,7 @@ const Banner: React.SFC<BannerProps> = (props) => {
           {props.heading}
         </Text>
         {props.subheading &&
-          <Text fontSize={[3]} color="primary.main">
+          <Text fontSize={3} color="primary.main">
             {props.subheading}
           </Text>
         }

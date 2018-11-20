@@ -31,7 +31,7 @@ const letterSpacings = {
 
 export const devices = [
   `@media (min-width: 0px)`,
-  `@media (min-width: 425px)`,
+  `@media (min-width: 600px)`,
   `@media (min-width: 768px)`,
   `@media (min-width: 1024px)`,
   `@media (min-width: 1440px)`,

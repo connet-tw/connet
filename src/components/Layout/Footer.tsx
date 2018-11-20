@@ -41,13 +41,13 @@ const Footer: React.SFC<Props> = ({ logo }) => (
           </Flex>
         }
         <Flex justifyContent="center" flexDirection="column">
-          <Text pb={1} fontSize={[3]} fontWeight={5}>
+          <Text pb={1} fontSize={3} fontWeight={5}>
             <FormattedMessage id="app.title"/>
           </Text>
-          <Text fontSize={[2]} textAlign="center">
+          <Text fontSize={2} textAlign="center">
             <FormattedMessage {...contact.phoneNumber}/>
           </Text>
-          <Text fontSize={[2]} textAlign="center">
+          <Text fontSize={2} textAlign="center">
             <FormattedMessage {...contact.emailAddress}/>
           </Text>
         </Flex>

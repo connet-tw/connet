@@ -22,7 +22,7 @@ export const Logo = styled.img`
 `
 export const BrandName = styled(Text)`
   display: none;
-  ${props => props.theme.devices[3]} {
+  ${props => props.theme.devices[0]} {
     display: block;
   }
 `;
@@ -45,7 +45,7 @@ export const Header: React.SFC<HeaderProps> = ({ logo }) => (
       <LogoWrapper alignItems="center">
         <Logo src={logo.childImageSharp.fixed.src}/>
       </LogoWrapper>
-      <BrandName fontSize={[3]} ml={3}>
+      <BrandName fontSize={3} ml={3}>
         <FormattedMessage {...app.title}/>
       </BrandName>
     </Brand>

@@ -2,6 +2,9 @@ import { Scale, styled, css, fns } from "src/theme";
 import { getP, getProperty, getLiteral, getWithDirections } from "./getters";
 import { prop } from "ramda";
 
+type ResponsiveString = string | string[];
+type ResponsiveScale = Scale | Scale[];
+
 // directions map
 const dps = [
   {dir: "left", l: ["l","x",""]},
@@ -10,7 +13,17 @@ const dps = [
   {dir: "bottom", l: ["b","y",""]},
 ];
 
-const getDirectionalProperty = getWithDirections(dps)(fns.space);
+const responsiveTemplate = (property: string, val: any | any[], fn: any, theme: any) => {
+  if (Array.isArray(val)) {
+    return val.map((v: any, i: number) => `${theme.devices[i]} { ${property}: ${fn(v)}; }`);
+  } else {
+    return `${property}: ${fn(val)};`;
+  }
+};
+
+const getResponsive = getP(responsiveTemplate);
+
+const getDirectionalProperty = getWithDirections(dps)(responsiveTemplate)(fns.space);
 const getPadding = getDirectionalProperty("padding");
 const getMargins = getDirectionalProperty("margin");
 
@@ -25,7 +38,7 @@ const getBorderBottomColor = getFromColor(prop("bbc"))("border-bottom-color");
 
 const getBoxShadow = getProperty(fns.shadow)(prop("shadow"))("box-shadow");
 //const getBorder = getProperty(fns.border)(prop("border"))("border");
-const getBorder = getWithDirections(dps)(fns.border)("border");
+const getBorder = getWithDirections(dps)(responsiveTemplate)(fns.border)("border");
 const getBorderRadius = getProperty(fns.radius)(prop("radius"))("border-radius");
 
 const getFontWeight = getProperty(fns.fontWeight)(prop("fontWeight"))("font-weight");
@@ -36,30 +49,27 @@ const getLetterSpacing = getProperty(fns.letterSpacing)(prop("letterSpacing"))("
 const getTextTransform = getLiteral(prop("textTransform"))("text-transform");
 const getTextAlign = getLiteral(prop("textAlign"))("text-align");
 
-const getResponsive = getP((property: string, vals: any[], fn: any, theme: any) =>
-  vals.map((v, i) => `${theme.devices[i]} { ${property}: ${fn(v)} }`));
-
 type Width = string | number;
-const parseWidth = (v: Width) => (typeof v === "number" ? `${v * 100}%` : v);
+const parseWidth = (theme: any) => (v: Width) => (typeof v === "number" ? `${v * 100}%` : v);
 const getWidth = getResponsive(parseWidth)(prop("width"))("width");
 
 const getFontSize = getResponsive(fns.fontSize)(prop("fontSize"))("font-size");
 
 interface SpaceProps {
-  p?: Scale;
-  px?: Scale;
-  py?: Scale;
-  pr?: Scale;
-  pl?: Scale;
-  pt?: Scale;
-  pb?: Scale;
-  m?: Scale;
-  mx?: Scale;
-  my?: Scale;
-  mr?: Scale;
-  ml?: Scale;
-  mt?: Scale;
-  mb?: Scale;
+  p?: ResponsiveScale;
+  px?: ResponsiveScale;
+  py?: ResponsiveScale;
+  pr?: ResponsiveScale;
+  pl?: ResponsiveScale;
+  pt?: ResponsiveScale;
+  pb?: ResponsiveScale;
+  m?: ResponsiveScale;
+  mx?: ResponsiveScale;
+  my?: ResponsiveScale;
+  mr?: ResponsiveScale;
+  ml?: ResponsiveScale;
+  mt?: ResponsiveScale;
+  mb?: ResponsiveScale;
 }
 
 const space = css<SpaceProps>`
@@ -73,14 +83,14 @@ const space = css<SpaceProps>`
 interface BoxProps extends SpaceProps {
   bg?: string;
   color?: string;
-  width?: number[] | string[];
+  width?: string | number | number[] | string[];
 }
 
 interface FlexProps extends BoxProps {
-  flexDirection?: string;
-  justifyContent?: string;
-  alignItems?: string;
-  flexWrap?: string;
+  flexDirection?: ResponsiveString;
+  justifyContent?: ResponsiveString;
+  alignItems?: ResponsiveString;
+  flexWrap?: ResponsiveString;
   spacing?: Scale;
 }
 
@@ -107,23 +117,23 @@ interface ButtonProps extends BoxProps{
   b?: Scale;
   borderColor?: string;
   fontFamily?: string;
-  fontSize?: Scale[];
-  fontWeight?: Scale;
-  textTransform?: string;
-  textAlign?: string;
-  lineHeight?: string;
-  letterSpacing?: string;
+  fontSize?: ResponsiveScale;
+  fontWeight?: ResponsiveScale;
+  textTransform?: ResponsiveString;
+  textAlign?: ResponsiveString;
+  lineHeight?: ResponsiveString;
+  letterSpacing?: ResponsiveString;
 }
 
 interface TextProps extends BoxProps {
   fontFamily?: string;
-  fontSize?: Scale[];
-  fontWeight?: Scale;
-  shadow?: Scale;
-  textTransform?: string;
-  textAlign?: string;
-  lineHeight?: string;
-  letterSpacing?: string;
+  fontSize?: ResponsiveScale;
+  fontWeight?: ResponsiveScale;
+  shadow?: ResponsiveScale;
+  textTransform?: ResponsiveString;
+  textAlign?: ResponsiveString;
+  lineHeight?: ResponsiveString;
+  letterSpacing?: ResponsiveString;
 }
 
 const box = css<BoxProps>`

@@ -29,11 +29,11 @@ const DrawerMenu: React.SFC<{}> = ({ children }) => {
               flexDirection="column"
               bg="white.light"
             >
-              <Flex justifyContent="flex-end">
+              <Flex py={2} px={3} justifyContent="flex-end">
                 <CloseButton onClick={x.handleClose}/>
               </Flex>
               <Text as="h3"
-                fontSize={[4]}
+                fontSize={3}
                 textAlign="center"
               >
                 Controlnet International

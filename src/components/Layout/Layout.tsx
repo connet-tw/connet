@@ -13,6 +13,8 @@ import { Footer } from "./Footer";
 const GlobalStyle = createGlobalStyle`
   body {
     overflow-y: scroll;
+    width: 100%;
+    height: 100%;
   }
 `;
 

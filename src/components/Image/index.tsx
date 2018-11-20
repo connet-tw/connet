@@ -7,19 +7,17 @@ const Img = styled(GatsbyImage)`
   height: 100%;
 `;
 
-interface FluidImgProps {
+interface ImgProps {
   image: any;
-}
-const FluidImg: React.SFC<FluidImgProps> = ({image}) => {
-  return <Img fluid={image.childImageSharp.fluid}/>
+  className?: string;
 }
 
-interface FixedImgProps {
-  image: any;
+const FluidImg: React.SFC<ImgProps> = ({image, className}, ...props) => {
+  return <Img fluid={image.childImageSharp.fluid} className={className} {...props}/>
 }
 
-const FixedImg: React.SFC<FixedImgProps> = ({image}) => {
-  return <Img fixed={image.childImageSharp.fixed}/>
+const FixedImg: React.SFC<ImgProps> = ({image, className}, ...props) => {
+  return <Img fixed={image.childImageSharp.fixed} className={className} {...props}/>
 }
 
 export {

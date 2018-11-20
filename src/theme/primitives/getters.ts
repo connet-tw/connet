@@ -37,12 +37,12 @@ const getEither = reduce(either, isNil);
 const getDirValue = (l: DirectionCode[]) => (p: string) => getEither(makeList(l)(getPrefix(p)));
 
 // build a css property with direction
-const getDirectionalProperty = (fn: any) => (dp: {dir: Direction, l: DirectionCode[]}) => (property: string) =>
-  getProperty(fn)(getDirValue(dp.l)(property))(`${property}-${dp.dir}`);
+const getDirectionalProperty = (tfn: any) => (fn: any) => (dp: {dir: Direction, l: DirectionCode[]}) => (property: string) =>
+  getP(tfn)(fn)(getDirValue(dp.l)(property))(`${property}-${dp.dir}`);
 
 // build a set of css properties for all directions
-const getWithDirections = (dps: any[]) => (fn: any) => (property: string) => (props: any) => dps
-  .map(d => getDirectionalProperty(fn)(d)(property)(props))
+const getWithDirections = (dps: any[]) => (tfn: any) => (fn: any) => (property: string) => (props: any) => dps
+  .map(d => getDirectionalProperty(tfn)(fn)(d)(property)(props))
   .filter(complement(isEmpty))
   .join("\n");
 ;
