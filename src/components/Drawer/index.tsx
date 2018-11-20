@@ -1,16 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
 
-interface InjectedDrawerProps {
+interface DrawerProps {
+  anchor: "left" | "right" | "top" | "bottom";
   width: number;
   open: boolean;
   handleClose(): void;
   toggleMenu(): void;
-}
-
-interface DrawerProps extends InjectedDrawerProps {
-  anchor: "left" | "right" | "top" | "bottom";
-  children(props: InjectedDrawerProps): React.ReactNode;
 }
 
 const DrawerWrapper = styled.div<{width: number, open: boolean}>`
@@ -28,13 +24,13 @@ const DrawerWrapper = styled.div<{width: number, open: boolean}>`
 const DrawerOverlay = styled.div<{open: boolean, onClick(): void}>`
   z-index: 1400;
   position: fixed;
+  overflow-y: hidden;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
   display: ${props => props.open ? "auto" : "none"};
   background: rgba(0,0,0,0.4);
-  height: 100%;
 `;
 
 const DrawerContent = styled.div<{open: boolean}>`
@@ -44,7 +40,7 @@ const DrawerContent = styled.div<{open: boolean}>`
   width: 100%;
   top: 0;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 const Drawer: React.SFC<DrawerProps> = ({width, open, toggleMenu, handleClose, children}) => {
@@ -56,12 +52,7 @@ const Drawer: React.SFC<DrawerProps> = ({width, open, toggleMenu, handleClose, c
         width={width}
       >
         <DrawerContent open={open}>
-          {children({
-            open: open,
-            handleClose: handleClose,
-            toggleMenu: toggleMenu,
-            width: width,
-          })}
+          {children}
         </DrawerContent>
       </DrawerWrapper>
     </>

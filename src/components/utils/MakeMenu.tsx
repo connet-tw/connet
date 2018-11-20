@@ -28,12 +28,16 @@ class MakeMenu extends React.Component<MakeMenuProps, {}> {
   componentDidUpdate(prevProps: MakeMenuProps, prevState: State) {
     if (!prevState.menu && this.state.menu) {
       document.addEventListener("keydown", this.handleKeyDown);
+      document.body.style.position = "fixed";
+    }
+    if (prevState.menu && !this.state.menu) {
+      document.removeEventListener("keydown", this.handleKeyDown);
+      document.body.style.position = "static";
     }
   }
 
   handleClose = () => {
     this.setState({menu: false})
-    document.removeEventListener("keydown", this.handleKeyDown);
   }
 
   toggleMenu = () => this.setState({menu: !this.state.menu})

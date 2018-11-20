@@ -2,15 +2,14 @@ import * as React from "react";
 import { MakeMenu } from "../utils/MakeMenu";
 import { Drawer } from "../Drawer";
 import { Hamburger } from "./Hamburger";
+import { Flex, Text } from "src/theme/primitives";
 import { styled } from "src/theme";
-import { Box } from "src/theme/primitives";
 
-const Content = styled(Box)`
+const DrawerContent = styled(Flex)`
   height: 100vh;
-  width: 100%;
 `
 
-const DrawerMenu: React.SFC<{}> = () => {
+const DrawerMenu: React.SFC<{}> = ({ children }) => {
   return (
     <MakeMenu>
       {x =>
@@ -24,15 +23,17 @@ const DrawerMenu: React.SFC<{}> = () => {
             toggleMenu={x.toggleMenu}
             width={300}
           >
-            {y =>
-              <Content
-                bg="grey.100"
+            <DrawerContent
+              flexDirection="column"
+              bg="white.light"
+              px={3} pt={4} pb={3}
+            >
+              <Text as="h3"
+                textAlign="center"
               >
-                <button onClick={y.handleClose}>
-                  Close
-                </button>
-              </Content>
-            }
+                Controlnet International
+              </Text>
+            </DrawerContent>
           </Drawer>
         </>
       }
