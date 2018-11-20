@@ -6,10 +6,10 @@ import { styled } from "src/theme";
 const Icon = styled(Menu)`
 `;
 
-const Hamburger: React.SFC<{onClick(): void}> = ({onClick}) => (
-  <Button onClick={onClick} contained>
+const MenuButton: React.SFC<{onClick(): void}> = ({onClick}) => (
+  <Button round size="small" onClick={onClick} outlined>
     <Icon size={24}/>
   </Button>
 );
 
-export { Hamburger };
+export { MenuButton };
