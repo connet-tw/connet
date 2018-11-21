@@ -49,6 +49,6 @@ export const Header: React.SFC<HeaderProps> = ({ logo }) => (
         <FormattedMessage {...app.title}/>
       </BrandName>
     </Brand>
-    <DrawerMenu/>
+    <DrawerMenu logo={logo}/>
   </Wrapper>
 );

@@ -4,14 +4,23 @@ import { Drawer } from "../Drawer";
 import { MenuButton } from "./MenuButton";
 import { CloseButton } from "./CloseButton";
 import { Flex, Text } from "src/theme/primitives";
+import { Image } from "../Image";
 import { styled } from "src/theme";
+
+const Logo = styled(Image)`
+  margin: 0 auto;
+`;
 
 const DrawerContent = styled(Flex)`
   height: 100vh;
   position: relative;
 `
 
-const DrawerMenu: React.SFC<{}> = ({ children }) => {
+interface DrawerMenuProps {
+  logo?: any;
+}
+
+const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo }) => {
   return (
     <MakeMenu>
       {x =>
@@ -27,10 +36,13 @@ const DrawerMenu: React.SFC<{}> = ({ children }) => {
           >
             <DrawerContent
               flexDirection="column"
-              bg="white.light"
+              bg="white.main"
             >
               <Flex py={2} px={3} justifyContent="flex-end">
                 <CloseButton onClick={x.handleClose}/>
+              </Flex>
+              <Flex my={3}>
+                <Logo fixed={logo}/>
               </Flex>
               <Text as="h3"
                 fontSize={3}

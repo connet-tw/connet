@@ -47,14 +47,14 @@ export const Layout: React.SFC<{}> = ({ children }) => (
       query Layout2Query {
         logo: file(relativePath: {eq: "logos/logo.png"}) {
           childImageSharp {
-            fixed(width: 250) {
+            fixed(width: 150) {
               ...GatsbyImageSharpFixed
             }
           }
         }
         logoWhite: file(relativePath: {eq: "logos/logo-white.png"}) {
           childImageSharp {
-            fixed(width: 250) {
+            fixed(width: 150) {
               ...GatsbyImageSharpFixed
             }
           }

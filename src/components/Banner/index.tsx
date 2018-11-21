@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, Flex, Text } from "src/theme/primitives";
-import { FluidImg } from "../Image";
+import { Image } from "../Image";
 import { styled } from "src/theme";
 
 const Wrapper = styled(Flex)`
@@ -18,7 +18,7 @@ const ImageWrapper = styled(Box)`
   left: 0;
 `;
 
-const Image = styled(FluidImg)`
+const Img = styled(Image)`
   height: 100%;
   width: 100%;
 `;
@@ -55,7 +55,7 @@ const Banner: React.SFC<BannerProps> = (props) => {
   return (
     <Wrapper>
       <ImageWrapper>
-        <Image image={props.image}/>
+        <Img fluid={props.image}/>
       </ImageWrapper>
       <Content
         px={3}
