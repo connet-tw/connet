@@ -39,9 +39,9 @@ export const nav = defineMessages({
     id: "nav.home",
     defaultMessage: "Home",
   },
-  solutions: {
-    id: "nav.solutions",
-    defaultMessage: "Solutions",
+  services: {
+    id: "nav.services",
+    defaultMessage: "Services",
   },
   contact: {
     id: "nav.contact",

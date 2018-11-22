@@ -1,6 +1,6 @@
 import baseStyled, { css as baseCss, ThemedCssFunction, ThemedStyledInterface } from "styled-components";
-import { theme, Scale } from "./defaultTheme";
-import { pathOr } from "ramda";
+import { defaultTheme, Scale } from "./defaultTheme";
+import { pathOr, mergeDeepRight } from "ramda";
 
 const space = (theme: any) => (val: Scale) => theme.sizes[val];
 const fontSize = (theme: any) => (val: Scale) => theme.fontSizes[val];
@@ -31,11 +31,14 @@ const fns = {
   zIndex,
 };
 
+const makeTheme = (theme: any) => mergeDeepRight(defaultTheme, theme);
+
 export {
   fns,
-  theme,
+  defaultTheme as theme,
   Scale,
+  makeTheme
 };
 
-export const styled = baseStyled as ThemedStyledInterface<typeof theme>;
-export const css = baseCss as ThemedCssFunction<typeof theme>;
+export const styled = baseStyled as ThemedStyledInterface<typeof defaultTheme>;
+export const css = baseCss as ThemedCssFunction<typeof defaultTheme>;

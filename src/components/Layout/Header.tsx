@@ -29,13 +29,13 @@ export const BrandName = styled(Text)`
 
 interface HeaderProps {
   logo: any;
+  navItems: {to: string, label: React.ReactNode}[];
 }
 
-export const Header: React.SFC<HeaderProps> = ({ logo }) => (
+export const Header: React.SFC<HeaderProps> = ({ logo, navItems }) => (
   <Wrapper
     bg="white.light"
-    py={2}
-    px={3}
+    p={3}
     flexDirection="row"
     alignItems="center"
     justifyContent="space-between"
@@ -49,6 +49,6 @@ export const Header: React.SFC<HeaderProps> = ({ logo }) => (
         <FormattedMessage {...app.title}/>
       </BrandName>
     </Brand>
-    <DrawerMenu logo={logo}/>
+    <DrawerMenu navItems={navItems} logo={logo}/>
   </Wrapper>
 );

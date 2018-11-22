@@ -39,7 +39,7 @@ export const devices = [
 
 const maxWidth = "1440px";
 
-const theme = {
+const defaultTheme = {
   sizes,
   colors,
   borders,
@@ -57,6 +57,6 @@ const theme = {
 };
 
 export {
-  theme,
+  defaultTheme,
   Scale
 };

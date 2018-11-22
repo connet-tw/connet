@@ -151,10 +151,11 @@ const box = css<BoxProps>`
 
 const flex = css<FlexProps>`
   display: flex;
+  flex-shrink: 0;
   ${props => (props.spacing && props.spacing > 0) && css`
-    padding: ${props.theme.sizes[(props.spacing)]};
+    padding: ${props.theme.sizes[(props.spacing) - 1]};
     & > * {
-      padding: ${props.theme.sizes[(props.spacing)]};
+      padding: ${props.theme.sizes[(props.spacing) - 1]};
     }
   `}
   ${box}
@@ -163,6 +164,12 @@ const flex = css<FlexProps>`
     ${getLiteral(prop("flexWrap"))("flex-wrap")(props)}
     ${getLiteral(prop("justifyContent"))("justify-content")(props)}
     ${getLiteral(prop("alignItems"))("align-items")(props)}
+  `}
+  ${props => (props.spacing && props.spacing > 0) && css`
+    padding: ${props.theme.sizes[(props.spacing) - 1]};
+    & > * {
+      padding: ${props.theme.sizes[(props.spacing) - 1]};
+    }
   `}
 `;
 

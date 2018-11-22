@@ -16,6 +16,7 @@ const defaultStyle = css<ButtonProps>`
     const v = variant || "text";
     return css`
     padding: ${theme.sizes[size === "large" ? 3 : (size === "small" ? 1 : 2)]};
+      text-align: center;
       border: ${theme.borders[1]};
       border-color: ${(contained || outlined) ? theme.colors[v].light : "transparent"};
       background: ${contained ? theme.colors[v].light : "transparent"};

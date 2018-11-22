@@ -18,13 +18,11 @@ const DrawerWrapper = styled.div<{width: number, open: boolean}>`
   display: block;
   transform: ${props => props.open ? "translateX(0)" : "translateX(100%)"};
   transition: transform 0.2s ease-out;
-  border: "1px solid black";
 `;
 
 const DrawerOverlay = styled.div<{open: boolean, onClick(): void}>`
   z-index: 1400;
   position: fixed;
-  overflow-y: hidden;
   top: 0;
   right: 0;
   left: 0;
@@ -38,9 +36,7 @@ const DrawerContent = styled.div<{open: boolean}>`
   position: fixed;
   height: 100vh;
   width: 100%;
-  top: 0;
   overflow-x: hidden;
-  overflow-y: auto;
 `;
 
 const Drawer: React.SFC<DrawerProps> = ({width, open, toggleMenu, handleClose, children}) => {
