@@ -41,7 +41,7 @@ const Index: React.SFC<IndexProps> = (({ data }) => {
       />
       <AboutSummary
         heading={<FormattedMessage {...m.about.heading}/>}
-        subheading={<FormattedMessage {...m.about.subheading}/>}
+        body={[<FormattedMessage {...m.about.subheading}/>]}
         highlights={[1,2,3,4].map((n) =>
           ({
             heading: <FormattedMessage {...m.highlights["heading" + n]}/>,

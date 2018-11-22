@@ -1,4 +1,10 @@
 import * as React from "react";
+import { Box, Card, Flex, Text } from "src/theme/primitives";
+import { styled } from "src/theme";
+
+const Header = styled(Flex)`
+  max-width: 800px;
+`
 
 interface Highlight {
   heading: React.ReactNode;
@@ -16,39 +22,39 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
   heading, subheading, body, highlights
 }) => {
   return (
-    <section>
-      <div>
-        <p>
+    <Card bt={2} btc="primary.main" alignItems="center" bg="background.paper" flexDirection="column" width={1}>
+      <Header p={3} flexDirection="column">
+        <Text textAlign="center" as="h2" fontWeight={2} fontSize={5} color="text.dark">
           {heading}
-        </p>
+        </Text>
         {!!subheading &&
-          <p>
+          <Text mt={3} textAlign="center">
             {subheading}
-          </p>
+          </Text>
         }
         {!!body && body.map((x, i) =>
-          <p key={i}>
+          <Text mt={2} color="text.dark" textAlign="center" lineHeight={"copy"} key={i}>
             {x}
-          </p>
+          </Text>
         )}
-      </div>
+      </Header>
       {!!highlights &&
-        <div>
-          <div>
-            {highlights.map((h, i) =>
-              <div key={i}>
-                <p>
+        <Flex flexWrap="wrap" spacing={4}>
+          {highlights.map((h, i) =>
+            <Flex width={[1, 1/4]} key={i} alignItems="center" flexDirection="column">
+              <Box bg="red">
+                <Text as="h5" fontSize={4} fontWeight={3}>
                   {h.heading}
-                </p>
-                <p>
+                </Text>
+                <Text as="p">
                   {h.subheading}
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
+                </Text>
+              </Box>
+            </Flex>
+          )}
+        </Flex>
       }
-    </section>
+    </Card>
   );
 }
 
