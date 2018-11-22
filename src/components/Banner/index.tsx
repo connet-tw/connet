@@ -26,7 +26,6 @@ const Img = styled(Image)`
 const Content = styled(Flex)`
   z-index: 2;
   position: relative;
-  width: 100%;
   border-color: ${props => props.theme.colors.primary.main};
   &::after {
     z-index: -1;
@@ -41,7 +40,7 @@ const Content = styled(Flex)`
     background: linear-gradient(to top,
       rgba(255,255,255,1),
       rgba(255,255,255,0.95) 30%,
-      rgba(255,255,255,0.4));
+      rgba(255,255,255,0.56));
   }
 `;
 
@@ -58,6 +57,7 @@ const Banner: React.SFC<BannerProps> = (props) => {
         <Img fluid={props.image}/>
       </ImageWrapper>
       <Content
+        width={1}
         px={3}
         py={4}
         mt={4}
@@ -66,9 +66,10 @@ const Banner: React.SFC<BannerProps> = (props) => {
       >
         <Text
           as="h1"
-          fontSize={[4,4,5]}
+          fontSize={5}
           color="primary.main"
-          fontWeight={5}
+          fontWeight={2}
+          textAlign="center"
           textTransform="uppercase"
           letterSpacing="tracked"
           lineHeight="title"
@@ -76,7 +77,7 @@ const Banner: React.SFC<BannerProps> = (props) => {
           {props.heading}
         </Text>
         {props.subheading &&
-          <Text fontSize={3} color="primary.main">
+          <Text mt={2} fontSize={3} color="text.main">
             {props.subheading}
           </Text>
         }

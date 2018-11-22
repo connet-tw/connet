@@ -16,7 +16,7 @@ interface State {
 
 class MakeMenu extends React.Component<MakeMenuProps, {}> {
   state: State = {
-    menu: true
+    menu: false
   }
 
   handleKeyDown = (event: any) => {
