@@ -35,24 +35,20 @@ export const contact = defineMessages({
 });
 
 export const nav = defineMessages({
-  wines: {
-    id: "nav.wines",
-    defaultMessage: "Wines",
+  home: {
+    id: "nav.home",
+    defaultMessage: "Home",
   },
-  events: {
-    id: "nav.events",
-    defaultMessage: "Events",
-  },
-  promotions: {
-    id: "nav.promotions",
-    defaultMessage: "Promotions",
-  },
-  about: {
-    id: "nav.about",
-    defaultMessage: "About",
+  solutions: {
+    id: "nav.solutions",
+    defaultMessage: "Solutions",
   },
   contact: {
     id: "nav.contact",
     defaultMessage: "Contact",
+  },
+  about: {
+    id: "nav.about",
+    defaultMessage: "About",
   },
 });

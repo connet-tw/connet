@@ -38,6 +38,7 @@ const defaultStyle = css<ButtonProps>`
 `;
 
 const Button = styled(Base)<ButtonProps>`
+  -webkit-tap-highlight-color: transparent;
   ${defaultStyle}
 `;
 

@@ -1,7 +1,7 @@
 import { lighten, darken } from "./utils";
 
-const primary = "#2A313D";
-const secondary = "#ED1C24";
+const primary = "rgb(36,140,204)";
+const secondary = "rgb(203,160,83)";
 const white = "rgb(255,255,255)";
 const black = "rgb(0,0,0)";
 

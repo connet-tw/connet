@@ -18,6 +18,8 @@ const DrawerContent = styled(Flex)`
 
 interface DrawerMenuProps {
   logo?: any;
+  title?: React.ReactNode;
+  items?: {to: string, label: string};
 }
 
 const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo }) => {
@@ -36,7 +38,7 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo }) => {
           >
             <DrawerContent
               flexDirection="column"
-              bg="white.main"
+              bg="background.paper"
             >
               <Flex py={2} px={3} justifyContent="flex-end">
                 <CloseButton onClick={x.handleClose}/>

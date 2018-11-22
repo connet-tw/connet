@@ -79,5 +79,3 @@ export const Layout: React.SFC<{}> = ({ children }) => (
     }
   />
 );
-
-export const RootLayout = Layout;

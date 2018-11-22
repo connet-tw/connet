@@ -22,7 +22,7 @@ export const Logo = styled.img`
 `
 export const BrandName = styled(Text)`
   display: none;
-  ${props => props.theme.devices[0]} {
+  ${props => props.theme.devices[1]} {
     display: block;
   }
 `;
