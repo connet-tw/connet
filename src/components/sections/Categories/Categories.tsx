@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "../../../i18n";
-import Img from "gatsby-image";
+import { Image } from "../../Image";
 import { Section, SectionHeader } from "../Section";
 import { Button } from "../../Button";
 import { Box, Card, Flex, Text } from "src/theme/primitives";
@@ -40,7 +40,7 @@ const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, bo
             flexDirection="column"
           >
             <Flex flexDirection="column">
-              <Img style={{height: 140}} fluid={x.image.childImageSharp.fluid}/>
+              <Image style={{height: 140}} fluid={x.image}/>
               <Box m={3}>
                 <Text as="h3" color="primary.main" fontSize={3}>
                   {x.label}

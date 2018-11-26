@@ -5,10 +5,12 @@ interface ImgProps {
   fixed?: any;
   fluid?: any;
   className?: string;
+  style: object;
 }
 
-const Image: React.SFC<ImgProps> = ({fixed, fluid, className}, ...props) => {
+const Image: React.SFC<ImgProps> = ({fixed, fluid, className, style}, ...props) => {
   return <GatsbyImage
+    style={style}
     fluid={fluid && fluid.childImageSharp.fluid}
     fixed={fixed && fixed.childImageSharp.fixed}
     className={className}
