@@ -22,9 +22,23 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
   heading, subheading, body, highlights
 }) => {
   return (
-    <Card bt={2} btc="primary.main" alignItems="center" bg="background.paper" flexDirection="column" width={1}>
-      <Header p={3} flexDirection="column">
-        <Text textAlign="center" as="h2" fontWeight={2} fontSize={5} color="text.dark">
+    <Card
+      bg="background.paper"
+      width={1}
+      bt={2} btc="primary.main"
+      alignItems="center" flexDirection="column"
+    >
+      <Header
+        mt={4}
+        m={3}
+        flexDirection="column"
+      >
+        <Text
+          textAlign="center"
+          as="h2"
+          fontWeight={2} fontSize={6}
+          color="text.dark"
+        >
           {heading}
         </Text>
         {!!subheading &&
@@ -38,15 +52,22 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
           </Text>
         )}
       </Header>
+
       {!!highlights &&
-        <Flex flexWrap="wrap" spacing={4}>
+        <Flex flexWrap="wrap" width={1} p={3}>
           {highlights.map((h, i) =>
-            <Flex width={[1, 1/4]} key={i} alignItems="center" flexDirection="column">
-              <Box bg="red">
-                <Text as="h5" fontSize={4} fontWeight={3}>
+            <Flex p={3} width={[1, 1/2, 1/4]} key={i} alignItems="center" flexDirection="column">
+              <Box width={1}>
+                <Text
+                  color="primary.main"
+                  mb={2}
+                  textAlign="center"
+                  as="h5"
+                  fontSize={5} fontWeight={2}
+                >
                   {h.heading}
                 </Text>
-                <Text as="p">
+                <Text color="text.main" as="p" textAlign="center">
                   {h.subheading}
                 </Text>
               </Box>
