@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Box, Card, Flex, Text } from "src/theme/primitives";
+import { Box, Flex, Text } from "src/theme/primitives";
 import { styled } from "src/theme";
+import { Section, SectionHeader } from "../Section";
 
 const Header = styled(Flex)`
   max-width: 800px;
@@ -22,37 +23,13 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
   heading, subheading, body, highlights
 }) => {
   return (
-    <Card
-      bg="background.paper"
-      width={1}
-      bt={2} btc="primary.main"
-      alignItems="center" flexDirection="column"
+    <Section
     >
-      <Header
-        mt={4}
-        m={3}
-        flexDirection="column"
-      >
-        <Text
-          textAlign="center"
-          as="h2"
-          fontWeight={2} fontSize={6}
-          color="text.dark"
-        >
-          {heading}
-        </Text>
-        {!!subheading &&
-          <Text mt={3} textAlign="center">
-            {subheading}
-          </Text>
-        }
-        {!!body && body.map((x, i) =>
-          <Text mt={2} color="text.dark" textAlign="center" lineHeight={"copy"} key={i}>
-            {x}
-          </Text>
-        )}
-      </Header>
-
+      <SectionHeader
+        heading={heading}
+        subheading={subheading}
+        body={body}
+      />
       {!!highlights &&
         <Flex flexWrap="wrap" width={1} p={3}>
           {highlights.map((h, i) =>
@@ -75,7 +52,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
           )}
         </Flex>
       }
-    </Card>
+    </Section>
   );
 }
 

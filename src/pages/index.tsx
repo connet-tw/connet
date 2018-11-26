@@ -51,7 +51,7 @@ const Index: React.SFC<IndexProps> = (({ data }) => {
       />
       <Categories
         heading={<FormattedMessage {...m.services.heading}/>}
-        subheading={<FormattedMessage {...m.services.subheading}/>}
+        body={[<FormattedMessage {...m.services.subheading}/>]}
         categoryLinks={data.services.edges.map(({node}) =>
           ({
             label: node.frontmatter.heading,

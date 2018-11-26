@@ -1,6 +1,9 @@
 import * as React from "react";
 import { Link } from "../../../i18n";
 import Img from "gatsby-image";
+import { Section, SectionHeader } from "../Section";
+import { Button } from "../../Button";
+import { Box, Card, Flex, Text } from "src/theme/primitives";
 
 interface CategoryLink {
   label: React.ReactNode;
@@ -13,48 +16,52 @@ interface CategoryLink {
 type Props = {
   heading: React.ReactNode;
   subheading?: React.ReactNode;
+  body?: React.ReactNode[];
   categoryLinks: CategoryLink[];
   image?: any;
   gradient?: string;
 };
 
-const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, categoryLinks }) => (
-  <section>
-    <div>
-      <p>
-        {heading}
-      </p>
-      <p>
-        {subheading}
-      </p>
-    </div>
-    <div>
+const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, body, categoryLinks }) => (
+  <Section>
+    <SectionHeader
+      heading={heading}
+      subheading={subheading}
+      body={body}
+    />
+    <Flex p={2} flexWrap="wrap">
       {categoryLinks.map((x) =>
-        <div key={x.to}>
-          <Link to={x.to}>
-            <div>
-              <Img fluid={x.image.childImageSharp.fluid}/>
-              <div>
-                <p>
+        <Flex width={[1, 1/2, 1/4]} p={2}>
+          <Card
+            radius={2}
+            width={1}
+            key={x.to}
+            shadow={1}
+            flexDirection="column"
+          >
+            <Flex flexDirection="column">
+              <Img style={{height: 140}} fluid={x.image.childImageSharp.fluid}/>
+              <Box m={3}>
+                <Text as="h3" color="primary.main" fontSize={3}>
                   {x.label}
-                </p>
+                </Text>
                 {x.text &&
-                  <p>
+                  <Text mt={2} as="p">
                     {x.text}
-                  </p>
+                  </Text>
                 }
-              </div>
-              <div>
-                <button>
+              </Box>
+              <Flex m={3}>
+                <Button as={Link} to={x.to} outlined>
                   {x.buttonText}
-                </button>
-              </div>
-            </div>
-          </Link>
-        </div>,
+                </Button>
+              </Flex>
+            </Flex>
+          </Card>
+        </Flex>,
       )}
-    </div>
-  </section>
+    </Flex>
+  </Section>
 );
 
 export {
