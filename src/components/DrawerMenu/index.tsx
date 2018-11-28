@@ -48,8 +48,10 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
                 <CloseButton onClick={injected.handleClose}/>
               </Flex>
               {logo &&
-                <Flex>
-                  <Logo fixed={logo}/>
+                <Flex justifyContent="center">
+                  <Link to="/">
+                    <Logo fixed={logo}/>
+                  </Link>
                 </Flex>
               }
               {title &&

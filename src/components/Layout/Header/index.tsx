@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DrawerMenu } from "../../DrawerMenu";
-import { FormattedMessage } from "react-intl";
 import { styled } from "src/theme";
+import { Link } from "../../../i18n";
 import { Card, Flex, Text } from "src/theme/primitives";
 
 export const Wrapper = styled(Card)`
@@ -41,7 +41,7 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
     justifyContent="space-between"
     shadow={1}
   >
-    <Brand alignItems="center">
+    <Brand as={Link} to="/" alignItems="center">
       {logo &&
         <LogoWrapper alignItems="center">
           <Logo src={logo.childImageSharp.fixed.src}/>
