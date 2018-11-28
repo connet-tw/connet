@@ -43,16 +43,16 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
           </Flex>
         }
         <Flex justifyContent="center" flexDirection="column">
-          <Text pb={1} fontSize={3} fontWeight={5}>
+          <Text mb={3} fontSize={3} fontWeight={5}>
             {title}
           </Text>
           {
-            <Text fontSize={2} textAlign="center">
+            <Text lineHeight="copy" fontSize={2} textAlign="center">
               {phone}
             </Text>
           }
           {email &&
-            <Text fontSize={2} textAlign="center">
+            <Text lineHeight="copy" fontSize={2} textAlign="center">
               {email}
             </Text>
           }

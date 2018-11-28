@@ -42,7 +42,7 @@ const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, bo
             <Flex flexDirection="column">
               <Image style={{height: 140}} fluid={x.image}/>
               <Box m={3}>
-                <Text as="h3" color="primary.main" fontSize={3}>
+                <Text as="h3" color="primary.main" fontWeight={4} fontSize={3}>
                   {x.label}
                 </Text>
                 {x.text &&
