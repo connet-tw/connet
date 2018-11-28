@@ -72,6 +72,8 @@ const navItems = [
 ];
 
 const title = <FormattedMessage {...m.app.title}/>;
+const phone = <FormattedMessage {...m.contact.phoneNumber}/>;
+const email = <FormattedMessage {...m.contact.emailAddress}/>;
 
 export const Layout: React.SFC<{}> = ({ children }) => (
   <StaticQuery
@@ -101,9 +103,17 @@ export const Layout: React.SFC<{}> = ({ children }) => (
             <GlobalStyle/>
             <Head/>
             <Content bg="background.default">
-              <Header title={title} navItems={navItems} logo={data.logo}/>
+              <Header
+                title={title}
+                navItems={navItems}
+                logo={data.logo}
+              />
               <Main>{children}</Main>
-              <Footer title={title} logo={data.logoWhite}/>
+              <Footer
+                email={email}
+                phone={phone}
+                title={title}
+              />
             </Content>
           </Root>
         </ThemeProvider>

@@ -5,7 +5,7 @@ import { withIntl } from "../i18n";
 import * as m from "../messages/contact.messages";
 import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
-import { Section } from "../components/sections/Section";
+import { Section } from "../components/Section";
 import { Box, Flex, Card, Text } from "src/theme/primitives";
 import { Email } from "styled-icons/material/Email";
 import { Phone } from "styled-icons/material/Phone";

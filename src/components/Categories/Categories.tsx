@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Link } from "../../../i18n";
-import { Image } from "../../Image";
+import { Link } from "../../i18n";
+import { Image } from "../Image";
 import { Section, SectionHeader } from "../Section";
-import { Button } from "../../Button";
+import { Button } from "../Button";
 import { Box, Card, Flex, Text } from "src/theme/primitives";
 
 interface CategoryLink {

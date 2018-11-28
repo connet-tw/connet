@@ -1,11 +1,6 @@
 import * as React from "react";
 import { Box, Flex, Text } from "src/theme/primitives";
-import { styled } from "src/theme";
 import { Section, SectionHeader } from "../Section";
-
-const Header = styled(Flex)`
-  max-width: 800px;
-`
 
 interface Highlight {
   heading: React.ReactNode;

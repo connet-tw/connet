@@ -5,8 +5,8 @@ import { withIntl } from "../i18n";
 import * as m from "../messages/index.messages";
 import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
-import { AboutSummary } from "../components/sections/About";
-import { Categories } from "../components/sections/Categories";
+import { AboutSummary } from "../components/About";
+import { Categories } from "../components/Categories";
 
 interface ServiceNode {
   node: {
