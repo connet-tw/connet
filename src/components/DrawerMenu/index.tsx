@@ -25,7 +25,7 @@ interface DrawerMenuProps {
   navItems: {to: string, label: React.ReactNode}[];
 }
 
-const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, navItems }) => {
+const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
   return (
     <MakeMenu>
       {injected =>
@@ -47,18 +47,22 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, navItems }) => {
               <Flex justifyContent="flex-end">
                 <CloseButton onClick={injected.handleClose}/>
               </Flex>
-              <Flex>
-                <Logo fixed={logo}/>
-              </Flex>
-              <Text as="h3"
-                fontSize={3}
-                textAlign="center"
-              >
-                Controlnet International
-              </Text>
-              <Flex justifyContent="center" flexDirection="column" spacing={2}>
+              {logo &&
+                <Flex>
+                  <Logo fixed={logo}/>
+                </Flex>
+              }
+              {title &&
+                <Text as="h3"
+                  fontSize={3}
+                  textAlign="center"
+                >
+                  {title} 
+                </Text>
+              }
+              <Flex justifyContent="center" flexDirection="column" p={1}>
                 {navItems.map((x) => 
-                  <Flex key={x.to}>
+                  <Flex key={x.to} p={1}>
                     <Button onClick={injected.handleClose} width={1} to={x.to} as={Link}>
                       {x.label}
                     </Button>

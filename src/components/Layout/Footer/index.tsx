@@ -1,6 +1,4 @@
 import * as React from "react";
-import { FormattedMessage } from "react-intl";
-import { app, contact } from "./Layout.messages";
 import { Box, Text, Flex } from "src/theme/primitives";
 import { styled } from "src/theme";
 
@@ -15,7 +13,7 @@ const Main = styled(Box)`
     height: 100%;
     top: 0;
     left: 0;
-    background-image: url(${require("../../images/patterns/cairo-pentagon-32.png")});
+    background-image: url(${require("./cairo-pentagon-32.png")});
     background-repeat: repeat;
     opacity: 0.05;
   }
@@ -29,9 +27,13 @@ const MainInner = styled(Flex)`
 
 interface Props {
   logo?: any;
+  title: React.ReactNode;
+  phone?: React.ReactNode;
+  email?: React.ReactNode;
+  address?: React.ReactNode[];
 };
 
-const Footer: React.SFC<Props> = ({ logo }) => (
+const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
   <Box as="footer">
     <Main bg="primary.dark" color="white.light" py={3}>
       <MainInner spacing={3} justifyContent="center" alignItems="center" flexDirection="column">
@@ -42,21 +44,25 @@ const Footer: React.SFC<Props> = ({ logo }) => (
         }
         <Flex justifyContent="center" flexDirection="column">
           <Text pb={1} fontSize={3} fontWeight={5}>
-            <FormattedMessage id="app.title"/>
+            {title}
           </Text>
-          <Text fontSize={2} textAlign="center">
-            <FormattedMessage {...contact.phoneNumber}/>
-          </Text>
-          <Text fontSize={2} textAlign="center">
-            <FormattedMessage {...contact.emailAddress}/>
-          </Text>
+          {
+            <Text fontSize={2} textAlign="center">
+              {phone}
+            </Text>
+          }
+          {email &&
+            <Text fontSize={2} textAlign="center">
+              {email}
+            </Text>
+          }
         </Flex>
       </MainInner>
     </Main>
     <Flex bg="text.dark" p={3} justifyContent="center">
       <Text color="grey.600" fontSize={1}>
         © 2018 Copyright: <Text as="span" color="primary.contrast">
-          <FormattedMessage {...app.title}/>
+          {title}
         </Text>
       </Text>
     </Flex>

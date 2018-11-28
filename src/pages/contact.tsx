@@ -17,8 +17,12 @@ interface ContactPageProps {
   }
 }
 
+interface ContactCardProps {
+  icon: React.ReactType;
+  text: React.ReactNode;
+}
 
-const ContactCard: React.SFC<{icon: React.ReactType, text: React.ReactNode}> = ({icon, text}) => {
+const ContactCard: React.SFC<ContactCardProps> = ({icon, text}) => {
   const I = icon;
   return (<Box p={2} width={[1, 1/3]}>
     <Card width={1}

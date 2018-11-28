@@ -5,6 +5,8 @@ import { withIntl } from "../i18n";
 import * as m from "../messages/about.messages";
 import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
+import { Section } from "../components/sections/Section";
+import { Text, Flex } from "src/theme/primitives";
 
 interface AboutPageProps {
   data: {
@@ -20,14 +22,16 @@ const AboutPage: React.SFC<AboutPageProps> = (({data}) => {
         heading={<FormattedMessage {...m.banner.heading}/>}
         subheading={<FormattedMessage {...m.banner.subheading}/>}
       />
-      <div>
-        <p>
-          <FormattedMessage {...m.body.one}/>
-        </p>
-        <p>
-          <FormattedMessage {...m.body.two}/>
-        </p>
-      </div>
+      <Section>
+        <Flex width={1} p={2} flexWrap="wrap">
+          <Text p={2} as="p" width={1}>
+            <FormattedMessage {...m.body.one}/>
+          </Text>
+          <Text p={2} as="p" width={1}>
+            <FormattedMessage {...m.body.two}/>
+          </Text>
+        </Flex>
+      </Section>
     </Layout>
   );
 });

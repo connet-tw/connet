@@ -5,7 +5,7 @@ interface ImgProps {
   fixed?: any;
   fluid?: any;
   className?: string;
-  style: object;
+  style?: object;
 }
 
 const Image: React.SFC<ImgProps> = ({fixed, fluid, className, style}, ...props) => {

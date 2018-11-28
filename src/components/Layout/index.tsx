@@ -71,6 +71,8 @@ const navItems = [
   {to: "/contact", label: <FormattedMessage {...m.nav.contact} />},
 ];
 
+const title = <FormattedMessage {...m.app.title}/>;
+
 export const Layout: React.SFC<{}> = ({ children }) => (
   <StaticQuery
     query={graphql`
@@ -99,9 +101,9 @@ export const Layout: React.SFC<{}> = ({ children }) => (
             <GlobalStyle/>
             <Head/>
             <Content bg="background.default">
-              <Header navItems={navItems} logo={data.logo}/>
+              <Header title={title} navItems={navItems} logo={data.logo}/>
               <Main>{children}</Main>
-              <Footer logo={data.logoWhite}/>
+              <Footer title={title} logo={data.logoWhite}/>
             </Content>
           </Root>
         </ThemeProvider>
