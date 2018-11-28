@@ -2,10 +2,12 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
-import { ImageSplit } from "../components/sections/ImageSplit";
 import { Link } from "../i18n";
 import * as m from "../messages/services.messages";
 import { FormattedMessage } from "react-intl";
+import { Image } from "../components/Image";
+import { Flex, Text } from "src/theme/primitives";
+import { Button } from "../components/Button";
 
 interface ServiceNode {
   node: {
@@ -33,21 +35,33 @@ const ServicesPage: React.SFC<ServicesProps> = (({ data }) => {
   return (
     <Layout>
       {data.services.edges.map(({node}, i) =>
-        <ImageSplit
-          id={node.fields.slug}
+        <Flex
           key={i}
-          reverse={i % 2 === 0}
-          heading={node.frontmatter.heading}
-          subheading={node.frontmatter.subheading}
-          image={node.frontmatter.image}
-          after={
-            <Link to={node.fields.slug}>
-              <button>
-                <FormattedMessage {...m.services.learnMore}/>
-              </button>
-            </Link>
-          }
-        />
+          width={1}
+          flexWrap="wrap"
+          flexDirection={(i%2===0 ? "row" : "row-reverse")}
+        >
+          <Flex width={[1, 1/2]}>
+            <Image style={{width: "100%"}} fluid={node.frontmatter.image}/>
+          </Flex>
+          <Flex
+            p={4}
+            width={[1, 1/2]}
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text mb={2} as="h2" fontSize={4} color="primary.main" fontWeight={3}>
+              {node.frontmatter.heading}
+            </Text>
+            <Text mb={2} fontSize={2} as="h5" fontWeight={3} color="text.primary">
+              {node.frontmatter.subheading}
+            </Text>
+            <Button mt={2} outlined as={Link} to={node.fields.slug}>
+              <FormattedMessage {...m.services.learnMore}/>
+            </Button>
+          </Flex>
+        </Flex>
       )}
     </Layout>
   );
