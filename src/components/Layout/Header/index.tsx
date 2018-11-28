@@ -3,6 +3,21 @@ import { DrawerMenu } from "../../DrawerMenu";
 import { styled } from "src/theme";
 import { Link } from "../../../i18n";
 import { Card, Flex, Text } from "src/theme/primitives";
+import { Button } from "../../Button";
+
+const Trigger = styled.div`
+  display: block;
+  ${props => props.theme.devices[2]} {
+    display: none;
+  }
+`
+
+const Nav = styled(Flex)`
+  display: none;
+  ${props => props.theme.devices[2]} {
+    display: flex;
+  }
+`;
 
 export const Wrapper = styled(Card)`
   z-index: ${props => props.theme.zIndexes[5]};
@@ -51,6 +66,17 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
         {title}
       </BrandName>
     </Brand>
-    <DrawerMenu title={title} navItems={navItems} logo={logo}/>
+    <Flex>
+      <Nav>
+        {navItems.map((x) => (
+          <Button ml={1} as={Link} to={x.to} key={x.to}>
+            {x.label}
+          </Button>
+        ))}
+      </Nav>
+      <Trigger>
+        <DrawerMenu title={title} navItems={navItems} logo={logo}/>
+      </Trigger>
+    </Flex>
   </Wrapper>
 );
