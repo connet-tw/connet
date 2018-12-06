@@ -3,4 +3,8 @@ heading: "Microgrid"
 subheading: "Independent hybrid power system"
 image: "./microgrids.jpg"
 ---
-Some description about micro-grid.
+![microgrid](10 - Microgrid gasfication generator.png)
+
+![microgrid](microgrid__small.jpg)
+
+![microgrid](microgrid__big.jpg)
