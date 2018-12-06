@@ -41,10 +41,10 @@ const BannerWrapper: React.SFC<BannerProps> = ({ image, children }) => {
         width={1}
       >
       <Overlay
-        bt={3}
-        borderColor="red"
-        bg="linear-gradient(to top, rgba(0,0,0,1.0), rgba(0,0,0,0.6))"
-        opacity={0.8}
+        bt={1}
+        borderColor="white.light"
+        bg="linear-gradient(to top, rgba(255,255,255,1.0), rgba(255,255,255,0.75))"
+        opacity={0.95}
       />
         <Box width={1} style={{zIndex: 1}}>
           {children}

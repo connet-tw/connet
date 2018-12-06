@@ -36,7 +36,6 @@ const Index: React.SFC<IndexProps> = (({ data }) => {
     <Layout>
       <Banner
         heading={<FormattedMessage {...m.hero.heading}/>}
-        subheading={<FormattedMessage {...m.hero.subheading}/>}
         image={data.headerImg}
       />
       <AboutSummary

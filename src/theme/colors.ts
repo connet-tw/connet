@@ -47,9 +47,9 @@ export const colors = {
     contrast: "rgba(255, 255, 255, 0.9)",
   },
   white: {
-    dark: darken(white)(1/4),
-    main: darken(white)(1/5),
-    light: white,
+    dark: "rgba(255,255,255,0.8)",
+    main: "rgba(255,255,255,0.9)",
+    light: "rgba(255,255,255,1)",
     contrast: "rgba(0, 0, 0, 0.9)",
   },
   black: {

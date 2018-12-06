@@ -14,7 +14,7 @@ export const hero = defineMessages({
 export const about = defineMessages({
   heading: {
     id: "index.about.heading",
-    defaultMessage: "About Us",
+    defaultMessage: "Expert in Power System Integration",
   },
   subheading: {
     id: "index.about.subheading",
@@ -27,29 +27,29 @@ export const highlights = defineMessages({
     id: "index.highlights.heading1",
     defaultMessage: "27 Yrs",
   },
+  subheading1: {
+    id: "index.highlights.subheading1",
+    defaultMessage: "Experience",
+  },
   heading2: {
     id: "index.highlights.heading2",
     defaultMessage: "US 160M",
-  },
-  heading3: {
-    id: "index.highlights.heading3",
-    defaultMessage: "4",
-  },
-  heading4: {
-    id: "index.highlights.heading4",
-    defaultMessage: "180+",
-  },
-  subheading1: {
-    id: "index.highlights.subheading1",
-    defaultMessage: "On the market",
   },
   subheading2: {
     id: "index.highlights.subheading2",
     defaultMessage: "Total project value",
   },
+  heading3: {
+    id: "index.highlights.heading3",
+    defaultMessage: "4",
+  },
   subheading3: {
     id: "index.highlights.subheading3",
     defaultMessage: "Regional offices",
+  },
+  heading4: {
+    id: "index.highlights.heading4",
+    defaultMessage: "180+",
   },
   subheading4: {
     id: "index.highlights.subheading4",

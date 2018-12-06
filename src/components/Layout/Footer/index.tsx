@@ -13,8 +13,6 @@ const Main = styled(Box)`
     height: 100%;
     top: 0;
     left: 0;
-    background-image: url(${require("./cairo-pentagon-32.png")});
-    background-repeat: repeat;
     opacity: 0.05;
   }
 `;

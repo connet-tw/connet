@@ -18,7 +18,7 @@ export const SectionHeader: React.SFC<Props> = ({
     <Text
       textAlign="center"
       as="h2"
-      fontWeight={2} fontSize={6}
+      fontWeight={2} fontSize={5}
       color="text.dark"
     >
       {heading}
@@ -29,7 +29,7 @@ export const SectionHeader: React.SFC<Props> = ({
       </Text>
     }
     {!!body && body.map((x, i) =>
-      <Text mt={2} color="text.dark" textAlign="center" lineHeight={"copy"} key={i}>
+      <Text mt={3} color="text.dark" textAlign="center" lineHeight={"copy"} key={i}>
         {x}
       </Text>
     )}

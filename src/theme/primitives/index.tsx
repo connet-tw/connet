@@ -48,6 +48,7 @@ const getLineHeight = getProperty(fns.lineHeight)(prop("lineHeight"))("line-heig
 const getLetterSpacing = getProperty(fns.letterSpacing)(prop("letterSpacing"))("letter-spacing");
 const getTextTransform = getLiteral(prop("textTransform"))("text-transform");
 const getTextAlign = getLiteral(prop("textAlign"))("text-align");
+const getOpacity = getLiteral(prop("opacity"))("opacity");
 
 type Width = string | number;
 const parseWidth = (theme: any) => (v: Width) => (typeof v === "number" ? `${v * 100}%` : v);
@@ -95,6 +96,7 @@ interface FlexProps extends BoxProps {
 }
 
 interface CardProps extends FlexProps {
+  opacity?: number;
   shadow?: Scale;
   radius?: Scale;
   b?: Scale;
@@ -172,6 +174,7 @@ const card = css<CardProps>`
   flex-direction: column;
   ${flex}
   ${props => css`
+    ${getOpacity(props)}
     ${getBoxShadow(props)}
     ${getBorder(props)}
     ${getBorderColor(props)}

@@ -5,7 +5,7 @@ import { withIntl } from "../i18n";
 import * as m from "../messages/about.messages";
 import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
-import { Section } from "../components/Section";
+import { Section, SectionHeader } from "../components/Section";
 import { Text, Flex } from "src/theme/primitives";
 
 interface AboutPageProps {
@@ -20,10 +20,12 @@ const AboutPage: React.SFC<AboutPageProps> = (({data}) => {
       <Banner
         image={data.headerImg}
         heading={<FormattedMessage {...m.banner.heading}/>}
-        subheading={<FormattedMessage {...m.banner.subheading}/>}
       />
       <Section>
-        <Flex width={1} p={2} flexWrap="wrap">
+        <SectionHeader
+          heading={<FormattedMessage {...m.banner.subheading}/>}
+        />
+        <Flex width={[1,1,2/3]} p={2} flexWrap="wrap">
           <Text p={2} as="p" width={1}>
             <FormattedMessage {...m.body.one}/>
           </Text>

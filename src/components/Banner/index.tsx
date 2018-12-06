@@ -11,11 +11,11 @@ interface BannerProps {
 const Banner: React.SFC<BannerProps> = (props) => {
   return (
     <BannerWrapper image={props.image}>
-      <Box p={3}>
+      <Box p={4}>
         <Text
           as="h1"
-          fontSize={4}
-          color="white.main"
+          fontSize={5}
+          color="primary.main"
           fontWeight={2}
           textAlign="center"
           textTransform="uppercase"
@@ -25,7 +25,12 @@ const Banner: React.SFC<BannerProps> = (props) => {
           {props.heading}
         </Text>
         {props.subheading &&
-          <Text mt={2} fontSize={3} color="text.main">
+          <Text
+            mt={2}
+            fontSize={3}
+            textAlign="center"
+            color="text.main"
+          >
             {props.subheading}
           </Text>
         }
