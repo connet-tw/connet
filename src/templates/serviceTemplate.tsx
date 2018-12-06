@@ -3,7 +3,9 @@ import rehypeReact from "rehype-react";
 import { graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
-import { Text } from "src/theme/primitives";
+import { Box, Flex, Text } from "src/theme/primitives";
+import { Banner } from "../components/Banner";
+import { Section, SectionHeader } from "../components/Section";
 
 interface EventTemplateProps {
   data: {
@@ -11,16 +13,19 @@ interface EventTemplateProps {
   };
 }
 
-const P = (props: any) => (
-  <Text
-    {...props}
-  />
+const P: React.SFC<{}> = ({children}) => (
+  <Text mb={3} width={1}>{children}</Text>
+);
+
+const Div: React.SFC<{}> = ({children}) => (
+  <Box width={1}>{children}</Box>
 );
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
-    p: P
+    p: P,
+    div: Div,
   }
 }).Compiler;
 
@@ -28,9 +33,18 @@ const EventTemplate: React.SFC<EventTemplateProps> = (({ data }) => {
   const { markdownRemark: mk } = data;
   return (
     <Layout>
-      <div>
-        {renderAst(mk.htmlAst)}
-      </div>
+      <Banner
+        heading={mk.frontmatter.heading}
+        image={mk.frontmatter.image}
+      />
+      <Section>
+        <SectionHeader
+          heading={mk.frontmatter.subheading}
+        />
+        <Flex p={3} width={1}>
+          {renderAst(mk.htmlAst)}
+        </Flex>
+      </Section>
     </Layout>
   );
 });

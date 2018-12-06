@@ -43,6 +43,18 @@ module.exports = {
     'gatsby-plugin-root-import',
     'gatsby-transformer-sharp',
     'gatsby-transformer-javascript-frontmatter',
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
+      },
+    }
   ],
 }

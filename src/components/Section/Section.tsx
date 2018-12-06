@@ -6,7 +6,7 @@ export const Section: React.SFC<{}> = ({ children }) => (
     py={3}
     bg="background.paper"
     width={1}
-    bt={2} btc="primary.main"
+    bt={2} btc="secondary.main"
     alignItems="center" flexDirection="column"
   >
     {children}
