@@ -22,14 +22,14 @@ export const contactDetails = defineMessages({
   },
   street: {
     id: "contact.street",
-    defaultMessage: "No. 33, Lane 21, Sec. 6, Minquan E. Rd.",
+    defaultMessage: "No. 33, Lane 21, Sec. 6,",
   },
   city: {
     id: "contact.city",
-    defaultMessage: "Neihu District, Taipei 11494",
+    defaultMessage: " Minquan E. Rd., Neihu District,",
   },
   country: {
     id: "contact.country",
-    defaultMessage: "Taiwan",
+    defaultMessage: " Taipei 11494, Taiwan",
   }
 });

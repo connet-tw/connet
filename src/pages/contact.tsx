@@ -19,7 +19,7 @@ interface ContactPageProps {
 
 interface ContactCardProps {
   icon: React.ReactType;
-  text: React.ReactNode;
+  text: React.ReactNode[];
 }
 
 const ContactCard: React.SFC<ContactCardProps> = ({icon, text}) => {
@@ -35,9 +35,13 @@ const ContactCard: React.SFC<ContactCardProps> = ({icon, text}) => {
       <Text textAlign="center" color="text.main">
         <I size={24}/>
       </Text>
-      <Text ml={4} textAlign="right" color="text.dark">
-        {text}
-      </Text>
+      <Box>
+        {text.map((x, i) =>
+          <Text ml={4} lineHeight="copy" textAlign="right" color="text.dark">
+            {x}
+          </Text>
+        )}
+      </Box>
     </Card>
   </Box>
   );
@@ -52,9 +56,22 @@ const ContactPage: React.SFC<ContactPageProps> = (({data}) => {
       />
       <Section>
         <Flex p={2} width={1} flexWrap="wrap">
-          <ContactCard icon={Email} text={"info"}/>
-          <ContactCard icon={Phone} text={"telephone number"}/>
-          <ContactCard icon={Home} text={"telephone number, very long text, really really long"}/>
+          <ContactCard
+            icon={Phone}
+            text={[<FormattedMessage {...m.contactDetails.phoneNumber}/>]}
+          />
+          <ContactCard
+            icon={Email}
+            text={[<FormattedMessage {...m.contactDetails.emailAddress}/>]}
+          />
+          <ContactCard
+            icon={Home}
+            text={[
+              <FormattedMessage {...m.contactDetails.street}/>,
+              <FormattedMessage {...m.contactDetails.city}/>,
+              <FormattedMessage {...m.contactDetails.country}/>,
+            ]}
+          />
         </Flex>
       </Section>
     </Layout>

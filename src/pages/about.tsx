@@ -59,19 +59,6 @@ const AboutPage: React.SFC<AboutPageProps> = (({data}) => {
           <Image style={{width: "100%"}} fluid={data.headerImg}/>
         </Flex>
       </Section>
-
-      <Section>
-        <SectionHeader
-          heading={<FormattedMessage {...m.s1.heading}/>}
-          subheading={<FormattedMessage {...m.s1.subheading}/>}
-          body={[
-            <FormattedMessage {...m.body.two}/>,
-          ]}
-        />
-        <Flex width={1} p={3}>
-          <Image style={{width: "100%"}} fluid={data.headerImg}/>
-        </Flex>
-      </Section>
     </Layout>
   );
 });
