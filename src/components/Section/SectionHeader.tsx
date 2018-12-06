@@ -24,7 +24,7 @@ export const SectionHeader: React.SFC<Props> = ({
       {heading}
     </Text>
     {!!subheading &&
-      <Text mt={3} textAlign="center">
+      <Text mt={3} fontWeight={3} fontSize={3} color="primary.main" textAlign="center">
         {subheading}
       </Text>
     }

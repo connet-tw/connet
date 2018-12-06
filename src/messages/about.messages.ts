@@ -11,6 +11,17 @@ export const banner = defineMessages({
   },
 });
 
+export const s1 = defineMessages({
+  heading: {
+    id: "about.s1.heading",
+    defaultMessage: "Controlnet International Inc."
+  },
+  subheading: {
+    id: "about.s1.subheading",
+    defaultMessage: "Expert in Power System Integration",
+  },
+});
+
 export const body = defineMessages({
   one: {
     id: "about.body.one",
