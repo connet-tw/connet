@@ -33,7 +33,7 @@ interface Props {
 
 const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
   <Box as="footer">
-    <Main bg="primary.dark" color="white.light" py={3}>
+    <Main bg="primary.main" color="white.light" py={3}>
       <MainInner spacing={3} justifyContent="center" alignItems="center" flexDirection="column">
         {logo &&
           <Flex style={{opacity: 0.9}} width={["220px"]}>

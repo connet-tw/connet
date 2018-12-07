@@ -31,7 +31,7 @@ const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, bo
     />
     <Flex p={2} flexWrap="wrap">
       {categoryLinks.map((x) =>
-        <Flex width={[1, 1/2, 1/4]} p={2}>
+        <Flex width={[1, 1/2, 1/2, 1/4]} p={2}>
           <Card
             radius={2}
             width={1}
