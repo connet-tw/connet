@@ -8,7 +8,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-favicon',
       options: {
-        logo: './src/images/logos/logo.png',
+        logo: './src/images/logos/logo-square.jpg',
       },
     },
     {
