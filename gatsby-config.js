@@ -2,6 +2,7 @@ const siteMetadata = require('./src/data/siteMetadata');
 
 module.exports = {
   siteMetadata,
+  pathPrefix: "connet",
   plugins: [
     'gatsby-plugin-react-helmet',
     {
