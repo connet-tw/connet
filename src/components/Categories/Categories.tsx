@@ -39,9 +39,9 @@ const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, bo
             shadow={1}
             flexDirection="column"
           >
-            <Flex flexDirection="column">
+            <Flex flexDirection="column" style={{height: "100%"}}>
               <Image style={{height: 140}} fluid={x.image}/>
-              <Box m={3}>
+              <Box m={3} style={{flexGrow: 1}}>
                 <Text as="h3" color="primary.main" fontWeight={4} fontSize={3}>
                   {x.label}
                 </Text>
