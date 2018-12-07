@@ -19,15 +19,15 @@ const secondary = "rgb(203,160,83)";
 const myTheme = makeTheme({
   colors: {
     primary: {
-      dark: darken(primary)(1/4), 
+      dark: darken(primary)(1/4),
       main: primary,
-      light: lighten(primary)(1/4), 
+      light: lighten(primary)(1/4),
       contrast: "rgba(255,255,255,0.85)",
     },
     secondary: {
-      dark: darken(secondary)(1/4), 
+      dark: darken(secondary)(1/4),
       main: secondary,
-      light: lighten(secondary)(1/4), 
+      light: lighten(secondary)(1/4),
       contrast: "rgba(255,255,255,0.85)",
     },
   },
@@ -57,7 +57,6 @@ const Content = styled(Flex)`
 `;
 
 const Main = styled(Box)`
-  max-width: ${props => props.theme.maxWidth};
   width: 100%;
   margin: 0 auto;
   flex-grow: 1;

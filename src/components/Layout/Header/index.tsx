@@ -56,16 +56,18 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
     justifyContent="space-between"
     shadow={1}
   >
-    <Brand as={Link} to="/" alignItems="center">
-      {logo &&
-        <LogoWrapper alignItems="center">
-          <Logo src={logo.childImageSharp.fixed.src}/>
-        </LogoWrapper>
-      }
-      <BrandName fontSize={3} ml={3}>
-        {title}
-      </BrandName>
-    </Brand>
+    <Link to="/" >
+      <Brand alignItems="center">
+        {logo &&
+          <LogoWrapper alignItems="center">
+            <Logo src={logo.childImageSharp.fixed.src}/>
+          </LogoWrapper>
+        }
+        <BrandName color="primary.main" fontSize={3} ml={3}>
+          {title}
+        </BrandName>
+      </Brand>
+    </Link>
     <Flex>
       <Nav>
         {navItems.map((x) => (

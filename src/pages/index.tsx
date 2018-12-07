@@ -71,7 +71,7 @@ export const query = graphql`
   query($locale: String!) {
     headerImg: file(relativePath: {eq: "header/solar-panels.jpg"}) {
       childImageSharp {
-        fluid(maxWidth: 1400) {
+        fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid
         }
       }
@@ -91,7 +91,7 @@ export const query = graphql`
             subheading
             image {
               childImageSharp {
-                fluid(maxWidth: 1400) {
+                fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
                 }
               }

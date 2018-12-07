@@ -6,7 +6,11 @@ import { Image } from "../Image";
 const Wrapper = styled(Card)`
   position: relative;
   overflow: hidden;
-  min-height: 300px;
+  min-height: 240px;
+  ${props => props.theme.devices[2]} {
+    min-height: 400px;
+    max-height: 500px;
+  }
 `;
 
 const ImageWrapper = styled(Flex)`
