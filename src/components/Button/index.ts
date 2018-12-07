@@ -19,7 +19,7 @@ const defaultStyle = css<ButtonProps>`
   color: ${props => props.theme.colors.text.dark};
   -webkit-tap-highlight-color: transparent;
   text-align: center;
-  transition: all .3s ease-out;
+  transition: all 400ms cubic-bezier(.08,.52,.52,1);
   padding: ${props => props.theme.sizes[2]} ${props => props.theme.sizes[3]};
   &:hover {
     background: ${props => props.theme.colors.action.hover};
