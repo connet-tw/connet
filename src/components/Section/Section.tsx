@@ -3,10 +3,8 @@ import { Card } from "src/theme/primitives";
 
 export const Section: React.SFC<{}> = ({ children }) => (
   <Card
-    py={3}
-    bg="background.paper"
+    py={4}
     width={1}
-    bt={2} btc="secondary.main"
     alignItems="center" flexDirection="column"
   >
     {children}

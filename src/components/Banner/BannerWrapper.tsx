@@ -35,7 +35,7 @@ interface BannerProps {
 
 const BannerWrapper: React.SFC<BannerProps> = ({ image, children }) => {
   return (
-    <Wrapper justifyContent="flex-end">
+    <Wrapper bb={2} borderColor="secondary.main" justifyContent="flex-end">
       <ImageWrapper>
         <Image style={{width: "100%"}} fluid={image}/>
       </ImageWrapper>
@@ -48,7 +48,6 @@ const BannerWrapper: React.SFC<BannerProps> = ({ image, children }) => {
         bt={1}
         borderColor="white.light"
         bg="linear-gradient(to top, rgba(255,255,255,1.0), rgba(255,255,255,0.75))"
-        opacity={0.95}
       />
         <Box width={1} style={{zIndex: 1}}>
           {children}

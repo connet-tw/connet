@@ -7,6 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
 import { AboutSummary } from "../components/About";
 import { Categories } from "../components/Categories";
+import { Box } from "src/theme/primitives";
 
 interface ServiceNode {
   node: {
@@ -38,29 +39,33 @@ const Index: React.SFC<IndexProps> = (({ data }) => {
         heading={<FormattedMessage {...m.hero.heading}/>}
         image={data.headerImg}
       />
-     <AboutSummary
-        heading={<FormattedMessage {...m.about.heading}/>}
-        body={[<FormattedMessage {...m.about.subheading}/>]}
-        highlights={[1,2,3,4].map((n) =>
-          ({
-            heading: <FormattedMessage {...m.highlights["heading" + n]}/>,
-            subheading: <FormattedMessage {...m.highlights["subheading" + n]}/>,
-          })
-        )}
-      />
-      <Categories
-        heading={<FormattedMessage {...m.services.heading}/>}
-        body={[<FormattedMessage {...m.services.subheading}/>]}
-        categoryLinks={data.services.edges.map(({node}) =>
-          ({
-            label: node.frontmatter.heading,
-            text: node.frontmatter.subheading,
-            image: node.frontmatter.image,
-            to: node.fields.slug,
-            buttonText: <FormattedMessage {...m.services.learnMore}/>
-          })
-        )}
-      />
+      <Box bg="background.paper">
+        <AboutSummary
+            heading={<FormattedMessage {...m.about.heading}/>}
+            body={[<FormattedMessage {...m.about.subheading}/>]}
+            highlights={[1,2,3,4].map((n) =>
+              ({
+                heading: <FormattedMessage {...m.highlights["heading" + n]}/>,
+                subheading: <FormattedMessage {...m.highlights["subheading" + n]}/>,
+              })
+            )}
+          />
+      </Box>
+      <Box>
+        <Categories
+          heading={<FormattedMessage {...m.services.heading}/>}
+          body={[<FormattedMessage {...m.services.subheading}/>]}
+          categoryLinks={data.services.edges.map(({node}) =>
+            ({
+              label: node.frontmatter.heading,
+              text: node.frontmatter.subheading,
+              image: node.frontmatter.image,
+              to: node.fields.slug,
+              buttonText: <FormattedMessage {...m.services.learnMore}/>
+            })
+          )}
+        />
+      </Box>
     </Layout>
   );
 });

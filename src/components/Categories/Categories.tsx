@@ -38,6 +38,7 @@ const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, bo
             key={x.to}
             shadow={1}
             flexDirection="column"
+            bg="background.paper"
           >
             <Flex flexDirection="column" style={{height: "100%"}}>
               <Image style={{height: 140}} fluid={x.image}/>

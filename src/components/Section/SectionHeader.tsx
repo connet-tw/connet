@@ -18,7 +18,7 @@ export const SectionHeader: React.SFC<Props> = ({
     <Text
       textAlign="center"
       as="h2"
-      fontWeight={2} fontSize={5}
+      fontWeight={2} fontSize={[5,5,6]}
       color="text.dark"
     >
       {heading}

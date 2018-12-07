@@ -69,7 +69,7 @@ export const query = graphql`
   query($locale: String!) {
     headerImg: file(relativePath: {eq: "header/microgrids.jpg"}) {
       childImageSharp {
-        fluid(maxWidth: 1400) {
+        fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid
         }
       }

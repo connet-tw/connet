@@ -1,20 +1,10 @@
 import * as React from "react";
-import { Box, Text, Flex } from "src/theme/primitives";
+import { Box, Card, Text, Flex } from "src/theme/primitives";
 import { styled } from "src/theme";
 
-const Main = styled(Box)`
+const Main = styled(Card)`
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
-  &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0.05;
-  }
 `;
 
 const MainInner = styled(Flex)`
@@ -33,7 +23,7 @@ interface Props {
 
 const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
   <Box as="footer">
-    <Main bg="primary.main" color="white.light" py={3}>
+    <Main bg="text.dark" color="white.light" py={3} bt={4} borderColor="secondary.main">
       <MainInner spacing={3} justifyContent="center" alignItems="center" flexDirection="column">
         {logo &&
           <Flex style={{opacity: 0.9}} width={["220px"]}>
@@ -41,7 +31,7 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
           </Flex>
         }
         <Flex justifyContent="center" flexDirection="column">
-          <Text mb={3} fontSize={3} fontWeight={5}>
+          <Text mb={3} color="primary.light" fontSize={3} fontWeight={5}>
             {title}
           </Text>
           {
@@ -57,7 +47,7 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
         </Flex>
       </MainInner>
     </Main>
-    <Flex bg="text.dark" p={3} justifyContent="center">
+    <Flex bg="black.main" p={3} justifyContent="center">
       <Text color="grey.600" fontSize={1}>
         © 2018 Copyright: <Text as="span" color="primary.contrast">
           {title}

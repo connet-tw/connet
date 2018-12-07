@@ -24,13 +24,14 @@ interface ContactCardProps {
 
 const ContactCard: React.SFC<ContactCardProps> = ({icon, text}) => {
   const I = icon;
-  return (<Box p={2} width={[1, 1/3]}>
+  return (<Box p={2} width={1}>
     <Card width={1}
       p={3}
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"
       radius={2} shadow={1} style={{height: "100%"}}
+      bg="background.paper"
     >
       <Text textAlign="center" color="text.main">
         <I size={24}/>
@@ -54,26 +55,28 @@ const ContactPage: React.SFC<ContactPageProps> = (({data}) => {
         image={data.headerImg}
         heading={<FormattedMessage {...m.contact.heading}/>}
       />
-      <Section>
-        <Flex p={2} width={1} flexWrap="wrap">
-          <ContactCard
-            icon={Phone}
-            text={[<FormattedMessage {...m.contactDetails.phoneNumber}/>]}
-          />
-          <ContactCard
-            icon={Email}
-            text={[<FormattedMessage {...m.contactDetails.emailAddress}/>]}
-          />
-          <ContactCard
-            icon={Home}
-            text={[
-              <FormattedMessage {...m.contactDetails.street}/>,
-              <FormattedMessage {...m.contactDetails.city}/>,
-              <FormattedMessage {...m.contactDetails.country}/>,
-            ]}
-          />
-        </Flex>
-      </Section>
+      <Box bg="grey.100" style={{flexGrow: 1}}>
+        <Section>
+          <Flex p={2} width={[1,1,2/3,1/3]} flexWrap="wrap">
+            <ContactCard
+              icon={Phone}
+              text={[<FormattedMessage {...m.contactDetails.phoneNumber}/>]}
+            />
+            <ContactCard
+              icon={Email}
+              text={[<FormattedMessage {...m.contactDetails.emailAddress}/>]}
+            />
+            <ContactCard
+              icon={Home}
+              text={[
+                <FormattedMessage {...m.contactDetails.street}/>,
+                <FormattedMessage {...m.contactDetails.city}/>,
+                <FormattedMessage {...m.contactDetails.country}/>,
+              ]}
+            />
+          </Flex>
+        </Section>
+      </Box>
     </Layout>
   );
 });
@@ -84,7 +87,7 @@ export const query = graphql`
   query {
     headerImg: file(relativePath: {eq: "header/solar-panels.jpg"}) {
       childImageSharp {
-        fluid(maxWidth: 1400) {
+        fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid
         }
       }
