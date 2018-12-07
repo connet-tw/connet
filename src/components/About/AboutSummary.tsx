@@ -1,6 +1,11 @@
 import * as React from "react";
 import { Box, Flex, Text } from "src/theme/primitives";
 import { Section, SectionHeader } from "../Section";
+import { styled } from "src/theme";
+
+const Container = styled(Flex)`
+  max-width: 900px;
+`
 
 interface Highlight {
   heading: React.ReactNode;
@@ -8,8 +13,8 @@ interface Highlight {
 }
 
 interface AboutSummaryProps {
-  heading: React.ReactNode; 
-  subheading?: React.ReactNode; 
+  heading: React.ReactNode;
+  subheading?: React.ReactNode;
   body?: React.ReactNode[];
   highlights: Highlight[];
 }
@@ -26,7 +31,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
         body={body}
       />
       {!!highlights &&
-        <Flex flexWrap="wrap" width={1} p={3}>
+        <Container flexWrap="wrap" width={1} p={3}>
           {highlights.map((h, i) =>
             <Flex p={3} width={[1, 1/2, 1/4]} key={i} alignItems="center" flexDirection="column">
               <Box width={1}>
@@ -35,17 +40,17 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
                   mb={2}
                   textAlign="center"
                   as="h5"
-                  fontSize={5} fontWeight={2}
+                  fontSize={[5,6]} fontWeight={2}
                 >
                   {h.heading}
                 </Text>
-                <Text color="text.main" as="p" textAlign="center">
+                <Text textTransform="uppercase" color="text.main" fontSize={1} as="p" textAlign="center">
                   {h.subheading}
                 </Text>
               </Box>
             </Flex>
           )}
-        </Flex>
+        </Container>
       }
     </Section>
   );

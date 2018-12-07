@@ -14,7 +14,7 @@ const Banner: React.SFC<BannerProps> = (props) => {
       <Box p={4}>
         <Text
           as="h1"
-          fontSize={[5,6]}
+          fontSize={[5,6,6,7]}
           color="primary.main"
           fontWeight={2}
           textAlign="center"
