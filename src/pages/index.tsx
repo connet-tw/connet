@@ -8,6 +8,9 @@ import { Banner } from "../components/Banner";
 import { AboutSummary } from "../components/About";
 import { Categories } from "../components/Categories";
 
+import { Button } from "../components/Button";
+import { Flex } from "src/theme/primitives";
+
 interface ServiceNode {
   node: {
     fields: {
@@ -38,7 +41,7 @@ const Index: React.SFC<IndexProps> = (({ data }) => {
         heading={<FormattedMessage {...m.hero.heading}/>}
         image={data.headerImg}
       />
-      <AboutSummary
+     <AboutSummary
         heading={<FormattedMessage {...m.about.heading}/>}
         body={[<FormattedMessage {...m.about.subheading}/>]}
         highlights={[1,2,3,4].map((n) =>

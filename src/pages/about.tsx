@@ -53,7 +53,7 @@ const AboutPage: React.SFC<AboutPageProps> = (({data}) => {
                 {node.frontmatter.heading}
               </Button>
             </Flex>
-          )} 
+          )}
         </Flex>
         <Flex width={1} p={3}>
           <Image style={{width: "100%"}} fluid={data.headerImg}/>
