@@ -3,8 +3,6 @@ heading: "Flood Control"
 subheading: "Pumping station automation system"
 image: "./flood-control.jpg"
 ---
-![flood-control](gate-control.jpg)
-
 ![flood-control](system-overview.jpg)
 
 ![flood-control](trash-remover.jpg)
