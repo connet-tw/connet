@@ -3,7 +3,7 @@ heading: "Microgrid"
 subheading: "Independent hybrid power system"
 image: "./microgrids.jpg"
 ---
-![microgrid](10 - Microgrid gasfication generator.png)
+![microgrid](10.png)
 
 ![microgrid](microgrid__small.jpg)
 
