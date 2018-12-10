@@ -72,7 +72,8 @@ export default withIntl(ServicesPage);
 export const query = graphql`
   query($locale: String!) {
     services: allMarkdownRemark(
-      filter: {fields: { type: { eq: "services" }, lang: { eq: $locale }}}
+      filter: {fields: { type: { eq: "services" }, lang: { eq: $locale }}},
+      sort: {fields: [frontmatter___order], order: ASC}
     ) {
       edges {
         node {
@@ -85,7 +86,7 @@ export const query = graphql`
             subheading
             image {
               childImageSharp {
-                fluid(maxWidth: 800) {
+                fluid(maxWidth: 960, quality: 90) {
                   ...GatsbyImageSharpFluid
                 }
               }

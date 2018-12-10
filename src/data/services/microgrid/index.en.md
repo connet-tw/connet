@@ -1,5 +1,6 @@
 ---
 heading: "Microgrid"
+order: 2
 subheading: "Independent hybrid power system"
 image: "./microgrids.jpg"
 ---

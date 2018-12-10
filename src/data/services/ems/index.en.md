@@ -1,5 +1,6 @@
 ---
 heading: "EMS"
+order: 3
 subheading: "Energy Management System"
 image: "./energy-management.jpg"
 ---
