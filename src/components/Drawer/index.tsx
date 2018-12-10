@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface DrawerProps {
   anchor: "left" | "right" | "top" | "bottom";
@@ -9,6 +9,15 @@ interface DrawerProps {
   toggleMenu(): void;
 }
 
+const fadeIn = keyframes`
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}
+`;
+
 const DrawerWrapper = styled.div<{width: number, open: boolean}>`
   z-index: 1400;
   position: absolute;
@@ -17,7 +26,7 @@ const DrawerWrapper = styled.div<{width: number, open: boolean}>`
   right: 0;
   display: block;
   transform: ${props => props.open ? "translateX(0)" : "translateX(100%)"};
-  transition: transform 0.2s ease-out;
+  transition: transform 0.3s ease-out;
 `;
 
 const DrawerOverlay = styled.div<{open: boolean, onClick(): void}>`
@@ -29,6 +38,7 @@ const DrawerOverlay = styled.div<{open: boolean, onClick(): void}>`
   bottom: 0;
   display: ${props => props.open ? "auto" : "none"};
   background: rgba(0,0,0,0.4);
+  animation: ${fadeIn} 0.3s ease-out;
 `;
 
 const DrawerContent = styled.div<{open: boolean}>`
