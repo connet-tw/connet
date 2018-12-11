@@ -1,9 +1,9 @@
-import * as React from "react";
-import { DrawerMenu } from "../../DrawerMenu";
-import { styled } from "src/theme";
-import { Link } from "../../../i18n";
-import { Card, Flex, Text } from "src/theme/primitives";
-import { Button } from "../../Button";
+import * as React from 'react'
+import { DrawerMenu } from '../../DrawerMenu'
+import { styled } from 'src/theme'
+import { Link } from '../../../i18n'
+import { Card, Flex, Text } from 'src/theme/primitives'
+import { Button } from '../../Button'
 
 const Trigger = styled.div`
   display: block;
@@ -17,19 +17,19 @@ const Nav = styled(Flex)`
   ${props => props.theme.devices[2]} {
     display: flex;
   }
-`;
+`
 
 export const Wrapper = styled(Card)`
   z-index: ${props => props.theme.zIndexes[5]};
-`;
+`
 
 export const Brand = styled(Flex)`
   cursor: pointer;
-`;
+`
 
 export const LogoWrapper = styled(Flex)`
   width: ${props => props.theme.dimensions[2]};
-`;
+`
 
 export const Logo = styled.img`
   width: 100%;
@@ -39,12 +39,12 @@ export const BrandName = styled(Text)`
   ${props => props.theme.devices[1]} {
     display: block;
   }
-`;
+`
 
 interface HeaderProps {
-  logo?: any;
-  title: React.ReactNode;
-  navItems: {to: string, label: React.ReactNode}[];
+  logo?: any
+  title: React.ReactNode
+  navItems: { to: string; label: React.ReactNode }[]
 }
 
 export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
@@ -56,13 +56,13 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
     justifyContent="space-between"
     shadow={1}
   >
-    <Link to="/" >
+    <Link to="/">
       <Brand alignItems="center">
-        {logo &&
+        {logo && (
           <LogoWrapper alignItems="center">
-            <Logo src={logo.childImageSharp.fixed.src}/>
+            <Logo src={logo.childImageSharp.fixed.src} />
           </LogoWrapper>
-        }
+        )}
         <BrandName color="primary.main" fontSize={3} ml={3}>
           {title}
         </BrandName>
@@ -70,15 +70,15 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
     </Link>
     <Flex>
       <Nav>
-        {navItems.map((x) => (
-          <Button ml={1} as={Link} to={x.to} key={x.to}>
+        {navItems.map(x => (
+          <Button ml={1} to={x.to} key={x.to}>
             {x.label}
           </Button>
         ))}
       </Nav>
       <Trigger>
-        <DrawerMenu title={title} navItems={navItems} logo={logo}/>
+        <DrawerMenu title={title} navItems={navItems} logo={logo} />
       </Trigger>
     </Flex>
   </Wrapper>
-);
+)

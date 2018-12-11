@@ -62,12 +62,7 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
               <Flex justifyContent="center" flexDirection="column" p={1}>
                 {navItems.map(x => (
                   <Flex key={x.to} p={1}>
-                    <Button
-                      onClick={injected.handleClose}
-                      width={1}
-                      to={x.to}
-                      as={Link}
-                    >
+                    <Button onClick={injected.handleClose} width={1} to={x.to}>
                       {x.label}
                     </Button>
                   </Flex>

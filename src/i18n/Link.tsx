@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 
 export interface I18nLinkProps extends InjectedIntlProps {
   to: string
-  onClick(): void
+  onClick?(): void
   className?: string
 }
 
