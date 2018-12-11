@@ -7,6 +7,7 @@
     "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
     "@types/react-helmet": "^5.0.7",
+    "@types/react-motion": "0.0.27",
     "babel-plugin-styled-components": "^1.9.2",
     "browser-locale": "^1.0.3",
     "chroma-js": "^1.4.1",
@@ -35,6 +36,7 @@
     "react-helmet": "^5.2.0",
     "react-intl": "^2.7.2",
     "react-jss": "^8.6.1",
+    "react-motion": "^0.5.2",
     "rehype-react": "^3.1.0",
     "styled-components": "^4.1.2",
     "styled-icons": "^4.3.0",
@@ -52,7 +54,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
     "test": "jest",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public" 
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
     "@types/chroma-js": "^1.4.0",
