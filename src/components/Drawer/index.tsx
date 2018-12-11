@@ -10,7 +10,7 @@ interface DrawerProps {
   toggleMenu(): void
 }
 
-const DrawerWrapper = styled.div<{ width: number; open: boolean }>`
+const DrawerWrapper = styled.div<{ width: number }>`
   z-index: 1400;
   position: absolute;
   width: ${props => props.width}px;
@@ -19,8 +19,9 @@ const DrawerWrapper = styled.div<{ width: number; open: boolean }>`
   display: block;
 `
 
-const DrawerOverlay = styled.div<{ open: boolean; onClick(): void }>`
+const DrawerOverlay = styled.div<{ onClick(): void }>`
   z-index: 1400;
+  opacity: 0;
   position: fixed;
   top: 0;
   right: 0;
@@ -29,50 +30,57 @@ const DrawerOverlay = styled.div<{ open: boolean; onClick(): void }>`
   background: rgba(0, 0, 0, 0.4);
 `
 
-const DrawerContent = styled.div<{ open: boolean }>`
+const DrawerContent = styled.div`
   z-index: 1400;
   height: 100vh;
   width: 100%;
   overflow-x: hidden;
 `
 
-const Drawer: React.SFC<DrawerProps> = ({
-  width,
-  open,
-  toggleMenu,
-  handleClose,
-  children,
-}) => {
-  return (
-    <>
-      <Motion
-        defaultStyle={{ x: 300, opacity: 1 }}
-        style={{ x: spring(open ? 0 : 300), opacity: spring(open ? 1 : 0) }}
-      >
-        {style => (
-          <>
-            <DrawerOverlay
-              style={{
-                display: open ? 'block' : 'none',
-                opacity: style.opacity,
-              }}
-              open={open}
-              onClick={handleClose}
-            />
-            <DrawerWrapper
-              style={{
-                transform: `translateX(${style.x}px)`,
-              }}
-              open={open}
-              width={width}
-            >
-              <DrawerContent open={open}>{children}</DrawerContent>
-            </DrawerWrapper>
-          </>
-        )}
-      </Motion>
-    </>
-  )
+interface State {
+  animating: boolean
+}
+
+class Drawer extends React.Component<DrawerProps, State> {
+  state: State = { animating: false }
+
+  componentDidUpdate(pp: DrawerProps, ps: State) {
+    if (!pp.open && this.props.open) this.setState({ animating: true })
+  }
+
+  render() {
+    const { width, open, handleClose, children } = this.props
+    return (
+      <>
+        <Motion
+          defaultStyle={{ x: 300, opacity: 1 }}
+          style={{ x: spring(open ? 0 : 300), opacity: spring(open ? 1 : 0) }}
+          onRest={() => this.setState({ animating: false })}
+        >
+          {style => (
+            <>
+              {(this.props.open || this.state.animating) && (
+                <DrawerOverlay
+                  style={{
+                    opacity: style.opacity,
+                  }}
+                  onClick={handleClose}
+                />
+              )}
+              <DrawerWrapper
+                style={{
+                  transform: `translateX(${style.x}px)`,
+                }}
+                width={width}
+              >
+                <DrawerContent>{children}</DrawerContent>
+              </DrawerWrapper>
+            </>
+          )}
+        </Motion>
+      </>
+    )
+  }
 }
 
 export { Drawer }
