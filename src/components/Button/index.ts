@@ -31,21 +31,21 @@ const defaultStyle = css<ButtonProps>`
     outline: none;
   }
   ${props => props.outlined && css`
-    border-color: ${props => props.theme.colors.text.light};
+    border-color: ${props.theme.colors.text.light};
     &:hover {
-      background: ${props => props.theme.colors.action.hover};
+      background: ${props.theme.colors.action.hover};
     }
     &:focus {
       outline: none;
-      background: ${props => props.theme.colors.action.hover};
+      background: ${props.theme.colors.action.hover};
     }
   `}
   ${props => props.contained && css`
     border-color: transparent;
-    background: ${props => props.theme.colors.text.light};
-    color: ${props => props.theme.colors.white.light};
+    background: ${props.theme.colors.text.light};
+    color: ${props.theme.colors.white.light};
     &:hover {
-      background: ${props => props.theme.colors.text.main};
+      background: ${props.theme.colors.text.main};
     }
   `}
 `;
@@ -60,23 +60,23 @@ const primary = css<ButtonProps>`
     background: ${props => props.theme.colors.grey[200]};
   }
   ${props => props.outlined && css`
-    border-color: ${props => props.theme.colors.primary.main};
+    border-color: ${props.theme.colors.primary.main};
     &:hover {
-      background: ${props => props.theme.colors.primary.main};
-      color: ${props => props.theme.colors.white.light};
+      background: ${props.theme.colors.primary.main};
+      color: ${props.theme.colors.white.light};
     }
     &:focus {
       outline: none;
     }
   `}
   ${props => props.contained && css`
-    border-color: ${props => props.theme.colors.primary.main};
-    background: ${props => props.theme.colors.primary.main};
-    color: ${props => props.theme.colors.white.main};
+    border-color: ${props.theme.colors.primary.main};
+    background: ${props.theme.colors.primary.main};
+    color: ${props.theme.colors.white.light};
     &:hover {
-      background: ${props => props.theme.colors.primary.light};
-      color: ${props => props.theme.colors.white.main};
-      border-color: ${props => props.theme.colors.primary.light};
+      background: ${props.theme.colors.primary.light};
+      color: ${props.theme.colors.white.main};
+      border-color: ${props.theme.colors.primary.light};
     }
   `}
 `;
@@ -91,23 +91,23 @@ const secondary = css<ButtonProps>`
     background: ${props => props.theme.colors.grey[200]};
   }
   ${props => props.outlined && css`
-    border-color: ${props => props.theme.colors.secondary.main};
+    border-color: ${props.theme.colors.secondary.main};
     &:hover {
-      background: ${props => props.theme.colors.secondary.main};
-      color: ${props => props.theme.colors.white.light};
+      background: ${props.theme.colors.secondary.main};
+      color: ${props.theme.colors.white.light};
     }
     &:focus {
       outline: none;
     }
   `}
   ${props => props.contained && css`
-    border-color: ${props => props.theme.colors.secondary.main};
-    background: ${props => props.theme.colors.secondary.main};
-    color: ${props => props.theme.colors.white.main};
+    border-color: ${props.theme.colors.secondary.main};
+    background: ${props.theme.colors.secondary.main};
+    color: ${props.theme.colors.white.main};
     &:hover {
-      background: ${props => props.theme.colors.secondary.light};
-      color: ${props => props.theme.colors.white.main};
-      border-color: ${props => props.theme.colors.secondary.light};
+      background: ${props.theme.colors.secondary.light};
+      color: ${props.theme.colors.white.main};
+      border-color: ${props.theme.colors.secondary.light};
     }
   `}
 `;
@@ -123,22 +123,22 @@ const white = css<ButtonProps>`
     color: ${props => props.theme.colors.white.contrast};
   }
   ${props => props.outlined && css`
-    border-color: ${props => props.theme.colors.white.light};
+    border-color: ${props.theme.colors.white.light};
     &:hover {
-      background: ${props => props.theme.colors.white.light};
-      color: ${props => props.theme.colors.white.contrast};
+      background: ${props.theme.colors.white.light};
+      color: ${props.theme.colors.white.contrast};
     }
     &:focus {
       outline: none;
     }
   `}
   ${props => props.contained && css`
-    background: ${props => props.theme.colors.white.light};
-    border-color: ${props => props.theme.colors.white.light};
-    color: ${props => props.theme.colors.white.contrast};
+    background: ${props.theme.colors.white.light};
+    border-color: ${props.theme.colors.white.light};
+    color: ${props.theme.colors.white.contrast};
     &:hover {
-      background: ${props => props.theme.colors.white.main};
-      color: ${props => props.theme.colors.white.contrast};
+      background: ${props.theme.colors.white.main};
+      color: ${props.theme.colors.white.contrast};
     }
   `}
 `;
