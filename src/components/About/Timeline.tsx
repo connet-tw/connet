@@ -2,6 +2,7 @@ import * as React from "react";
 import { styled, css } from "src/theme";
 import { Box, Flex, Card, Text } from "src/theme/primitives";
 import { data } from "./References";
+import { Container } from "../Container";
 
 const Line = styled(Flex)`
   position: relative;
@@ -12,13 +13,19 @@ const Line = styled(Flex)`
     width: 1px;
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 0%;
+    margin-left: 16px;
     transform: translateX(-50%);
+    ${props => props.theme.devices[2]} {
+      left: 50%;
+      margin-left: 0;
+    }
   }
 `;
 
 const Marker = styled(Card)`
   position: absolute;
+  transform: translateX(-50%);
   top: 14px;
   height: 36px;
   width: 36px;
@@ -28,53 +35,59 @@ const Marker = styled(Card)`
 const WrapperLeft = css`
   left: 0%;
   padding-right: 40px;
+  padding-left: 0px;
   ${Marker} {
-    right: 0;
-    transform: translateX(50%);
+    left: 100%;
   }
 `;
 
 const WrapperRight = css`
   left: 50%;
   padding-left: 40px;
+  padding-right: 0px;
   ${Marker} {
-    transform: translateX(-50%);
     left: 0;
   }
 `;
 
 const Wrapper = styled(Box)<{ i: number }>`
-  width: 50%;
+  ${WrapperRight}
   position: relative;
+  left: 0%;
+  width: 100%;
   padding: 0;
-  margin-top: ${props => (props.i === 0 ? 0 : -40)}px;
-  ${props => (props.i % 2 === 0 ? WrapperRight : WrapperLeft)};
-`;
-
-const arrow = css`
-  &::before {
-    content: "";
-    height: 0;
-    width: 0;
-    position: absolute;
-    top: 22px;
-    z-index: 2;
-    border: medium solid white;
+  padding-left: 38px;
+  ${props => props.theme.devices[2]} {
+    ${props => (props.i % 2 === 0 ? WrapperRight : WrapperLeft)};
+    margin-top: ${props => (props.i === 0 ? 0 : -60)}px;
+    width: 50%;
   }
 `;
 
+const arrow = css`
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 22px;
+  z-index: 2;
+  border: medium solid white;
+`;
+
 const rightArrow = css`
-  ${arrow}
   &::before {
-    right: -10px;
+    ${arrow}
+    left: 100%;
+    margin-left: 0;
     border-width: 10px 0px 10px 10px;
     border-color: transparent transparent transparent white;
 `;
 
 const leftArrow = css`
-  ${arrow}
   &::before {
-    left: -10px;
+    ${arrow}
+    left: 0%;
+    margin-left: -10px;
     border-width: 10px 10px 10px 0px;
     border-color: transparent white transparent transparent;
 `;
@@ -91,40 +104,54 @@ const ProjectCard = styled(Card)<{ i: number }>`
   filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.14));
   overflow: visible;
   position: relative;
-  ${props => (props.i % 2 === 0 ? leftCard : rightCard)}
+  ${props => props.theme.devices[0]} {
+    ${leftCard}
+  }
+  ${props => props.theme.devices[2]} {
+    ${props => (props.i % 2 === 0 ? leftCard : rightCard)}
+  }
 `;
 
 export const Timeline: React.SFC<{}> = () => (
   <Box bg="grey.200" width={1}>
-    <Flex p={3} flexDirection="column">
-      <Text as="h2">Project References</Text>
-      <Box p={3}>
-        {data.map((x, i) => (
-          <Flex>
-            <Line bg="grey.200" p={3} width={1}>
-              <Wrapper i={i}>
-                <Marker bg="grey.300" b={4} borderColor="grey.200" />
-                <ProjectCard
-                  radius={2}
-                  i={i}
-                  py={3}
-                  px={4}
-                  bg="background.paper"
-                >
-                  <Text mb={1} fontSize={4} fontWeight={2} color="primary.main">
-                    {x.date}
-                  </Text>
-                  <Text mb={2} fontSize={3} color="text.main">
-                    {x.project}
-                  </Text>
-                  <Text color="secondary.main">{x.customer}</Text>
-                  <Text color="text.light">{x.location}</Text>
-                </ProjectCard>
-              </Wrapper>
-            </Line>
-          </Flex>
-        ))}
-      </Box>
+    <Flex mx={3} my={4} flexDirection="column">
+      <Text mb={2} textAlign="center" as="h2" color="text.primary">
+        Project References
+      </Text>
+      <Container>
+        <Box p={3}>
+          {data.map((x, i) => (
+            <Flex>
+              <Line bg="grey.200" p={3} width={1}>
+                <Wrapper i={i}>
+                  <Marker bg="grey.300" b={4} borderColor="grey.200" />
+                  <ProjectCard
+                    radius={2}
+                    i={i}
+                    py={3}
+                    px={4}
+                    bg="background.paper"
+                  >
+                    <Text
+                      mb={1}
+                      fontSize={4}
+                      fontWeight={2}
+                      color="primary.main"
+                    >
+                      {x.date}
+                    </Text>
+                    <Text mb={2} fontSize={[2, 3, 3]} color="text.main">
+                      {x.project}
+                    </Text>
+                    <Text color="secondary.main">{x.customer}</Text>
+                    <Text color="text.light">{x.location}</Text>
+                  </ProjectCard>
+                </Wrapper>
+              </Line>
+            </Flex>
+          ))}
+        </Box>
+      </Container>
     </Flex>
   </Box>
 );
