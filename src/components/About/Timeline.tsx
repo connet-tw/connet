@@ -7,9 +7,9 @@ const Line = styled(Flex)`
   position: relative;
   &::before {
     content: "";
-    background: ${props => props.theme.colors.grey[400]};
+    background: ${props => props.theme.colors.grey[500]};
     height: 100%;
-    width: 2px;
+    width: 1px;
     position: absolute;
     top: 0;
     left: 50%;
@@ -87,7 +87,8 @@ const rightCard = css`
   ${rightArrow}
 `;
 
-const ProjectCard = styled(Box)<{ i: number }>`
+const ProjectCard = styled(Card)<{ i: number }>`
+  overflow: visible;
   position: relative;
   ${props => (props.i % 2 === 0 ? leftCard : rightCard)}
 `;
@@ -95,17 +96,28 @@ const ProjectCard = styled(Box)<{ i: number }>`
 export const Timeline: React.SFC<{}> = () => (
   <Box bg="grey.200" width={1}>
     <Flex p={3} flexDirection="column">
-      <Text>Timeline</Text>
+      <Text as="h2">Project References</Text>
       <Box p={3}>
         {data.map((x, i) => (
           <Flex>
             <Line bg="grey.200" p={3} width={1}>
               <Wrapper i={i}>
-                <Marker bg="primary.main" b={4} borderColor="grey.200" />
-                <ProjectCard i={i} p={3} bg="background.paper">
-                  <Text fontSize={4}>{x.date}</Text>
-                  <Text>{x.project}</Text>
-                  <Text>{x.customer}</Text>
+                <Marker bg="grey.300" b={4} borderColor="grey.200" />
+                <ProjectCard
+                  radius={2}
+                  i={i}
+                  py={3}
+                  px={4}
+                  bg="background.paper"
+                >
+                  <Text mb={1} fontSize={4} fontWeight={2} color="primary.main">
+                    {x.date}
+                  </Text>
+                  <Text mb={2} fontSize={3} color="text.main">
+                    {x.project}
+                  </Text>
+                  <Text color="secondary.main">{x.customer}</Text>
+                  <Text color="text.light">{x.location}</Text>
                 </ProjectCard>
               </Wrapper>
             </Line>
