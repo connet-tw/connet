@@ -23,17 +23,20 @@ type Props = {
   gradient?: string;
 };
 
-const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, body, categoryLinks }) => (
+const Categories: React.SFC<Props> = ({
+  image,
+  gradient,
+  heading,
+  subheading,
+  body,
+  categoryLinks,
+}) => (
   <Section>
-    <SectionHeader
-      heading={heading}
-      subheading={subheading}
-      body={body}
-    />
+    <SectionHeader heading={heading} subheading={subheading} body={body} />
     <Container>
       <Flex p={2} flexWrap="wrap">
-        {categoryLinks.map((x) =>
-          <Flex width={[1, 1/2, 1/2, 1/4]} p={2}>
+        {categoryLinks.map(x => (
+          <Flex width={[1, 1 / 2, 1 / 2, 1 / 4]} p={2}>
             <Card
               radius={2}
               width={1}
@@ -42,32 +45,35 @@ const Categories: React.SFC<Props> = ({ image, gradient, heading, subheading, bo
               flexDirection="column"
               bg="background.paper"
             >
-              <Flex flexDirection="column" style={{height: "100%"}}>
-                <Image style={{height: 140}} fluid={x.image}/>
-                <Box m={3} style={{flexGrow: 1}}>
-                  <Text as="h3" color="primary.main" fontWeight={4} fontSize={3}>
+              <Flex flexDirection="column" style={{ height: "100%" }}>
+                <Image style={{ height: 140 }} fluid={x.image} />
+                <Box m={3} style={{ flexGrow: 1 }}>
+                  <Text
+                    as="h3"
+                    color="primary.main"
+                    fontWeight={4}
+                    fontSize={3}
+                  >
                     {x.label}
                   </Text>
-                  {x.text &&
+                  {x.text && (
                     <Text mt={2} as="p">
                       {x.text}
                     </Text>
-                  }
+                  )}
                 </Box>
                 <Flex m={3}>
-                  <Button as={Link} to={x.to} outlined>
+                  <Button to={x.to} outlined>
                     {x.buttonText}
                   </Button>
                 </Flex>
               </Flex>
             </Card>
-          </Flex>,
-        )}
-    </Flex>
+          </Flex>
+        ))}
+      </Flex>
     </Container>
   </Section>
 );
 
-export {
-  Categories
-};
+export { Categories };

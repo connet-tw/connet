@@ -12,68 +12,81 @@ import { Button } from "../components/Button";
 interface ServiceNode {
   node: {
     fields: {
-      lang: string,
-      slug: string,
-    },
+      lang: string;
+      slug: string;
+    };
     frontmatter: {
-      heading: string,
-      subheading: string,
-      image: any,
-    },
-  }
+      heading: string;
+      subheading: string;
+      image: any;
+    };
+  };
 }
 
 interface ServicesProps {
   data: {
     services: {
-      edges: ServiceNode[],
-    },
-  }
+      edges: ServiceNode[];
+    };
+  };
 }
 
-const ServicesPage: React.SFC<ServicesProps> = (({ data }) => {
+const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
   return (
     <Layout>
-      {data.services.edges.map(({node}, i) =>
+      {data.services.edges.map(({ node }, i) => (
         <Flex
           key={i}
           width={1}
           flexWrap="wrap"
-          flexDirection={(i%2===0 ? "row" : "row-reverse")}
+          flexDirection={i % 2 === 0 ? "row" : "row-reverse"}
+          bg="background.paper"
         >
-          <Flex width={[1, 1/2]}>
-            <Image style={{width: "100%"}} fluid={node.frontmatter.image}/>
+          <Flex width={[1, 1 / 2]}>
+            <Image style={{ width: "100%" }} fluid={node.frontmatter.image} />
           </Flex>
           <Flex
             p={4}
-            width={[1, 1/2]}
+            width={[1, 1 / 2]}
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
           >
-            <Text mb={2} as="h2" fontSize={4} color="primary.main" fontWeight={3}>
+            <Text
+              mb={2}
+              as="h2"
+              fontSize={[4, 5]}
+              color="primary.main"
+              fontWeight={2}
+            >
               {node.frontmatter.heading}
             </Text>
-            <Text mb={2} fontSize={2} as="h5" fontWeight={3} color="text.primary">
+            <Text
+              mb={3}
+              fontSize={2}
+              as="h5"
+              fontWeight={3}
+              color="text.primary"
+            >
               {node.frontmatter.subheading}
             </Text>
-            <Button mt={2} outlined as={Link} to={node.fields.slug}>
-              <FormattedMessage {...m.services.learnMore}/>
+            <Button mt={2} outlined to={node.fields.slug}>
+              <FormattedMessage {...m.services.learnMore} />
             </Button>
           </Flex>
         </Flex>
-      )}
+      ))}
     </Layout>
   );
-});
+};
 
 export default withIntl(ServicesPage);
 
 export const query = graphql`
   query($locale: String!) {
     services: allMarkdownRemark(
-      filter: {fields: { type: { eq: "services" }, lang: { eq: $locale }}},
-      sort: {fields: [frontmatter___order], order: ASC}
+      filter: { fields: { type: { eq: "services" }, lang: { eq: $locale } } }
+      sort: { fields: [frontmatter___order], order: ASC }
     ) {
       edges {
         node {
@@ -95,5 +108,5 @@ export const query = graphql`
         }
       }
     }
-  }`
-;
+  }
+`;

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { styled, css } from "src/theme";
 import { Box, Flex, Card, Text } from "src/theme/primitives";
-import { data } from "./References";
 import { Container } from "../Container";
 
 const Line = styled(Flex)`
@@ -112,7 +111,19 @@ const ProjectCard = styled(Card)<{ i: number }>`
   }
 `;
 
-export const Timeline: React.SFC<{}> = () => (
+interface TimelineItem {
+  date: React.ReactNode;
+  heading: React.ReactNode;
+  customer: React.ReactNode;
+  location: React.ReactNode;
+}
+
+interface Props {
+  heading: string;
+  items: TimelineItem[];
+}
+
+const Timeline: React.SFC<Props> = ({ heading, items }) => (
   <Box bg="grey.200" width={1}>
     <Flex mx={3} my={4} flexDirection="column">
       <Text mb={2} textAlign="center" as="h2" color="text.primary">
@@ -120,7 +131,7 @@ export const Timeline: React.SFC<{}> = () => (
       </Text>
       <Container>
         <Box p={3}>
-          {data.map((x, i) => (
+          {items.map((x, i) => (
             <Flex>
               <Line bg="grey.200" p={3} width={1}>
                 <Wrapper i={i}>
@@ -141,7 +152,7 @@ export const Timeline: React.SFC<{}> = () => (
                       {x.date}
                     </Text>
                     <Text mb={2} fontSize={[2, 3, 3]} color="text.main">
-                      {x.project}
+                      {x.heading}
                     </Text>
                     <Text color="secondary.main">{x.customer}</Text>
                     <Text color="text.light">{x.location}</Text>
@@ -155,3 +166,5 @@ export const Timeline: React.SFC<{}> = () => (
     </Flex>
   </Box>
 );
+
+export { Timeline, TimelineItem };

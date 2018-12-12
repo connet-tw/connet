@@ -14,7 +14,7 @@ import { Home } from "styled-icons/material/Home";
 interface ContactPageProps {
   data: {
     headerImg: any;
-  }
+  };
 }
 
 interface ContactCardProps {
@@ -22,56 +22,60 @@ interface ContactCardProps {
   text: React.ReactNode[];
 }
 
-const ContactCard: React.SFC<ContactCardProps> = ({icon, text}) => {
+const ContactCard: React.SFC<ContactCardProps> = ({ icon, text }) => {
   const I = icon;
-  return (<Box p={2} width={1}>
-    <Card width={1}
-      p={3}
-      flexDirection="row"
-      justifyContent="space-between"
-      alignItems="center"
-      radius={2} shadow={1} style={{height: "100%"}}
-      bg="background.paper"
-    >
-      <Text textAlign="center" color="text.main">
-        <I size={24}/>
-      </Text>
-      <Box>
-        {text.map((x, i) =>
-          <Text ml={4} lineHeight="copy" textAlign="right" color="text.dark">
-            {x}
-          </Text>
-        )}
-      </Box>
-    </Card>
-  </Box>
+  return (
+    <Box p={2} width={1}>
+      <Card
+        width={1}
+        p={3}
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+        radius={2}
+        shadow={1}
+        style={{ height: "100%" }}
+        bg="background.paper"
+      >
+        <Text textAlign="center" color="text.main">
+          <I size={24} />
+        </Text>
+        <Box>
+          {text.map((x, i) => (
+            <Text ml={4} lineHeight="copy" textAlign="right" color="text.dark">
+              {x}
+            </Text>
+          ))}
+        </Box>
+      </Card>
+    </Box>
   );
 };
 
-const ContactPage: React.SFC<ContactPageProps> = (({data}) => {
+const ContactPage: React.SFC<ContactPageProps> = ({ data }) => {
   return (
     <Layout>
       <Banner
         image={data.headerImg}
-        heading={<FormattedMessage {...m.contact.heading}/>}
+        heading={<FormattedMessage {...m.contact.heading} />}
       />
-      <Box bg="grey.100" style={{flexGrow: 1}}>
+      <Box bg="grey.100" style={{ flexGrow: 1 }}>
         <Section>
-          <Flex p={2} width={[1,1,2/3,1/3]} flexWrap="wrap">
+          <Flex p={2} width={[1, 1, 2 / 3, 1 / 3]} flexWrap="wrap">
             <ContactCard
               icon={Phone}
-              text={[<FormattedMessage {...m.contactDetails.phoneNumber}/>]}
+              text={[<FormattedMessage {...m.contactDetails.phoneNumber} />]}
             />
             <ContactCard
               icon={Email}
-              text={[<FormattedMessage {...m.contactDetails.emailAddress}/>]}
+              text={[<FormattedMessage {...m.contactDetails.emailAddress} />]}
             />
             <ContactCard
               icon={Home}
               text={[
-                <FormattedMessage {...m.contactDetails.street}/>,
-                <FormattedMessage {...m.contactDetails.city}/>,
-                <FormattedMessage {...m.contactDetails.country}/>,
+                <FormattedMessage {...m.contactDetails.street} />,
+                <FormattedMessage {...m.contactDetails.city} />,
+                <FormattedMessage {...m.contactDetails.country} />,
               ]}
             />
           </Flex>
@@ -79,15 +83,15 @@ const ContactPage: React.SFC<ContactPageProps> = (({data}) => {
       </Box>
     </Layout>
   );
-});
+};
 
 export default withIntl(ContactPage);
 
 export const query = graphql`
   query {
-    headerImg: file(relativePath: {eq: "header/solar-panels.jpg"}) {
+    headerImg: file(relativePath: { eq: "header/solar-panels.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1920) {
+        fluid(maxWidth: 1920, quality: 90) {
           ...GatsbyImageSharpFluid
         }
       }

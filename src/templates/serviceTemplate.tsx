@@ -9,45 +9,40 @@ import { Section, SectionHeader } from "../components/Section";
 
 interface EventTemplateProps {
   data: {
-    markdownRemark: any,
+    markdownRemark: any;
   };
 }
 
-const P: React.SFC<{}> = ({children}) => (
-  <Text mb={3} width={1}>{children}</Text>
+const P: React.SFC<{}> = ({ children }) => (
+  <Text mb={3} width={1}>
+    {children}
+  </Text>
 );
 
-const Div: React.SFC<{}> = ({children}) => (
-  <Box width={1}>{children}</Box>
-);
+const Div: React.SFC<{}> = ({ children }) => <Box width={1}>{children}</Box>;
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
     p: P,
     div: Div,
-  }
+  },
 }).Compiler;
 
-const EventTemplate: React.SFC<EventTemplateProps> = (({ data }) => {
+const EventTemplate: React.SFC<EventTemplateProps> = ({ data }) => {
   const { markdownRemark: mk } = data;
   return (
     <Layout>
-      <Banner
-        heading={mk.frontmatter.heading}
-        image={mk.frontmatter.image}
-      />
+      <Banner heading={mk.frontmatter.heading} image={mk.frontmatter.image} />
       <Section>
-        <SectionHeader
-          heading={mk.frontmatter.subheading}
-        />
+        <SectionHeader heading={mk.frontmatter.subheading} />
         <Flex p={3} width={1}>
           {renderAst(mk.htmlAst)}
         </Flex>
       </Section>
     </Layout>
   );
-});
+};
 
 export default withIntl(EventTemplate);
 
@@ -64,12 +59,12 @@ export const query = graphql`
         subheading
         image {
           childImageSharp {
-            fluid(maxWidth: 1920) {
+            fluid(maxWidth: 1920, quality: 90) {
               ...GatsbyImageSharpFluid
             }
           }
         }
       }
     }
-  }`
-;
+  }
+`;
