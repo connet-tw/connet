@@ -88,6 +88,7 @@ const rightCard = css`
 `;
 
 const ProjectCard = styled(Card)<{ i: number }>`
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.14));
   overflow: visible;
   position: relative;
   ${props => (props.i % 2 === 0 ? leftCard : rightCard)}
