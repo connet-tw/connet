@@ -1,6 +1,6 @@
 import { shadows } from "./shadows";
 import { colors } from "./colors";
-import { unit } from "./utils";
+import { unit } from "../utils";
 
 const fonts = {
   sans: "Muli",

@@ -1,4 +1,4 @@
-import { Scale, styled, css, fns } from "src/theme";
+import { Scale, styled, css, fns } from "../theme";
 import { getWithDirections } from "./getWithDirections";
 import { getProperty } from "./getProperty";
 import { prop, identity } from "ramda";
@@ -231,20 +231,31 @@ const button = css<ButtonProps>`
   `}
 `;
 
-export const Box = styled.div<BoxProps>`
+const Box = styled.div<BoxProps>`
   ${box}
 `;
-export const Flex = styled.div<FlexProps>`
+const Flex = styled.div<FlexProps>`
   ${flex}
 `;
-export const Card = styled.div<CardProps>`
+const Card = styled.div<CardProps>`
   ${card}
 `;
-export const Text = styled.p<TextProps>`
+const Text = styled.p<TextProps>`
   ${text}
 `;
-export const Button = styled.button<ButtonProps>`
+const Button = styled.button<ButtonProps>`
   ${button}
 `;
 
-export { BoxProps, FlexProps, TextProps, CardProps, ButtonProps };
+export {
+  Box,
+  BoxProps,
+  Flex,
+  FlexProps,
+  Text,
+  TextProps,
+  Card,
+  CardProps,
+  Button,
+  ButtonProps,
+};
