@@ -1,28 +1,28 @@
-import * as React from 'react'
-import { MakeMenu } from '../utils/MakeMenu'
-import { Drawer } from '../Drawer'
-import { MenuButton } from './MenuButton'
-import { CloseButton } from './CloseButton'
-import { Flex, Text } from 'src/theme/primitives'
-import { Button } from '../Button'
-import { Image } from '../Image'
-import { styled } from 'src/theme'
-import { Link } from '../../i18n'
+import * as React from "react";
+import { MakeMenu } from "../utils/MakeMenu";
+import { Drawer } from "../Drawer";
+import { MenuButton } from "./MenuButton";
+import { CloseButton } from "./CloseButton";
+import { Flex, Text } from "src/theme/primitives";
+import { Button } from "../Button";
+import { Image } from "../Image";
+import { styled } from "src/theme";
+import { Link } from "../../i18n";
 
 const Logo = styled(Image)`
   margin: 0 auto;
-`
+`;
 
 const DrawerContent = styled(Flex)`
   height: 100vh;
   position: relative;
   overflow-y: auto;
-`
+`;
 
 interface DrawerMenuProps {
-  logo?: any
-  title?: React.ReactNode
-  navItems: { to: string; label: React.ReactNode }[]
+  logo?: any;
+  title?: React.ReactNode;
+  navItems: { to: string; label: React.ReactNode }[];
 }
 
 const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
@@ -34,21 +34,17 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
 
           <Drawer
             open={injected.open}
-            anchor={'right'}
+            anchor={"right"}
             handleClose={injected.handleClose}
             toggleMenu={injected.toggleMenu}
             width={300}
           >
-            <DrawerContent
-              flexDirection="column"
-              bg="background.paper"
-              spacing={3}
-            >
+            <DrawerContent flexDirection="column" bg="background.paper" p={3}>
               <Flex justifyContent="flex-end">
                 <CloseButton onClick={injected.handleClose} />
               </Flex>
               {logo && (
-                <Flex justifyContent="center">
+                <Flex justifyContent="center" my={3}>
                   <Link to="/" onClick={injected.handleClose}>
                     <Logo fixed={logo} />
                   </Link>
@@ -59,13 +55,17 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
                   {title}
                 </Text>
               )}
-              <Flex justifyContent="center" flexDirection="column" p={1}>
+              <Flex justifyContent="center" flexDirection="column" p={3}>
                 {navItems.map(x => (
-                  <Flex key={x.to} p={1}>
-                    <Button onClick={injected.handleClose} width={1} to={x.to}>
-                      {x.label}
-                    </Button>
-                  </Flex>
+                  <Button
+                    m={1}
+                    key={x.to}
+                    onClick={injected.handleClose}
+                    width={1}
+                    to={x.to}
+                  >
+                    {x.label}
+                  </Button>
                 ))}
               </Flex>
             </DrawerContent>
@@ -73,7 +73,7 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
         </>
       )}
     </MakeMenu>
-  )
-}
+  );
+};
 
-export { DrawerMenu }
+export { DrawerMenu };

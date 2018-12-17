@@ -1,17 +1,17 @@
-import * as React from 'react'
-import { Button as Base, ButtonProps as BaseProps } from 'src/theme/primitives'
-import { styled, css } from 'src/theme'
-import { Link } from '../../i18n'
+import * as React from "react";
+import { Button as Base, ButtonProps as BaseProps } from "src/theme";
+import { styled, css } from "src/theme";
+import { Link } from "../../i18n";
 
 interface ButtonProps extends BaseProps {
-  to?: string
-  variant?: 'primary' | 'secondary' | 'white'
-  contained?: boolean
-  round?: boolean
-  outlined?: boolean
-  small?: boolean
-  large?: boolean
-  onClick?(): void
+  to?: string;
+  variant?: "primary" | "secondary" | "white";
+  contained?: boolean;
+  round?: boolean;
+  outlined?: boolean;
+  small?: boolean;
+  large?: boolean;
+  onClick?(): void;
 }
 
 const ButtonLink: React.SFC<ButtonProps> = ({
@@ -24,9 +24,9 @@ const ButtonLink: React.SFC<ButtonProps> = ({
   variant,
   ...props
 }) => {
-  if (to) return <Base as={Link} to={to} {...props} />
-  return <Base {...props} />
-}
+  if (to) return <Base as={Link} to={to} {...props} />;
+  return <Base {...props} />;
+};
 
 const defaultStyle = css<ButtonProps>`
   border: ${props => props.theme.borders[1]};
@@ -69,7 +69,7 @@ const defaultStyle = css<ButtonProps>`
         background: ${props.theme.colors.text.main};
       }
     `}
-`
+`;
 
 const primary = css<ButtonProps>`
   color: ${props => props.theme.colors.primary.main};
@@ -104,7 +104,7 @@ const primary = css<ButtonProps>`
         border-color: ${props.theme.colors.primary.light};
       }
     `}
-`
+`;
 
 const secondary = css<ButtonProps>`
   color: ${props => props.theme.colors.secondary.main};
@@ -139,7 +139,7 @@ const secondary = css<ButtonProps>`
         border-color: ${props.theme.colors.secondary.light};
       }
     `}
-`
+`;
 
 const white = css<ButtonProps>`
   color: ${props => props.theme.colors.white.main};
@@ -174,34 +174,32 @@ const white = css<ButtonProps>`
         color: ${props.theme.colors.white.contrast};
       }
     `}
-`
+`;
 
 const small = css<ButtonProps>`
   padding: ${props => props.theme.sizes[1]} ${props => props.theme.sizes[2]};
   font-size: ${props => props.theme.fontSizes[1]};
-`
+`;
 
 const large = css<ButtonProps>`
   padding: ${props => props.theme.sizes[3]} ${props => props.theme.sizes[3]};
   font-size: ${props => props.theme.fontSizes[3]};
-`
+`;
 
 const round = css<ButtonProps>`
-  padding: 0;
+  padding: ${props => props.theme.sizes[2]};
   text-align: center;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
-`
+`;
 
 const Button = styled(ButtonLink)<ButtonProps>`
   ${defaultStyle}
-  ${props => props.variant === 'primary' && primary}
-  ${props => props.variant === 'secondary' && secondary}
-  ${props => props.variant === 'white' && white}
+  ${props => props.variant === "primary" && primary}
+  ${props => props.variant === "secondary" && secondary}
+  ${props => props.variant === "white" && white}
   ${props => props.small && small}
   ${props => props.large && large}
   ${props => props.round && round}
-`
+`;
 
-export { Button, ButtonProps }
+export { Button, ButtonProps };

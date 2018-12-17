@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "../../i18n";
 import { Image } from "../Image";
 import { Section, SectionHeader } from "../Section";
 import { Button } from "../Button";
@@ -35,8 +34,8 @@ const Categories: React.SFC<Props> = ({
     <SectionHeader heading={heading} subheading={subheading} body={body} />
     <Container>
       <Flex p={2} flexWrap="wrap">
-        {categoryLinks.map(x => (
-          <Flex width={[1, 1 / 2, 1 / 2, 1 / 4]} p={2}>
+        {categoryLinks.map((x, i) => (
+          <Flex key={i} width={[1, 1 / 2, 1 / 2, 1 / 4]} p={2}>
             <Card
               radius={2}
               width={1}

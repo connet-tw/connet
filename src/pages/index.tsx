@@ -7,40 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
 import { AboutSummary } from "../components/About";
 import { Categories } from "../components/Categories";
-import { Box } from "src/theme/primitives";
-import { styled, css } from "src/theme";
-
-interface BxProps {
-  p?: number[];
-  px?: number[];
-}
-
-const padding = css<BxProps>`
-  ${props =>
-    props.p &&
-    props.p.map(
-      (p, i) =>
-        css`
-          ${props.theme.devices[i]} {
-            padding: ${props.theme.sizes[p]};
-          }
-        `
-    )}
-  ${props =>
-    props.px &&
-    props.px.map(
-      (px, i) =>
-        css`
-          ${props.theme.devices[i]} {
-            padding-left: ${props.theme.sizes[px]};
-            padding-right: ${props.theme.sizes[px]};
-          }
-        `
-    )}
-`;
-const Bx = styled.div<BxProps>`
-  ${padding}
-`;
+import { Box, Card } from "src/theme/primitives";
 
 interface ServiceNode {
   node: {
