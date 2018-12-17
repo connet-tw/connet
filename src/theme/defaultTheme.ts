@@ -9,13 +9,13 @@ const fonts = {
 
 type Scale = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
-const sizes = unit("px", [ 0, 4, 8, 16, 32, 64, 128, 256, 512 ]);
-const fontSizes = unit("px", [ 12, 14, 16, 20, 24, 32, 36, 48, 64, 72 ]);
-const fontWeights = [100, 200, 300, 400, 500,600, 700, 800, 900];
+const sizes = unit("px", [0, 4, 8, 16, 32, 64, 128, 256, 512]);
+const fontSizes = unit("px", [12, 14, 16, 20, 24, 32, 36, 48, 64, 72]);
+const fontWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 const dimensions = unit("px", [16, 32, 64, 128, 256, 512, 768, 1024, 1536]);
 const zIndexes = [0, 100, 200, 300, 400, 500, 600, 700, 800];
-const borders = [0,1,2,3,4,5,6,7,8].map(n => `${n}px solid`);
-const radii = unit("px", [0,2,4,8,16,32,64,128]);
+const borders = [0, 1, 2, 3, 4, 5, 6, 7, 8].map(n => `${n}px solid`);
+const radii = unit("px", [0, 2, 4, 8, 16, 32, 64, 128]);
 const lineHeights = {
   solid: 1,
   title: 1.25,
@@ -56,7 +56,6 @@ const defaultTheme = {
   zIndexes,
 };
 
-export {
-  defaultTheme,
-  Scale
-};
+type Theme = typeof defaultTheme;
+
+export { defaultTheme, Scale, Theme };

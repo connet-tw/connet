@@ -7,19 +7,10 @@ import {
   map,
   prop,
   concat,
-  identity,
   ifElse,
   always,
   isNil,
 } from "ramda";
-
-// css property template
-const template = (
-  key: string,
-  val: string,
-  fn: (theme: any) => any,
-  theme: any
-) => `${key}: ${fn(theme)(val)};`;
 
 // parse props to build a css property as a string
 // fn is a function that interprets the property value,
@@ -30,10 +21,6 @@ const getP = (tfn: any) => (fn: any) => (getter: any) => (property: string) => (
   ifElse(isNil, always(""), x => tfn(property, x, fn, props.theme))(
     getter(props)
   );
-
-// a getter for literal property values
-const getProperty = getP(template);
-const getLiteral = getProperty(() => identity);
 
 type Direction = "right" | "left" | "top" | "bottom";
 type DirectionCode = "r" | "l" | "t" | "b" | "x" | "y" | "";
@@ -74,4 +61,4 @@ const getWithDirections = (dps: any[]) => (tfn: any) => (fn: any) => (
     .map(d => getDirectionalProperty(tfn)(fn)(d)(property)(props))
     .filter(complement(isEmpty))
     .join("\n");
-export { getP, getProperty, getLiteral, getWithDirections };
+export { getP, getWithDirections };

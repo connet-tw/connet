@@ -1,41 +1,27 @@
 import { Scale, styled, css, fns } from "src/theme";
-import { getP, getProperty, getLiteral, getWithDirections } from "./getters";
-import { prop } from "ramda";
+import { getP, getWithDirections } from "./getters";
+import { prop, identity } from "ramda";
+import { template, responsiveTemplate } from "./templates";
 
 type ResponsiveString = string | string[];
 type ResponsiveScale = Scale | Scale[];
 
+const getProperty = getP(template);
+const getLiteral = getProperty(() => identity);
+const getResponsive = getP(responsiveTemplate);
+
 // directions map
-const dps = [
+const directionsMap = [
   { dir: "left", l: ["l", "x", ""] },
   { dir: "right", l: ["r", "x", ""] },
   { dir: "top", l: ["t", "y", ""] },
   { dir: "bottom", l: ["b", "y", ""] },
 ];
 
-const responsiveTemplate = (
-  property: string,
-  val: any | any[],
-  fn: any,
-  theme: any
-) => {
-  if (Array.isArray(val)) {
-    return val
-      .map(
-        (v: any, i: number) =>
-          `${theme.devices[i]} { ${property}: ${fn(theme)(v)}; }`
-      )
-      .join("\n");
-  } else {
-    return `${property}: ${fn(theme)(val)};`;
-  }
-};
+const getDirectionalProperty = getWithDirections(directionsMap)(
+  responsiveTemplate
+)(fns.space);
 
-const getResponsive = getP(responsiveTemplate);
-
-const getDirectionalProperty = getWithDirections(dps)(responsiveTemplate)(
-  fns.space
-);
 const getPadding = getDirectionalProperty("padding");
 const getMargins = getDirectionalProperty("margin");
 
@@ -49,10 +35,11 @@ const getBorderTopColor = getFromColor(prop("btc"))("border-top-color");
 const getBorderBottomColor = getFromColor(prop("bbc"))("border-bottom-color");
 
 const getBoxShadow = getProperty(fns.shadow)(prop("shadow"))("box-shadow");
-//const getBorder = getProperty(fns.border)(prop("border"))("border");
-const getBorder = getWithDirections(dps)(responsiveTemplate)(fns.border)(
-  "border"
-);
+
+const getBorder = getWithDirections(directionsMap)(responsiveTemplate)(
+  fns.border
+)("border");
+
 const getBorderRadius = getProperty(fns.radius)(prop("radius"))(
   "border-radius"
 );
