@@ -22,11 +22,12 @@ const responsiveTemplate = (
   if (Array.isArray(val)) {
     return val
       .map(
-        (v: any, i: number) => `${theme.devices[i]} { ${property}: ${fn(v)}; }`
+        (v: any, i: number) =>
+          `${theme.devices[i]} { ${property}: ${fn(theme)(v)}; }`
       )
       .join("\n");
   } else {
-    return `${property}: ${fn(val)};`;
+    return `${property}: ${fn(theme)(val)};`;
   }
 };
 

@@ -14,8 +14,12 @@ import {
 } from "ramda";
 
 // css property template
-const template = (key: string, val: string, fn: any, theme: any) =>
-  `${key}: ${fn(val)};`;
+const template = (
+  key: string,
+  val: string,
+  fn: (theme: any) => any,
+  theme: any
+) => `${key}: ${fn(theme)(val)};`;
 
 // parse props to build a css property as a string
 // fn is a function that interprets the property value,
