@@ -36,6 +36,22 @@ test("getP supports template functions", () => {
   expect(getP(template)(fn)(getter)(property)(props)).toBe(expected);
 });
 
+test("getP supports responsive template functions", () => {
+  const theme = { devices: ["A", "B", "C"] };
+  const props = { theme, width: [1, 2, 3] };
+  const template = (property: string, vals: number[], fn: any, theme: any) =>
+    vals
+      .map((x, i) => `${theme.devices[i]} { ${property}: ${fn(vals[i])}; }`)
+      .join("\n");
+  const fn = (theme: any) => identity;
+  const getter = prop("width");
+  const property = "width";
+
+  const expected = `A { width: 1; }\nB { width: 2; }\nC { width: 3; }`;
+
+  expect(getP(template)(fn)(getter)(property)(props)).toBe(expected);
+});
+
 test("getWithDirections outputs a set of properties with directions", () => {
   const props = { pl: 1, px: 2 };
   const tfn = (k: number, v: number, fn: any, theme: any) => `${k}: ${v};`;
