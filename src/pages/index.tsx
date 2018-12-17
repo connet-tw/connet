@@ -1,35 +1,68 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { Layout } from '../components/Layout'
-import { withIntl } from '../i18n'
-import * as m from '../messages/index.messages'
-import { FormattedMessage } from 'react-intl'
-import { Banner } from '../components/Banner'
-import { AboutSummary } from '../components/About'
-import { Categories } from '../components/Categories'
-import { Box } from 'src/theme/primitives'
+import * as React from "react";
+import { graphql } from "gatsby";
+import { Layout } from "../components/Layout";
+import { withIntl } from "../i18n";
+import * as m from "../messages/index.messages";
+import { FormattedMessage } from "react-intl";
+import { Banner } from "../components/Banner";
+import { AboutSummary } from "../components/About";
+import { Categories } from "../components/Categories";
+import { Box } from "src/theme/primitives";
+import { styled, css } from "src/theme";
+
+interface BxProps {
+  p?: number[];
+  px?: number[];
+}
+
+const padding = css<BxProps>`
+  ${props =>
+    props.p &&
+    props.p.map(
+      (p, i) =>
+        css`
+          ${props.theme.devices[i]} {
+            padding: ${props.theme.sizes[p]};
+          }
+        `
+    )}
+  ${props =>
+    props.px &&
+    props.px.map(
+      (px, i) =>
+        css`
+          ${props.theme.devices[i]} {
+            padding-left: ${props.theme.sizes[px]};
+            padding-right: ${props.theme.sizes[px]};
+          }
+        `
+    )}
+`;
+const Bx = styled.div<BxProps>`
+  ${padding}
+`;
 
 interface ServiceNode {
   node: {
     fields: {
-      lang: string
-      slug: string
-    }
+      lang: string;
+      slug: string;
+    };
     frontmatter: {
-      heading: string
-      subheading: string
-      image: any
-    }
-  }
+      heading: string;
+      subheading: string;
+      image: any;
+    };
+  };
 }
 
 interface IndexProps {
   data: {
-    headerImg: any
+    headerImg: any;
     services: {
-      edges: ServiceNode[]
-    }
-  }
+      edges: ServiceNode[];
+    };
+  };
 }
 
 const Index: React.SFC<IndexProps> = ({ data }) => {
@@ -44,9 +77,9 @@ const Index: React.SFC<IndexProps> = ({ data }) => {
           heading={<FormattedMessage {...m.about.heading} />}
           body={[<FormattedMessage {...m.about.subheading} />]}
           highlights={[1, 2, 3, 4].map(n => ({
-            heading: <FormattedMessage {...m.highlights['heading' + n]} />,
+            heading: <FormattedMessage {...m.highlights["heading" + n]} />,
             subheading: (
-              <FormattedMessage {...m.highlights['subheading' + n]} />
+              <FormattedMessage {...m.highlights["subheading" + n]} />
             ),
           }))}
         />
@@ -65,10 +98,10 @@ const Index: React.SFC<IndexProps> = ({ data }) => {
         />
       </Box>
     </Layout>
-  )
-}
+  );
+};
 
-export default withIntl(Index)
+export default withIntl(Index);
 
 export const query = graphql`
   query($locale: String!) {
@@ -105,4 +138,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
