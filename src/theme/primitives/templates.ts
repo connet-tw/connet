@@ -1,21 +1,23 @@
-import { Theme } from "../defaultTheme";
+import { isEmpty } from "ramda";
 
-type Fn<T> = (theme: Theme) => (val: T) => string | number;
+type Fn<T, V> = (theme: T) => (val: V) => string | number;
 
-export const template = <T>(key: string, val: T, fn: Fn<T>, theme: Theme) =>
-  `${key}: ${fn(theme)(val)};`;
+export const template = <T, V>(key: string, val: V, fn: Fn<T, V>, theme: T) =>
+  isEmpty(val) ? "" : `${key}: ${fn(theme)(val)};`;
 
-export const responsiveTemplate = <T>(
+type ResponsiveT = { devices: string[] };
+
+export const responsiveTemplate = <T extends ResponsiveT, V>(
   key: string,
-  val: T | T[],
-  fn: Fn<T>,
-  theme: Theme
+  val: V | V[],
+  fn: Fn<T, V>,
+  theme: T
 ) => {
   if (Array.isArray(val)) {
     return val
       .map((v, i) => `${theme.devices[i]} { ${key}: ${fn(theme)(v)}; }`)
       .join("\n");
   } else {
-    return `${key}: ${fn(theme)(val)};`;
+    return template(key, val, fn, theme);
   }
 };

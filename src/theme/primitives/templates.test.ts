@@ -1,22 +1,85 @@
-import { identity } from "ramda";
-import { getWithDirections } from "./getWithDirections";
+import { template, responsiveTemplate } from "./templates";
 
-describe("getWithDirections", () => {
-  test("outputs a set of properties with directions", () => {
-    const props = { pl: 1, px: 2 };
-    const tfn = (k: number, v: number, fn: any, theme: any) =>
-      `${k}: ${fn(theme)(v)};`;
-    const fn = (theme: any) => identity;
-    const property = "padding";
-    const dps = [
-      { dir: "left", l: ["l", "x", ""] },
-      { dir: "right", l: ["r", "x", ""] },
-      { dir: "top", l: ["t", "y", ""] },
-      { dir: "bottom", l: ["b", "y", ""] },
-    ];
+describe("template", () => {
+  test("returns empty string for empty string value", () => {
+    const key = "padding";
+    const val = "";
+    const theme = {};
+    const fn = (t: typeof theme) => (val: string) => val;
+    const expected = "";
 
-    const expected = "padding-left: 1;\npadding-right: 2;";
+    expect(template(key, val, fn, theme)).toBe(expected);
+  });
 
-    expect(getWithDirections(dps)(tfn)(fn)(property)(props)).toBe(expected);
+  test("works with an identity function", () => {
+    const key = "padding";
+    const val = 1;
+    const theme = {};
+    const fn = (t: typeof theme) => (val: number) => val;
+    const expected = "padding: 1;";
+
+    expect(template(key, val, fn, theme)).toBe(expected);
+  });
+
+  test("works with an accessor function", () => {
+    const key = "padding";
+    const val = 1;
+    const theme = { sizes: ["0px", "2px"] };
+    const fn = (t: typeof theme) => (val: number) => theme.sizes[val];
+    const expected = "padding: 2px;";
+
+    expect(template(key, val, fn, theme)).toBe(expected);
+  });
+});
+
+describe("responsiveTemplate", () => {
+  test("returns empty string for empty string value", () => {
+    const key = "padding";
+    const val = "";
+    const theme = { devices: ["A", "B"] };
+    const fn = (t: typeof theme) => (val: string) => val;
+    const expected = "";
+
+    expect(responsiveTemplate(key, val, fn, theme)).toBe(expected);
+  });
+
+  test("works with a literal value", () => {
+    const key = "padding";
+    const val = 1;
+    const theme = { devices: ["A", "B"] };
+    const fn = (t: typeof theme) => (val: number) => val;
+    const expected = "padding: 1;";
+
+    expect(responsiveTemplate(key, val, fn, theme)).toBe(expected);
+  });
+
+  test("returns empty string for an empty array", () => {
+    const key = "padding";
+    const val: string[] = [];
+    const theme = { devices: ["A", "B"] };
+    const fn = (t: typeof theme) => (val: string) => val;
+    const expected = "";
+
+    expect(responsiveTemplate(key, val, fn, theme)).toBe(expected);
+  });
+
+  test("works with arrays", () => {
+    const key = "padding";
+    const val = [1, 2];
+    const theme = { devices: ["A", "B"] };
+    const fn = (t: typeof theme) => (val: number) => val;
+    const expected = "A { padding: 1; }\nB { padding: 2; }";
+
+    expect(responsiveTemplate(key, val, fn, theme)).toBe(expected);
+  });
+
+  test("works with arrays and accessor functions", () => {
+    const key = "padding";
+    const val = [0, 1];
+    const theme = { devices: ["A", "B"], sizes: ["0px", "2px"] };
+    const fn = (t: typeof theme) => (val: number) => theme.sizes[val];
+    const expected = "A { padding: 0px; }\nB { padding: 2px; }";
+
+    expect(responsiveTemplate(key, val, fn, theme)).toBe(expected);
   });
 });
