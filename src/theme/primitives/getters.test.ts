@@ -1,55 +1,70 @@
 import { always, identity, prop } from "ramda";
 import { getP, getProperty, getWithDirections } from "./getters";
 
-test("getProperty works for properties with literal values", () => {
-  const props = { color: "red" };
-  const fn = (theme: any) => identity;
-  const getter = prop("color");
-  const property = "color";
+describe("getProperty", () => {
+  test("getProperty outputs empty string when the property isn't found", () => {
+    const props = {};
+    const fn = undefined;
+    const getter = prop("color");
+    const property = "color";
 
-  const expected = "color: red;";
+    const expected = "";
 
-  expect(getProperty(fn)(getter)(property)(props)).toBe(expected);
+    expect(getProperty(fn)(getter)(property)(props)).toBe(expected);
+  });
+
+  test("getProperty works for properties with literal values", () => {
+    const props = { color: "red" };
+    const fn = (theme: any) => identity;
+    const getter = prop("color");
+    const property = "color";
+
+    const expected = "color: red;";
+
+    expect(getProperty(fn)(getter)(property)(props)).toBe(expected);
+  });
+
+  test("getProperty works for with a custom function", () => {
+    const props = { color: "red" };
+    const fn = (theme: any) => always("pink");
+    const getter = prop("color");
+    const property = "color";
+
+    const expected = "color: pink;";
+
+    expect(getProperty(fn)(getter)(property)(props)).toBe(expected);
+  });
 });
 
-test("getProperty works for with a custom function", () => {
-  const props = { color: "red" };
-  const fn = (theme: any) => always("pink");
-  const getter = prop("color");
-  const property = "color";
+describe("getP", () => {
+  test("getP supports template functions", () => {
+    const template = (property: string, val: number, fn: any) =>
+      `X { ${property}: ${fn(val)}; }`;
+    const getter = prop("width");
+    const fn = (theme: any) => identity;
+    const property = "width";
+    const props = { width: 1 };
 
-  const expected = "color: pink;";
+    const expected = `X { width: 1; }`;
 
-  expect(getProperty(fn)(getter)(property)(props)).toBe(expected);
-});
+    expect(getP(template)(fn)(getter)(property)(props)).toBe(expected);
+  });
 
-test("getP supports template functions", () => {
-  const template = (property: string, val: number, fn: any) =>
-    `X { ${property}: ${fn(val)}; }`;
-  const fn = (theme: any) => (x: any) => `${x * 100}%`;
-  const getter = prop("width");
-  const property = "width";
-  const props = { width: [1 / 2] };
+  test("getP supports responsive template functions", () => {
+    const theme = { devices: ["A", "B", "C"] };
+    const props = { theme, width: [1, 2, 3] };
+    const template = (property: string, vals: number[], fn: any, theme: any) =>
+      vals
+        .map((x, i) => `${theme.devices[i]} { ${property}: ${fn(vals[i])}; }`)
+        .join("\n");
+    const fn = (theme: any) => identity;
+    const getter = prop("width");
+    const property = "width";
 
-  const expected = `X { width: 50%; }`;
+    const expected = `A { width: 1; }\nB { width: 2; }\nC { width: 3; }`;
 
-  expect(getP(template)(fn)(getter)(property)(props)).toBe(expected);
-});
-
-test("getP supports responsive template functions", () => {
-  const theme = { devices: ["A", "B", "C"] };
-  const props = { theme, width: [1, 2, 3] };
-  const template = (property: string, vals: number[], fn: any, theme: any) =>
-    vals
-      .map((x, i) => `${theme.devices[i]} { ${property}: ${fn(vals[i])}; }`)
-      .join("\n");
-  const fn = (theme: any) => identity;
-  const getter = prop("width");
-  const property = "width";
-
-  const expected = `A { width: 1; }\nB { width: 2; }\nC { width: 3; }`;
-
-  expect(getP(template)(fn)(getter)(property)(props)).toBe(expected);
+    expect(getP(template)(fn)(getter)(property)(props)).toBe(expected);
+  });
 });
 
 test("getWithDirections outputs a set of properties with directions", () => {
