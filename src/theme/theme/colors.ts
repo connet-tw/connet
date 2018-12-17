@@ -1,24 +1,28 @@
-import { lighten, darken } from "./utils";
+import { lighten, darken } from "../utils";
 
 const primary = "rgb(36,140,204)";
 const secondary = "rgb(203,160,83)";
-const white = "rgb(255,255,255)";
-const black = "rgb(0,0,0)";
+const error = "red";
 
 export const colors = {
   primary: {
-    light: lighten(primary)(1/4),
+    light: lighten(primary)(1 / 4),
     main: primary,
-    dark: darken(primary)(1/4),
+    dark: darken(primary)(1 / 4),
     contrast: "rgba(255,255,255,0.9)",
   },
   secondary: {
-    light: lighten(secondary)(1/4),
+    light: lighten(secondary)(1 / 4),
     main: secondary,
-    dark: darken(secondary)(1/4),
+    dark: darken(secondary)(1 / 4),
     contrast: "rgba(255,255,255,0.9)",
   },
-  error: "red",
+  error: {
+    light: lighten(error)(1 / 4),
+    main: error,
+    dark: darken(error)(1 / 4),
+    contrast: "rgba(255,255,255,0.9)",
+  },
   divider: "rgba(0, 0, 0, 0.12)",
   grey: {
     50: "#fafafa",
@@ -53,14 +57,10 @@ export const colors = {
     contrast: "rgba(0, 0, 0, 0.9)",
   },
   black: {
-    dark: black,
-    main: lighten(black)(1/5),
-    light: lighten(black)(1/4),
-    contrast: "rgba(255, 255, 255, 0.9)",
-  },
-  common: {
-    white: "#fff",
-    black: "#000",
+    dark: "rgba(0,0,0,1)",
+    main: "rgba(0,0,0,0.9)",
+    light: "rgba(0,0,0,8)",
+    contrast: "rgba(255, 255, 255, 0.95)",
   },
   action: {
     active: "rgba(0, 0, 0, 0.54)",
