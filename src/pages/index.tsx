@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
 import { AboutSummary } from "../components/About";
 import { Categories } from "../components/Categories";
-import { Box, Card } from "src/theme/primitives";
+import { Box } from "themed-primitives";
 
 interface ServiceNode {
   node: {
@@ -39,7 +39,7 @@ const Index: React.SFC<IndexProps> = ({ data }) => {
         heading={<FormattedMessage {...m.hero.heading} />}
         image={data.headerImg}
       />
-      <Box bg="background.paper">
+      <Box bg="background.light">
         <AboutSummary
           heading={<FormattedMessage {...m.about.heading} />}
           body={[<FormattedMessage {...m.about.subheading} />]}

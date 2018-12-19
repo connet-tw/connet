@@ -85,7 +85,7 @@ export const Layout: React.SFC<{}> = ({ children }) => (
             <Normalize />
             <GlobalStyle />
             <Head />
-            <Content bg="background.default">
+            <Content bg="background.main">
               <Header title={title} navItems={navItems} logo={data.logo} />
               <Main>{children}</Main>
               <Footer email={email} phone={phone} title={title} />

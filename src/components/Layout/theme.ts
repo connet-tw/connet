@@ -1,5 +1,5 @@
 import { lighten, darken } from "../../utils/helpers";
-import { makeTheme } from "src/theme";
+import { makeTheme } from "themed-primitives";
 
 const primary = "rgb(36,140,204)";
 const secondary = "rgb(203,160,83)";

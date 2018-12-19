@@ -132,7 +132,7 @@ const Timeline: React.SFC<Props> = ({ heading, items }) => (
       <Container>
         <Box p={3}>
           {items.map((x, i) => (
-            <Flex>
+            <Flex key={i}>
               <Line bg="grey.200" p={3} width={1}>
                 <Wrapper i={i}>
                   <Marker bg="grey.300" b={4} borderColor="grey.200" />
@@ -141,7 +141,7 @@ const Timeline: React.SFC<Props> = ({ heading, items }) => (
                     i={i}
                     py={3}
                     px={4}
-                    bg="background.paper"
+                    bg="background.light"
                   >
                     <Text
                       mb={1}

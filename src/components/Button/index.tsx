@@ -1,6 +1,10 @@
 import * as React from "react";
-import { Button as Base, ButtonProps as BaseProps } from "src/theme";
-import { styled, css } from "src/theme";
+import {
+  styled,
+  css,
+  Button as Base,
+  ButtonProps as BaseProps,
+} from "themed-primitives";
 import { Link } from "../../i18n";
 
 interface ButtonProps extends BaseProps {
@@ -29,6 +33,7 @@ const ButtonLink: React.SFC<ButtonProps> = ({
 };
 
 const defaultStyle = css<ButtonProps>`
+  font-family: ${props => props.theme.fonts.sans};
   border: ${props => props.theme.borders[1]};
   border-color: transparent;
   border-radius: ${props => props.theme.radii[2]};
@@ -39,7 +44,7 @@ const defaultStyle = css<ButtonProps>`
   transition: all 400ms cubic-bezier(0.08, 0.52, 0.52, 1);
   padding: ${props => props.theme.sizes[2]} ${props => props.theme.sizes[3]};
   &:hover {
-    background: ${props => props.theme.colors.action.hover};
+    background: ${props => props.theme.colors.divider.light};
   }
   &:active {
     outline: none;
@@ -52,11 +57,11 @@ const defaultStyle = css<ButtonProps>`
     css`
       border-color: ${props.theme.colors.text.light};
       &:hover {
-        background: ${props.theme.colors.action.hover};
+        background: ${props.theme.colors.divider.light};
       }
       &:focus {
         outline: none;
-        background: ${props.theme.colors.action.hover};
+        background: ${props.theme.colors.divider.light};
       }
     `}
   ${props =>
@@ -74,7 +79,7 @@ const defaultStyle = css<ButtonProps>`
 const primary = css<ButtonProps>`
   color: ${props => props.theme.colors.primary.main};
   &:hover {
-    background: ${props => props.theme.colors.action.hover};
+    background: ${props => props.theme.colors.divider.light};
     color: ${props => props.theme.colors.primary.dark};
   }
   &:focus {
@@ -109,7 +114,7 @@ const primary = css<ButtonProps>`
 const secondary = css<ButtonProps>`
   color: ${props => props.theme.colors.secondary.main};
   &:hover {
-    background: ${props => props.theme.colors.action.hover};
+    background: ${props => props.theme.colors.divider.light};
     color: ${props => props.theme.colors.secondary.dark};
   }
   &:focus {

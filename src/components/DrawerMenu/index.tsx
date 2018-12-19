@@ -39,7 +39,7 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
             toggleMenu={injected.toggleMenu}
             width={300}
           >
-            <DrawerContent flexDirection="column" bg="background.paper" p={3}>
+            <DrawerContent flexDirection="column" bg="background.light" p={3}>
               <Flex justifyContent="flex-end">
                 <CloseButton onClick={injected.handleClose} />
               </Flex>
