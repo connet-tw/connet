@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, Box, Flex } from "themed-primitives";
+import { styled, Box, Flex } from "primithemes";
 import { Text, Heading } from "../Typography";
 import { Section, SectionHeader } from "../Section";
 

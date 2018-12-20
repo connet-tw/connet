@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Flex, Text } from "themed-primitives";
+import { Flex, Text } from "primithemes";
 
 interface Props {
   heading: React.ReactNode;

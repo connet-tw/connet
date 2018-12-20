@@ -1,8 +1,8 @@
 import * as React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./theme";
-import { styled, Flex, Box } from "themed-primitives";
+import { theme } from "../../theme";
+import { styled, Flex, Box } from "primithemes";
 import { createGlobalStyle } from "styled-components";
 import { FormattedMessage } from "react-intl";
 import * as m from "./Layout.messages";

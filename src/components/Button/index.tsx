@@ -4,7 +4,7 @@ import {
   css,
   Button as Base,
   ButtonProps as BaseProps,
-} from "themed-primitives";
+} from "primithemes";
 import { Link } from "../../i18n";
 
 interface ButtonProps extends BaseProps {

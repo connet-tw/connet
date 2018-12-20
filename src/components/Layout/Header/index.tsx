@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DrawerMenu } from "../../DrawerMenu";
 import { Link } from "../../../i18n";
-import { styled, Card, Flex, Text } from "themed-primitives";
+import { styled, Card, Flex, Text } from "primithemes";
 import { Button } from "../../Button";
 
 const Trigger = styled.div`

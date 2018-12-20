@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Text } from "themed-primitives";
+import { Box, Text } from "primithemes";
 import { BannerWrapper } from "./BannerWrapper";
 
 interface BannerProps {

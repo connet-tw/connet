@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, Box, Flex, Card } from "themed-primitives";
+import { styled, Box, Flex, Card } from "primithemes";
 import { Image } from "../Image";
 
 const Wrapper = styled(Card)`

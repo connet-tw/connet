@@ -1,4 +1,4 @@
-import { styled } from "themed-primitives";
+import { styled } from "primithemes";
 
 export const Container = styled.div`
   max-width: ${props => props.theme.maxWidth};

@@ -7,7 +7,8 @@ import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
 import { AboutSummary } from "../components/About";
 import { Categories } from "../components/Categories";
-import { Box } from "themed-primitives";
+import { Box } from "primithemes";
+import { Text } from "../components/Typography";
 
 interface ServiceNode {
   node: {

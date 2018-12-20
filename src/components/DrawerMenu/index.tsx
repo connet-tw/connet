@@ -3,7 +3,7 @@ import { MakeMenu } from "../utils/MakeMenu";
 import { Drawer } from "../Drawer";
 import { MenuButton } from "./MenuButton";
 import { CloseButton } from "./CloseButton";
-import { styled, Flex, Text } from "themed-primitives";
+import { styled, Flex, Text } from "primithemes";
 import { Button } from "../Button";
 import { Image } from "../Image";
 import { Link } from "../../i18n";

@@ -5,7 +5,7 @@ import { withIntl } from "../i18n";
 import * as m from "../messages/services.messages";
 import { FormattedMessage } from "react-intl";
 import { Image } from "../components/Image";
-import { Flex, Text } from "themed-primitives";
+import { Flex, Text } from "primithemes";
 import { Button } from "../components/Button";
 
 interface ServiceNode {
@@ -39,7 +39,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
           width={1}
           flexWrap="wrap"
           flexDirection={i % 2 === 0 ? "row" : "row-reverse"}
-          bg="background.paper"
+          bg="background.light"
         >
           <Flex width={[1, 1 / 2]}>
             <Image style={{ width: "100%" }} fluid={node.frontmatter.image} />

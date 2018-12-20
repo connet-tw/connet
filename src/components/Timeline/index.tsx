@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, css, Box, Flex, Card, Text } from "themed-primitives";
+import { styled, css, Box, Flex, Card, Text } from "primithemes";
 import { Container } from "../Container";
 
 const Line = styled(Flex)`
