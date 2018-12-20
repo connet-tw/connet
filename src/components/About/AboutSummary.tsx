@@ -1,5 +1,6 @@
 import * as React from "react";
-import { styled, Box, Flex, Text } from "themed-primitives";
+import { styled, Box, Flex } from "themed-primitives";
+import { Text, Heading } from "../Typography";
 import { Section, SectionHeader } from "../Section";
 
 const Container = styled(Flex)`
@@ -38,7 +39,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
               flexDirection="column"
             >
               <Box width={1}>
-                <Text
+                <Heading
                   color="primary.main"
                   mb={2}
                   textAlign="center"
@@ -47,7 +48,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
                   fontWeight={2}
                 >
                   {h.heading}
-                </Text>
+                </Heading>
                 <Text
                   textTransform="uppercase"
                   color="text.main"
