@@ -3,10 +3,9 @@ import { MakeMenu } from "../utils/MakeMenu";
 import { Drawer } from "../Drawer";
 import { MenuButton } from "./MenuButton";
 import { CloseButton } from "./CloseButton";
-import { Flex, Text } from "src/theme/primitives";
+import { styled, Flex, Text } from "themed-primitives";
 import { Button } from "../Button";
 import { Image } from "../Image";
-import { styled } from "src/theme";
 import { Link } from "../../i18n";
 
 const Logo = styled(Image)`

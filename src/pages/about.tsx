@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
 import { Section, SectionHeader } from "../components/Section";
 import { Timeline } from "../components/Timeline";
-import { Flex } from "src/theme/primitives";
+import { Flex } from "themed-primitives";
 import { Button } from "../components/Button";
 import { references } from "../data/References";
 

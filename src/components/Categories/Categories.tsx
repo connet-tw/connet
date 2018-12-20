@@ -2,7 +2,7 @@ import * as React from "react";
 import { Image } from "../Image";
 import { Section, SectionHeader } from "../Section";
 import { Button } from "../Button";
-import { Box, Card, Flex, Text } from "src/theme/primitives";
+import { Box, Card, Flex, Text } from "themed-primitives";
 import { Container } from "../Container";
 
 interface CategoryLink {

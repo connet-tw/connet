@@ -6,7 +6,7 @@ import * as m from "../messages/contact.messages";
 import { FormattedMessage } from "react-intl";
 import { Banner } from "../components/Banner";
 import { Section } from "../components/Section";
-import { Box, Flex, Card, Text } from "src/theme/primitives";
+import { Box, Flex, Card, Text } from "themed-primitives";
 import { Email } from "styled-icons/material/Email";
 import { Phone } from "styled-icons/material/Phone";
 import { Home } from "styled-icons/material/Home";

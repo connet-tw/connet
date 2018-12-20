@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Box, Card, Text, Flex } from "src/theme/primitives";
-import { styled } from "src/theme";
+import { styled, Box, Card, Text, Flex } from "themed-primitives";
 
 const Main = styled(Card)`
   position: relative;

@@ -2,11 +2,10 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
-import { Link } from "../i18n";
 import * as m from "../messages/services.messages";
 import { FormattedMessage } from "react-intl";
 import { Image } from "../components/Image";
-import { Flex, Text } from "src/theme/primitives";
+import { Flex, Text } from "themed-primitives";
 import { Button } from "../components/Button";
 
 interface ServiceNode {

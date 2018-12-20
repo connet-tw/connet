@@ -3,7 +3,7 @@ import rehypeReact from "rehype-react";
 import { graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
-import { Box, Flex, Text } from "src/theme/primitives";
+import { Box, Flex, Text } from "themed-primitives";
 import { Banner } from "../components/Banner";
 import { Section, SectionHeader } from "../components/Section";
 
