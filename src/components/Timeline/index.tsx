@@ -137,7 +137,7 @@ const Timeline: React.SFC<Props> = ({ heading, items }) => (
           {items.map(({ node }, i) => (
             <Flex key={i}>
               <Line bg="grey.200" p={3} w={1}>
-                <Wrapper bg="red" i={i}>
+                <Wrapper i={i}>
                   <Marker bg="grey.300" b={4} borderColor="grey.200" />
                   <ProjectCard
                     radius={2}

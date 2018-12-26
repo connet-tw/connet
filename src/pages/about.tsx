@@ -9,6 +9,7 @@ import { Section, SectionHeader } from "../components/Section";
 import { Timeline } from "../components/Timeline";
 import { Flex } from "primithemes";
 import { Button } from "../components/Button";
+import { Link } from "../components/Link";
 
 interface ServiceNode {
   node: {
@@ -63,9 +64,11 @@ const AboutPage: React.SFC<AboutPageProps> = ({ data }) => {
         <Flex mb={3} p={3} justifyContent="center" flexWrap="wrap">
           {data.services.edges.map(({ node }, i) => (
             <Flex key={i} p={1}>
-              <Button to={"/" + node.fields.slug} contained variant="primary">
-                {node.frontmatter.heading}
-              </Button>
+              <Link to={node.fields.slug}>
+                <Button contained variant="primary">
+                  {node.frontmatter.heading}
+                </Button>
+              </Link>
             </Flex>
           ))}
         </Flex>
