@@ -1,7 +1,7 @@
 ---
 lang: "en"
 title: "SCADA"
-order: 1
+order: "1"
 subtitle: "Industry grade SCADA systems"
 image: "/img/scada/scada.jpg"
 ---

@@ -15,7 +15,7 @@ backend:
 publish_mode: "editorial_workflow"
 
 media_folder: "static/img/uploads"
-public_folder: "static/img/"
+public_folder: "/img/uploads"
 
 collections:
   - name: "references"
