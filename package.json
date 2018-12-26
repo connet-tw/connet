@@ -25,6 +25,7 @@
     "gatsby-transformer-javascript-frontmatter": "^2.0.5",
     "gatsby-transformer-remark": "^2.1.17",
     "gatsby-transformer-sharp": "^2.1.9",
+    "primithemes": "0.0.2",
     "ramda": "^0.25.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

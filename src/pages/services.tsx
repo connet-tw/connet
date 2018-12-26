@@ -36,17 +36,17 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
       {data.services.edges.map(({ node }, i) => (
         <Flex
           key={i}
-          width={1}
+          w={1}
           flexWrap="wrap"
           flexDirection={i % 2 === 0 ? "row" : "row-reverse"}
           bg="background.light"
         >
-          <Flex width={[1, 1 / 2]}>
+          <Flex w={[1, 1 / 2]}>
             <Image style={{ width: "100%" }} fluid={node.frontmatter.image} />
           </Flex>
           <Flex
             p={4}
-            width={[1, 1 / 2]}
+            w={[1, 1 / 2]}
             flexDirection="column"
             alignItems="center"
             justifyContent="center"

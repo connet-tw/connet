@@ -8,7 +8,6 @@ import { Banner } from "../components/Banner";
 import { AboutSummary } from "../components/About";
 import { Categories } from "../components/Categories";
 import { Box } from "primithemes";
-import { Text } from "../components/Typography";
 
 interface ServiceNode {
   node: {

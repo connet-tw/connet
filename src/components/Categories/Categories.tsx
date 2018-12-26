@@ -35,10 +35,10 @@ const Categories: React.SFC<Props> = ({
     <Container>
       <Flex p={2} flexWrap="wrap">
         {categoryLinks.map((x, i) => (
-          <Flex key={i} width={[1, 1 / 2, 1 / 2, 1 / 4]} p={2}>
+          <Flex key={i} w={[1, 1 / 2, 1 / 2, 1 / 4]} p={2}>
             <Card
               radius={2}
-              width={1}
+              w={1}
               key={x.to}
               shadow={1}
               flexDirection="column"

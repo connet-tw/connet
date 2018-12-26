@@ -25,9 +25,9 @@ interface ContactCardProps {
 const ContactCard: React.SFC<ContactCardProps> = ({ icon, text }) => {
   const I = icon;
   return (
-    <Box p={2} width={1}>
+    <Box p={2} w={1}>
       <Card
-        width={1}
+        w={1}
         p={3}
         flexDirection="row"
         justifyContent="space-between"
@@ -61,7 +61,7 @@ const ContactPage: React.SFC<ContactPageProps> = ({ data }) => {
       />
       <Box bg="grey.100" style={{ flexGrow: 1 }}>
         <Section>
-          <Flex p={2} width={[1, 1, 2 / 3, 1 / 3]} flexWrap="wrap">
+          <Flex p={2} w={[1, 1, 2 / 3, 1 / 3]} flexWrap="wrap">
             <ContactCard
               icon={Phone}
               text={[<FormattedMessage {...m.contactDetails.phoneNumber} />]}

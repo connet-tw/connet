@@ -38,13 +38,13 @@ const BannerWrapper: React.SFC<BannerProps> = ({ image, children }) => {
       <ImageWrapper>
         <Image style={{ width: "100%" }} fluid={image} />
       </ImageWrapper>
-      <Flex color="white.light" style={{ position: "relative" }} width={1}>
+      <Flex color="white.light" style={{ position: "relative" }} w={1}>
         <Overlay
           bt={1}
           borderColor="white.light"
           bg="linear-gradient(to top, rgba(255,255,255,1.0), rgba(255,255,255,0.75))"
         />
-        <Box width={1} style={{ zIndex: 1 }}>
+        <Box w={1} style={{ zIndex: 1 }}>
           {children}
         </Box>
       </Flex>

@@ -123,7 +123,7 @@ interface Props {
 }
 
 const Timeline: React.SFC<Props> = ({ heading, items }) => (
-  <Box bg="grey.200" width={1}>
+  <Box bg="grey.200" w={1}>
     <Flex mx={3} my={4} flexDirection="column">
       <Text mb={2} textAlign="center" as="h2" color="text.primary">
         Project References
@@ -132,7 +132,7 @@ const Timeline: React.SFC<Props> = ({ heading, items }) => (
         <Box p={3}>
           {items.map((x, i) => (
             <Flex key={i}>
-              <Line bg="grey.200" p={3} width={1}>
+              <Line bg="grey.200" p={3} w={1}>
                 <Wrapper i={i}>
                   <Marker bg="grey.300" b={4} borderColor="grey.200" />
                   <ProjectCard

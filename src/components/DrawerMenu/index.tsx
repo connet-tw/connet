@@ -60,7 +60,7 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
                     m={1}
                     key={x.to}
                     onClick={injected.handleClose}
-                    width={1}
+                    w={1}
                     to={x.to}
                   >
                     {x.label}
