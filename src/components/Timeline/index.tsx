@@ -111,10 +111,14 @@ const ProjectCard = styled(Card)<{ i: number }>`
 `;
 
 interface TimelineItem {
-  date: React.ReactNode;
-  heading: React.ReactNode;
-  customer: React.ReactNode;
-  location: React.ReactNode;
+  node: {
+    frontmatter: {
+      date: React.ReactNode;
+      title: React.ReactNode;
+      customer: React.ReactNode;
+      location: React.ReactNode;
+    };
+  };
 }
 
 interface Props {
@@ -125,18 +129,19 @@ interface Props {
 const Timeline: React.SFC<Props> = ({ heading, items }) => (
   <Box bg="grey.200" w={1}>
     <Flex mx={3} my={4} flexDirection="column">
-      <Text mb={2} textAlign="center" as="h2" color="text.primary">
+      <Text mb={2} textAlign="center" is="h2" color="text.primary">
         Project References
       </Text>
       <Container>
         <Box p={3}>
-          {items.map((x, i) => (
+          {items.map(({ node }, i) => (
             <Flex key={i}>
               <Line bg="grey.200" p={3} w={1}>
-                <Wrapper i={i}>
+                <Wrapper bg="red" i={i}>
                   <Marker bg="grey.300" b={4} borderColor="grey.200" />
                   <ProjectCard
                     radius={2}
+                    w={1}
                     i={i}
                     py={3}
                     px={4}
@@ -148,13 +153,15 @@ const Timeline: React.SFC<Props> = ({ heading, items }) => (
                       fontWeight={2}
                       color="primary.main"
                     >
-                      {x.date}
+                      {node.frontmatter.date}
                     </Text>
                     <Text mb={2} fontSize={[2, 3, 3]} color="text.main">
-                      {x.heading}
+                      {node.frontmatter.title}
                     </Text>
-                    <Text color="secondary.main">{x.customer}</Text>
-                    <Text color="text.light">{x.location}</Text>
+                    <Text color="secondary.main">
+                      {node.frontmatter.customer}
+                    </Text>
+                    <Text color="text.light">{node.frontmatter.location}</Text>
                   </ProjectCard>
                 </Wrapper>
               </Line>

@@ -70,9 +70,11 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
     <Flex>
       <Nav>
         {navItems.map(x => (
-          <Button ml={1} to={x.to} key={x.to}>
-            {x.label}
-          </Button>
+          <Link to={x.to}>
+            <Button ml={1} key={x.to}>
+              {x.label}
+            </Button>
+          </Link>
         ))}
       </Nav>
       <Trigger>

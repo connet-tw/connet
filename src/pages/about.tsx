@@ -10,8 +10,6 @@ import { Timeline } from "../components/Timeline";
 import { Flex } from "primithemes";
 import { Button } from "../components/Button";
 
-const references: any[] = [];
-
 interface ServiceNode {
   node: {
     fields: {
@@ -23,11 +21,28 @@ interface ServiceNode {
   };
 }
 
+interface ReferenceNode {
+  node: {
+    fields: {
+      slug: string;
+    };
+    frontmatter: {
+      title: string;
+      customer: string;
+      date: string;
+      location: string;
+    };
+  };
+}
+
 interface AboutPageProps {
   data: {
     headerImg: any;
     services: {
       edges: ServiceNode[];
+    };
+    references: {
+      edges: ReferenceNode[];
     };
   };
 }
@@ -54,7 +69,7 @@ const AboutPage: React.SFC<AboutPageProps> = ({ data }) => {
             </Flex>
           ))}
         </Flex>
-        <Timeline heading="Project References" items={references} />
+        <Timeline heading="Project References" items={data.references.edges} />
       </Section>
     </Layout>
   );
@@ -84,6 +99,26 @@ export const query = graphql`
           }
           frontmatter {
             heading
+          }
+        }
+      }
+    }
+    references: allMarkdownRemark(
+      filter: {
+        frontmatter: { lang: { eq: $locale } }
+        fields: { type: { eq: "references" } }
+      }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date
+            customer
+            location
           }
         }
       }

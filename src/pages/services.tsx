@@ -7,6 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { Image } from "../components/Image";
 import { Flex, Text } from "primithemes";
 import { Button } from "../components/Button";
+import { Link } from "../components/Link";
 
 interface ServiceNode {
   node: {
@@ -69,9 +70,11 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
             >
               {node.frontmatter.subheading}
             </Text>
-            <Button mt={2} outlined to={node.fields.slug}>
-              <FormattedMessage {...m.services.learnMore} />
-            </Button>
+            <Link to={node.fields.slug}>
+              <Button mt={2} outlined>
+                <FormattedMessage {...m.services.learnMore} />
+              </Button>
+            </Link>
           </Flex>
         </Flex>
       ))}
