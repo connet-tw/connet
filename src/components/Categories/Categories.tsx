@@ -48,7 +48,7 @@ const Categories: React.SFC<Props> = ({
                 <Image style={{ height: 140 }} fluid={x.image} />
                 <Box m={3} style={{ flexGrow: 1 }}>
                   <Text
-                    as="h3"
+                    is="h3"
                     color="primary.main"
                     fontWeight={4}
                     fontSize={3}
@@ -56,7 +56,7 @@ const Categories: React.SFC<Props> = ({
                     {x.label}
                   </Text>
                   {x.text && (
-                    <Text mt={2} as="p">
+                    <Text mt={2} is="p">
                       {x.text}
                     </Text>
                   )}

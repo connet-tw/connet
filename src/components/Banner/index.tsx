@@ -13,14 +13,14 @@ const Banner: React.SFC<BannerProps> = props => {
     <BannerWrapper image={props.image}>
       <Box p={4}>
         <Text
-          as="h1"
+          is="h1"
           fontSize={[5, 6, 6, 7]}
           color="primary.main"
           fontWeight={2}
           textAlign="center"
           textTransform="uppercase"
-          letterSpacing="tracked"
-          lineHeight="title"
+          letterSpacing={2}
+          lineHeight={1}
         >
           {props.heading}
         </Text>

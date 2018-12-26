@@ -53,7 +53,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
           >
             <Text
               mb={2}
-              as="h2"
+              is="h2"
               fontSize={[4, 5]}
               color="primary.main"
               fontWeight={2}
@@ -63,7 +63,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
             <Text
               mb={3}
               fontSize={2}
-              as="h5"
+              is="h5"
               fontWeight={3}
               color="text.primary"
             >

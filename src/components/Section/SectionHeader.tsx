@@ -16,7 +16,7 @@ export const SectionHeader: React.SFC<Props> = ({
   <Flex mt={4} m={3} flexDirection="column" style={{ maxWidth: 600 }}>
     <Text
       textAlign="center"
-      as="h2"
+      is="h2"
       fontWeight={2}
       fontSize={[5, 5, 6]}
       color="text.dark"
@@ -40,7 +40,7 @@ export const SectionHeader: React.SFC<Props> = ({
           mt={3}
           color="text.dark"
           textAlign="center"
-          lineHeight={"copy"}
+          lineHeight={2}
           key={i}
         >
           {x}

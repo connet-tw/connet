@@ -5,8 +5,6 @@ export const Text = styled(Base)`
   font-size: ${props => props.theme.fontSizes[2]};
 `;
 
-export const Heading = styled(Text).attrs({
-  as: "h2",
-})`
+export const Heading = styled(Text)`
   font-size: ${props => props.theme.fontSizes[3]};
 `;

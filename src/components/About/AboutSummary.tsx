@@ -43,7 +43,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
                   color="primary.main"
                   mb={2}
                   textAlign="center"
-                  as="h5"
+                  is="h5"
                   fontSize={[5, 6]}
                   fontWeight={2}
                 >
@@ -53,7 +53,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
                   textTransform="uppercase"
                   color="text.main"
                   fontSize={1}
-                  as="p"
+                  is="p"
                   textAlign="center"
                 >
                   {h.subheading}
