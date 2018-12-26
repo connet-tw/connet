@@ -80,14 +80,16 @@ export const query = graphql`
       }
     }
     services: allMarkdownRemark(
-      filter: { fields: { type: { eq: "services" }, lang: { eq: $locale } } }
+      filter: {
+        fields: { type: { eq: "services" } }
+        frontmatter: { lang: { eq: $locale } }
+      }
       sort: { fields: [frontmatter___order], order: ASC }
     ) {
       edges {
         node {
           fields {
             slug
-            lang
           }
           htmlAst
           frontmatter {

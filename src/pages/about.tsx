@@ -9,7 +9,8 @@ import { Section, SectionHeader } from "../components/Section";
 import { Timeline } from "../components/Timeline";
 import { Flex } from "primithemes";
 import { Button } from "../components/Button";
-import { references } from "../data/References";
+
+const references: any[] = [];
 
 interface ServiceNode {
   node: {
@@ -71,7 +72,10 @@ export const query = graphql`
       }
     }
     services: allMarkdownRemark(
-      filter: { fields: { type: { eq: "services" }, lang: { eq: $locale } } }
+      filter: {
+        frontmatter: { lang: { eq: $locale } }
+        fields: { type: { eq: "services" } }
+      }
     ) {
       edges {
         node {

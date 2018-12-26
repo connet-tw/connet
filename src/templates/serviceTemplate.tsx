@@ -48,10 +48,12 @@ export default withIntl(EventTemplate);
 
 export const query = graphql`
   query($slug: String!, $locale: String!) {
-    markdownRemark(fields: { slug: { eq: $slug }, lang: { eq: $locale } }) {
+    markdownRemark(
+      fields: { slug: { eq: $slug } }
+      frontmatter: { lang: { eq: $locale } }
+    ) {
       fields {
         slug
-        lang
       }
       htmlAst
       frontmatter {

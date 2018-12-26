@@ -1,7 +1,7 @@
 export const references = [
   {
     date: "1991",
-    heading: "Telecom Switching Operation Monitoring Sytem (SOSS)",
+    heading: "Telecom Switching Operation Monitoring System (SOSS)",
     customer: "Chunghwa Telecom Bureau",
     location: "Taiwan",
   },

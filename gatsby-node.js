@@ -1,21 +1,23 @@
-const path = require('path');
+const path = require("path");
 const languages = require("./src/i18n/locales/languages.js");
+
+const { createFilePath } = require("gatsby-source-filesystem");
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
-  if (page.path.includes('404')) {
+  if (page.path.includes("404")) {
     return Promise.resolve();
   }
 
   return new Promise(resolve => {
-    const redirect = path.resolve('src/i18n/redirect.tsx');
+    const redirect = path.resolve("src/i18n/redirect.tsx");
     const redirectPage = {
       ...page,
       component: redirect,
       context: {
         languages,
-        locale: '',
+        locale: "",
         routed: false,
         redirectPage: page.path,
       },
@@ -34,42 +36,53 @@ exports.onCreatePage = ({ page, actions }) => {
           routed: true,
           originalPath: page.path,
         },
-      }
-      createPage(localePage)
-    })
+      };
+      createPage(localePage);
+    });
 
-    resolve()
-  })
-}
+    resolve();
+  });
+};
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === "MarkdownRemark") {
-    const parent = getNode(node.parent);
-    const [name, lang] = parent.name.split(".");
-    const type = parent.sourceInstanceName;
-    const slug = [type, parent.relativeDirectory].join("/");
 
-    createNodeField({node, name: "lang", value: lang});
-    createNodeField({node, name: "type", value: type});
-    createNodeField({node, name: "slug", value: "/" + slug});
+  const { frontmatter } = node;
+  if (frontmatter) {
+    const { image } = frontmatter;
+    if (image) {
+      if (image.indexOf("/img") === 0) {
+        frontmatter.image = path.relative(
+          path.dirname(node.fileAbsolutePath),
+          path.join(__dirname, "/static/", image)
+        );
+      }
+    }
   }
-}
+
+  if (node.internal.type === "MarkdownRemark") {
+    const slug = createFilePath({ node, getNode, basePath: "src/data" });
+    const type = getNode(node.parent).sourceInstanceName;
+
+    createNodeField({ node, name: "slug", value: `/${type}${slug}` });
+    createNodeField({ node, name: "type", value: type });
+  }
+};
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   return graphql(`
     {
-      allMarkdownRemark(
-        limit: 1000
-      ) {
+      allMarkdownRemark(limit: 1000) {
         edges {
           node {
             fields {
-              lang
               type
               slug
+            }
+            frontmatter {
+              lang
             }
           }
         }
@@ -77,18 +90,20 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `).then(result => {
     if (result.errors) {
-      return Promise.reject(result.errors)
+      return Promise.reject(result.errors);
     }
 
     result.data.allMarkdownRemark.edges
-      .filter(({node}) => languages.find(({code}) => code === node.fields.lang))
+      .filter(({ node }) => node.fields.type === "services")
       .forEach(({ node }) => {
         createPage({
-          path: `/${node.fields.lang}${node.fields.slug}`,
-          component: path.resolve(`src/templates/${matchTemplate(node.fields.type)}`),
+          path: `/${node.frontmatter.lang}${node.fields.slug}`,
+          component: path.resolve(
+            `src/templates/${matchTemplate(node.fields.type)}`
+          ),
           context: {
             languages,
-            locale: node.fields.lang,
+            locale: node.frontmatter.lang,
             slug: node.fields.slug,
           },
         });
@@ -101,6 +116,6 @@ function matchTemplate(s) {
     case "services":
       return "serviceTemplate.tsx";
     default:
-      throw("unknown node type");
+      throw `unknown node type: ${s}`;
   }
 }

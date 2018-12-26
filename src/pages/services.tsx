@@ -84,14 +84,16 @@ export default withIntl(ServicesPage);
 export const query = graphql`
   query($locale: String!) {
     services: allMarkdownRemark(
-      filter: { fields: { type: { eq: "services" }, lang: { eq: $locale } } }
+      filter: {
+        frontmatter: { lang: { eq: $locale } }
+        fields: { type: { eq: "services" } }
+      }
       sort: { fields: [frontmatter___order], order: ASC }
     ) {
       edges {
         node {
           fields {
             slug
-            lang
           }
           frontmatter {
             heading
