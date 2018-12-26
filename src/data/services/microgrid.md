@@ -1,8 +1,8 @@
 ---
-title: "Microgrid"
 lang: "en"
-order: 2
+title: "Microgrid"
 subtitle: "Independent hybrid power system"
+order: 2
 image: "/img/microgrid/microgrids.jpg"
 ---
 

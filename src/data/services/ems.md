@@ -1,8 +1,8 @@
 ---
 title: "EMS"
+subtitle: "Energy Management System"
 lang: "en"
 order: 3
-subtitle: "Energy Management System"
 image: "/img/ems/energy-management.jpg"
 ---
 
