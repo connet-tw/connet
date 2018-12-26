@@ -1,8 +1,8 @@
 ---
-heading: "Flood Control"
+title: "Flood Control"
 lang: "en"
 order: 4
-subheading: "Pumping station automation system"
+subtitle: "Pumping station automation system"
 image: "/img/flood-control/flood-control.jpg"
 ---
 

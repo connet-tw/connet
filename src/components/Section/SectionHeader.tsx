@@ -2,15 +2,15 @@ import * as React from "react";
 import { Flex, Text } from "primithemes";
 
 interface Props {
-  heading: React.ReactNode;
-  subheading?: React.ReactNode;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   body?: React.ReactNode[];
 }
 
 export const SectionHeader: React.SFC<Props> = ({
   children,
-  heading,
-  subheading,
+  title,
+  subtitle,
   body,
 }) => (
   <Flex mt={4} m={3} flexDirection="column" style={{ maxWidth: 600 }}>
@@ -21,9 +21,9 @@ export const SectionHeader: React.SFC<Props> = ({
       fontSize={[5, 5, 6]}
       color="text.dark"
     >
-      {heading}
+      {title}
     </Text>
-    {!!subheading && (
+    {!!subtitle && (
       <Text
         mt={3}
         fontWeight={3}
@@ -31,7 +31,7 @@ export const SectionHeader: React.SFC<Props> = ({
         color="primary.main"
         textAlign="center"
       >
-        {subheading}
+        {subtitle}
       </Text>
     )}
     {!!body &&

@@ -1,0 +1,39 @@
+lang: &lang
+  name: "lang"
+  label: "Lang"
+  default: "en"
+  widget: "select"
+  options: &langOptions
+    - { label: "English", value: "en" }
+    - { label: "Chinese", value: "zh" }
+
+backend:
+  name: "github"
+  repo: "connet-tw/connet"
+  branch: "master"
+
+publish_mode: "editorial_workflow"
+
+media_folder: "static/img/uploads"
+public_folder: "static/img/"
+
+collections:
+  - name: "references"
+    label: "References"
+    folder: "src/data/references"
+    create: true
+    fields:
+      - { name: "date", label: "Date" }
+      - { name: "title", label: "Title" }
+      - { name: "location", label: "Location" }
+      - *lang
+
+  - name: "services"
+    label: "Services"
+    folder: "src/data/services"
+    create: true
+    fields:
+      - { name: "date", label: "Date" }
+      - { name: "title", label: "Title" }
+      - { name: "location", label: "Location" }
+      - *lang

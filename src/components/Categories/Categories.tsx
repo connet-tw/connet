@@ -15,8 +15,8 @@ interface CategoryLink {
 }
 
 type Props = {
-  heading: React.ReactNode;
-  subheading?: React.ReactNode;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   body?: React.ReactNode[];
   categoryLinks: CategoryLink[];
   image?: any;
@@ -26,13 +26,13 @@ type Props = {
 const Categories: React.SFC<Props> = ({
   image,
   gradient,
-  heading,
-  subheading,
+  title,
+  subtitle,
   body,
   categoryLinks,
 }) => (
   <Section>
-    <SectionHeader heading={heading} subheading={subheading} body={body} />
+    <SectionHeader title={title} subtitle={subtitle} body={body} />
     <Container>
       <Flex p={2} flexWrap="wrap">
         {categoryLinks.map((x, i) => (

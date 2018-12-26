@@ -1,12 +1,12 @@
 import { defineMessages } from "react-intl";
 
 export const contact = defineMessages({
-  heading: {
-    id: "contact.banner.heading",
+  title: {
+    id: "contact.banner.title",
     defaultMessage: "Contact Us",
   },
-  subheading: {
-    id: "contact.banner.subheading",
+  subtitle: {
+    id: "contact.banner.subtitle",
     defaultMessage: "Controlnet International",
   },
 });
@@ -31,5 +31,5 @@ export const contactDetails = defineMessages({
   country: {
     id: "contact.country",
     defaultMessage: " Taipei 11494, Taiwan",
-  }
+  },
 });

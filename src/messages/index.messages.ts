@@ -1,70 +1,72 @@
 import { defineMessages } from "react-intl";
 
 export const hero = defineMessages({
-  heading: {
-    id: "index.hero.heading",
+  title: {
+    id: "index.hero.title",
     defaultMessage: "Controlnet International",
   },
-  subheading: {
-    id: "index.hero.subheading",
+  subtitle: {
+    id: "index.hero.subtitle",
     defaultMessage: "Expert in power system integration",
   },
 });
 
 export const about = defineMessages({
-  heading: {
-    id: "index.about.heading",
+  title: {
+    id: "index.about.title",
     defaultMessage: "Expert in Power System Integration",
   },
-  subheading: {
-    id: "index.about.subheading",
-    defaultMessage: "Controlnet International Inc. has designed and developed integrated power system solutions with focus on meeting specific user needs in diverse industries and applications since 1990."
+  subtitle: {
+    id: "index.about.subtitle",
+    defaultMessage:
+      "Controlnet International Inc. has designed and developed integrated power system solutions with focus on meeting specific user needs in diverse industries and applications since 1990.",
   },
 });
 
 export const highlights = defineMessages({
-  heading1: {
-    id: "index.highlights.heading1",
+  title1: {
+    id: "index.highlights.title1",
     defaultMessage: "27 Yrs",
   },
-  subheading1: {
-    id: "index.highlights.subheading1",
+  subtitle1: {
+    id: "index.highlights.subtitle1",
     defaultMessage: "Experience",
   },
-  heading2: {
-    id: "index.highlights.heading2",
+  title2: {
+    id: "index.highlights.title2",
     defaultMessage: "US 160M",
   },
-  subheading2: {
-    id: "index.highlights.subheading2",
+  subtitle2: {
+    id: "index.highlights.subtitle2",
     defaultMessage: "Total project value",
   },
-  heading3: {
-    id: "index.highlights.heading3",
+  title3: {
+    id: "index.highlights.title3",
     defaultMessage: "4",
   },
-  subheading3: {
-    id: "index.highlights.subheading3",
+  subtitle3: {
+    id: "index.highlights.subtitle3",
     defaultMessage: "Regional offices",
   },
-  heading4: {
-    id: "index.highlights.heading4",
+  title4: {
+    id: "index.highlights.title4",
     defaultMessage: "180+",
   },
-  subheading4: {
-    id: "index.highlights.subheading4",
+  subtitle4: {
+    id: "index.highlights.subtitle4",
     defaultMessage: "Employees",
   },
 });
 
 export const services = defineMessages({
-  heading: {
-    id: "index.services.heading",
+  title: {
+    id: "index.services.title",
     defaultMessage: "Our Services",
   },
-  subheading: {
-    id: "index.services.subheading",
-    defaultMessage: "Controlnet is a long-term partner providing engineering services for power infrastructure with monitoring and automation systems in numerous projects in Taiwan and overseas.",
+  subtitle: {
+    id: "index.services.subtitle",
+    defaultMessage:
+      "Controlnet is a long-term partner providing engineering services for power infrastructure with monitoring and automation systems in numerous projects in Taiwan and overseas.",
   },
   learnMore: {
     id: "index.services.learnMore",

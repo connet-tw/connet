@@ -16,8 +16,8 @@ interface ServiceNode {
       slug: string;
     };
     frontmatter: {
-      heading: string;
-      subheading: string;
+      title: string;
+      subtitle: string;
       image: any;
     };
   };
@@ -59,7 +59,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
               color="primary.main"
               fontWeight={2}
             >
-              {node.frontmatter.heading}
+              {node.frontmatter.title}
             </Text>
             <Text
               mb={3}
@@ -68,7 +68,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
               fontWeight={3}
               color="text.primary"
             >
-              {node.frontmatter.subheading}
+              {node.frontmatter.subtitle}
             </Text>
             <Link to={node.fields.slug}>
               <Button mt={2} outlined>
@@ -99,8 +99,8 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            heading
-            subheading
+            title
+            subtitle
             image {
               childImageSharp {
                 fluid(maxWidth: 960, quality: 90) {

@@ -17,7 +17,7 @@ interface ServiceNode {
       slug: string;
     };
     frontmatter: {
-      heading: string;
+      title: string;
     };
   };
 }
@@ -53,12 +53,12 @@ const AboutPage: React.SFC<AboutPageProps> = ({ data }) => {
     <Layout>
       <Banner
         image={data.headerImg}
-        heading={<FormattedMessage {...m.banner.heading} />}
+        title={<FormattedMessage {...m.banner.title} />}
       />
       <Section>
         <SectionHeader
-          heading={<FormattedMessage {...m.s1.heading} />}
-          subheading={<FormattedMessage {...m.s1.subheading} />}
+          title={<FormattedMessage {...m.s1.title} />}
+          subtitle={<FormattedMessage {...m.s1.subtitle} />}
           body={[<FormattedMessage {...m.body.one} />]}
         />
         <Flex mb={3} p={3} justifyContent="center" flexWrap="wrap">
@@ -66,13 +66,13 @@ const AboutPage: React.SFC<AboutPageProps> = ({ data }) => {
             <Flex key={i} p={1}>
               <Link to={node.fields.slug}>
                 <Button contained variant="primary">
-                  {node.frontmatter.heading}
+                  {node.frontmatter.title}
                 </Button>
               </Link>
             </Flex>
           ))}
         </Flex>
-        <Timeline heading="Project References" items={data.references.edges} />
+        <Timeline title="Project References" items={data.references.edges} />
       </Section>
     </Layout>
   );
@@ -101,7 +101,7 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            heading
+            title
           }
         }
       }

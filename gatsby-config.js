@@ -4,6 +4,7 @@ module.exports = {
   siteMetadata,
   //pathPrefix: "connet",
   plugins: [
+    "gatsby-plugin-netlify-cms",
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-favicon",

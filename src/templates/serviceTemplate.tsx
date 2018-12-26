@@ -33,9 +33,9 @@ const EventTemplate: React.SFC<EventTemplateProps> = ({ data }) => {
   const { markdownRemark: mk } = data;
   return (
     <Layout>
-      <Banner heading={mk.frontmatter.heading} image={mk.frontmatter.image} />
+      <Banner title={mk.frontmatter.title} image={mk.frontmatter.image} />
       <Section>
-        <SectionHeader heading={mk.frontmatter.subheading} />
+        <SectionHeader title={mk.frontmatter.subtitle} />
         <Flex p={3} w={1}>
           {renderAst(mk.htmlAst)}
         </Flex>
@@ -57,8 +57,8 @@ export const query = graphql`
       }
       htmlAst
       frontmatter {
-        heading
-        subheading
+        title
+        subtitle
         image {
           childImageSharp {
             fluid(maxWidth: 1920, quality: 90) {

@@ -42,7 +42,7 @@ const ContactCard: React.SFC<ContactCardProps> = ({ icon, text }) => {
         </Text>
         <Box>
           {text.map((x, i) => (
-            <Text ml={4} lineHeight="copy" textAlign="right" color="text.dark">
+            <Text ml={4} lineHeight={2} textAlign="right" color="text.dark">
               {x}
             </Text>
           ))}
@@ -57,7 +57,7 @@ const ContactPage: React.SFC<ContactPageProps> = ({ data }) => {
     <Layout>
       <Banner
         image={data.headerImg}
-        heading={<FormattedMessage {...m.contact.heading} />}
+        title={<FormattedMessage {...m.contact.title} />}
       />
       <Box bg="grey.100" style={{ flexGrow: 1 }}>
         <Section>

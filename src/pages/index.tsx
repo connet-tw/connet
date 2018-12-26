@@ -16,8 +16,8 @@ interface ServiceNode {
       slug: string;
     };
     frontmatter: {
-      heading: string;
-      subheading: string;
+      title: string;
+      subtitle: string;
       image: any;
     };
   };
@@ -36,28 +36,26 @@ const Index: React.SFC<IndexProps> = ({ data }) => {
   return (
     <Layout>
       <Banner
-        heading={<FormattedMessage {...m.hero.heading} />}
+        title={<FormattedMessage {...m.hero.title} />}
         image={data.headerImg}
       />
       <Box bg="background.light">
         <AboutSummary
-          heading={<FormattedMessage {...m.about.heading} />}
-          body={[<FormattedMessage {...m.about.subheading} />]}
+          title={<FormattedMessage {...m.about.title} />}
+          body={[<FormattedMessage {...m.about.subtitle} />]}
           highlights={[1, 2, 3, 4].map(n => ({
-            heading: <FormattedMessage {...m.highlights["heading" + n]} />,
-            subheading: (
-              <FormattedMessage {...m.highlights["subheading" + n]} />
-            ),
+            title: <FormattedMessage {...m.highlights["title" + n]} />,
+            subtitle: <FormattedMessage {...m.highlights["subtitle" + n]} />,
           }))}
         />
       </Box>
       <Box>
         <Categories
-          heading={<FormattedMessage {...m.services.heading} />}
-          body={[<FormattedMessage {...m.services.subheading} />]}
+          title={<FormattedMessage {...m.services.title} />}
+          body={[<FormattedMessage {...m.services.subtitle} />]}
           categoryLinks={data.services.edges.map(({ node }) => ({
-            label: node.frontmatter.heading,
-            text: node.frontmatter.subheading,
+            label: node.frontmatter.title,
+            text: node.frontmatter.subtitle,
             image: node.frontmatter.image,
             to: node.fields.slug,
             buttonText: <FormattedMessage {...m.services.learnMore} />,
@@ -93,8 +91,8 @@ export const query = graphql`
           }
           htmlAst
           frontmatter {
-            heading
-            subheading
+            title
+            subtitle
             image {
               childImageSharp {
                 fluid(maxWidth: 800) {

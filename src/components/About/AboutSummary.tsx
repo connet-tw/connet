@@ -8,26 +8,26 @@ const Container = styled(Flex)`
 `;
 
 interface Highlight {
-  heading: React.ReactNode;
-  subheading: React.ReactNode;
+  title: React.ReactNode;
+  subtitle: React.ReactNode;
 }
 
 interface AboutSummaryProps {
-  heading: React.ReactNode;
-  subheading?: React.ReactNode;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   body?: React.ReactNode[];
   highlights: Highlight[];
 }
 
 const AboutSummary: React.SFC<AboutSummaryProps> = ({
-  heading,
-  subheading,
+  title,
+  subtitle,
   body,
   highlights,
 }) => {
   return (
     <Section>
-      <SectionHeader heading={heading} subheading={subheading} body={body} />
+      <SectionHeader title={title} subtitle={subtitle} body={body} />
       {!!highlights && (
         <Container flexWrap="wrap" w={1} p={3}>
           {highlights.map((h, i) => (
@@ -47,7 +47,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
                   fontSize={[5, 6]}
                   fontWeight={2}
                 >
-                  {h.heading}
+                  {h.title}
                 </Heading>
                 <Text
                   textTransform="uppercase"
@@ -56,7 +56,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
                   is="p"
                   textAlign="center"
                 >
-                  {h.subheading}
+                  {h.subtitle}
                 </Text>
               </Box>
             </Flex>

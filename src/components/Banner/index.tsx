@@ -3,8 +3,8 @@ import { Box, Text } from "primithemes";
 import { BannerWrapper } from "./BannerWrapper";
 
 interface BannerProps {
-  heading: React.ReactNode;
-  subheading?: React.ReactNode;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   image: any;
 }
 
@@ -22,11 +22,11 @@ const Banner: React.SFC<BannerProps> = props => {
           letterSpacing={2}
           lineHeight={1}
         >
-          {props.heading}
+          {props.title}
         </Text>
-        {props.subheading && (
+        {props.subtitle && (
           <Text mt={2} fontSize={3} textAlign="center" color="text.main">
-            {props.subheading}
+            {props.subtitle}
           </Text>
         )}
       </Box>
