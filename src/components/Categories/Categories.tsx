@@ -4,6 +4,7 @@ import { Section, SectionHeader } from "../Section";
 import { Button } from "../Button";
 import { Box, Card, Flex, Text } from "primithemes";
 import { Container } from "../Container";
+import { Link } from "../../i18n";
 
 interface CategoryLink {
   label: React.ReactNode;
@@ -62,9 +63,9 @@ const Categories: React.SFC<Props> = ({
                   )}
                 </Box>
                 <Flex m={3}>
-                  <Button to={x.to} outlined>
-                    {x.buttonText}
-                  </Button>
+                  <Link to={x.to}>
+                    <Button outlined>{x.buttonText}</Button>
+                  </Link>
                 </Flex>
               </Flex>
             </Card>

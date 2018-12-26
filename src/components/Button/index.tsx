@@ -1,11 +1,11 @@
 import * as React from "react";
+//import { navigate } from "gatsby";
 import {
   styled,
   css,
   Button as Base,
   ButtonProps as BaseProps,
 } from "primithemes";
-import { Link } from "../../i18n";
 
 interface ButtonProps extends BaseProps {
   to?: string;
@@ -15,10 +15,9 @@ interface ButtonProps extends BaseProps {
   outlined?: boolean;
   small?: boolean;
   large?: boolean;
-  onClick?(): void;
 }
 
-const ButtonLink: React.SFC<ButtonProps> = ({
+const FilteredButton: React.SFC<ButtonProps> = ({
   to,
   contained,
   outlined,
@@ -28,7 +27,6 @@ const ButtonLink: React.SFC<ButtonProps> = ({
   variant,
   ...props
 }) => {
-  if (to) return <Base as={Link} to={to} {...props} />;
   return <Base {...props} />;
 };
 
@@ -197,7 +195,7 @@ const round = css<ButtonProps>`
   border-radius: 50%;
 `;
 
-const Button = styled(ButtonLink)<ButtonProps>`
+const Button = styled(FilteredButton)<ButtonProps>`
   ${defaultStyle}
   ${props => props.variant === "primary" && primary}
   ${props => props.variant === "secondary" && secondary}

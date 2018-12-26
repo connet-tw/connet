@@ -14,12 +14,12 @@ interface EventTemplateProps {
 }
 
 const P: React.SFC<{}> = ({ children }) => (
-  <Text mb={3} width={1}>
+  <Text mb={3} w={1}>
     {children}
   </Text>
 );
 
-const Div: React.SFC<{}> = ({ children }) => <Box width={1}>{children}</Box>;
+const Div: React.SFC<{}> = ({ children }) => <Box w={1}>{children}</Box>;
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -36,7 +36,7 @@ const EventTemplate: React.SFC<EventTemplateProps> = ({ data }) => {
       <Banner heading={mk.frontmatter.heading} image={mk.frontmatter.image} />
       <Section>
         <SectionHeader heading={mk.frontmatter.subheading} />
-        <Flex p={3} width={1}>
+        <Flex p={3} w={1}>
           {renderAst(mk.htmlAst)}
         </Flex>
       </Section>
