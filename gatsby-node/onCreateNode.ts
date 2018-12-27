@@ -1,5 +1,4 @@
-import path from "path";
-import { pathSatisfies, path as p, assocPath, test } from "ramda";
+import { replacePath } from "./helpers";
 import { GatsbyOnCreateNode } from "./types";
 
 const { createFilePath } = require("gatsby-source-filesystem");
@@ -11,21 +10,8 @@ export const onCreateNode: GatsbyOnCreateNode = ({
 }) => {
   const { createNodeField } = actions;
 
-  const imagePath = ["frontmatter", "image"];
-
-  if (pathSatisfies(test(/^\/assets/), imagePath, node)) {
-    node = assocPath(
-      imagePath,
-      path.relative(
-        path.dirname(node.fileAbsolutePath),
-        path.join(path.resolve(__dirname, ".."), "/static/", p(
-          imagePath,
-          node
-        ) as string)
-      ),
-      node
-    );
-  }
+  const assetPaths = ["frontmatter", "image"];
+  node = replacePath(node)(assetPaths);
 
   if (node.internal.type === "MarkdownRemark") {
     const slug = createFilePath({ node, getNode, basePath: "src/data" });
