@@ -51,7 +51,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   if (frontmatter) {
     const { image } = frontmatter;
     if (image) {
-      if (image.indexOf("/img") === 0) {
+      if (image.indexOf("/assets") === 0) {
         frontmatter.image = path.relative(
           path.dirname(node.fileAbsolutePath),
           path.join(__dirname, "/static/", image)

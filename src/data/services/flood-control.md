@@ -3,19 +3,19 @@ lang: "en"
 title: "Flood Control"
 subtitle: "Pumping station automation system"
 order: 4
-image: "/img/flood-control/flood-control.jpg"
+image: "/assets/flood-control/flood-control.jpg"
 ---
 
-![flood-control](/img/flood-control/system-overview.jpg)
+![flood-control](/assets/flood-control/system-overview.jpg)
 
-![flood-control](/img/flood-control/trash-remover.jpg)
+![flood-control](/assets/flood-control/trash-remover.jpg)
 
-![flood-control](/img/flood-control/pumping-station.jpg)
+![flood-control](/assets/flood-control/pumping-station.jpg)
 
-![flood-control](/img/flood-control/remote-terminal.jpg)
+![flood-control](/assets/flood-control/remote-terminal.jpg)
 
-![flood-control](/img/flood-control/generator-control.jpg)
+![flood-control](/assets/flood-control/generator-control.jpg)
 
-![flood-control](/img/flood-control/fuel-monitoring.jpg)
+![flood-control](/assets/flood-control/fuel-monitoring.jpg)
 
-![flood-control](/img/flood-control/fire-prevention.jpg)
+![flood-control](/assets/flood-control/fire-prevention.jpg)
