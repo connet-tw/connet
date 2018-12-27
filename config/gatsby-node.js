@@ -1,16 +1,3 @@
-"use strict";
-
-require("source-map-support").install();
-require("ts-node").register({
-  compilerOptions: {
-    module: "commonjs",
-    target: "es2017",
-  },
-});
-
-const { createPages } = require("./config/createPages");
-exports.createPages = createPages;
-
 const path = require("path");
 const languages = require("./src/i18n/locales/languages.js");
 
@@ -81,3 +68,54 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({ node, name: "type", value: type });
   }
 };
+
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
+
+  return graphql(`
+    {
+      allMarkdownRemark(limit: 1000) {
+        edges {
+          node {
+            fields {
+              type
+              slug
+            }
+            frontmatter {
+              lang
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      return Promise.reject(result.errors);
+    }
+
+    result.data.allMarkdownRemark.edges
+      .filter(({ node }) => node.fields.type === "services")
+      .forEach(({ node }) => {
+        createPage({
+          path: `/${node.frontmatter.lang}${node.fields.slug}`,
+          component: path.resolve(
+            `src/templates/${matchTemplate(node.fields.type)}`
+          ),
+          context: {
+            languages,
+            locale: node.frontmatter.lang,
+            slug: node.fields.slug,
+          },
+        });
+      });
+  });
+};
+
+function matchTemplate(s) {
+  switch (s) {
+    case "services":
+      return "serviceTemplate.tsx";
+    default:
+      throw `unknown node type: ${s}`;
+  }
+}
