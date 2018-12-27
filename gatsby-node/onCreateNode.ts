@@ -1,3 +1,4 @@
+import { contains } from "ramda";
 import { replacePath } from "./helpers";
 import { GatsbyOnCreateNode } from "./types";
 
@@ -10,16 +11,23 @@ export const onCreateNode: GatsbyOnCreateNode = ({
 }) => {
   const { createNodeField } = actions;
 
-  const assetPaths = ["frontmatter", "image"];
-  node = replacePath(node)(assetPaths);
+  // replace absolute paths with relative for assets
+  const assetPaths = [["frontmatter", "image"]];
+  assetPaths.forEach(ap => (node = replacePath(node, ap)));
 
+  // prepare pages from markdown
   if (node.internal.type === "MarkdownRemark") {
     const slug = createFilePath({ node, getNode, basePath: "src/data" });
     const instanceName = getNode(node.parent).sourceInstanceName;
     createNodeField({ node, name: "type", value: instanceName });
 
-    if (["services"].indexOf(instanceName) > -1) {
+    if (contains(instanceName, ["services"])) {
       createNodeField({ node, name: "slug", value: `/${instanceName}${slug}` });
+      createNodeField({
+        node,
+        name: "template",
+        value: node.frontmatter.template || `/${instanceName}Template.tsx`,
+      });
     }
   }
 };

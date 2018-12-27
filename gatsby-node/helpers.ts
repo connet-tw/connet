@@ -1,13 +1,13 @@
 import path from "path";
 import { always, ifElse, compose, path as p, assocPath, test } from "ramda";
 
-export const replacePath = (node: any) => (ap: string[]) =>
+export const replacePath = (node: any, assetPath: string[]) =>
   compose(
     ifElse(
       test(/^\/assets/),
       x =>
         assocPath(
-          ap,
+          assetPath,
           path.relative(
             path.dirname(node.fileAbsolutePath),
             path.join(path.resolve(__dirname, ".."), "/static/", x)
@@ -16,5 +16,5 @@ export const replacePath = (node: any) => (ap: string[]) =>
         ),
       always(node)
     ),
-    p(ap)
+    p(assetPath)
   )(node);

@@ -12,6 +12,7 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
           node {
             fields {
               type
+              template
               slug
             }
             frontmatter {
@@ -31,9 +32,7 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
       .forEach(({ node }: any) => {
         createPage({
           path: `/${node.frontmatter.lang}${node.fields.slug}`,
-          component: path.resolve(
-            `src/templates/${matchTemplate(node.fields.type)}`
-          ),
+          component: path.resolve(`src/templates/${node.fields.template}`),
           context: {
             languages,
             locale: node.frontmatter.lang,
@@ -43,12 +42,3 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
       });
   });
 };
-
-function matchTemplate(s: string) {
-  switch (s) {
-    case "services":
-      return "serviceTemplate.tsx";
-    default:
-      throw `unknown node type: ${s}`;
-  }
-}
