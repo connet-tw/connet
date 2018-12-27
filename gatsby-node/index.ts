@@ -1,4 +1,3 @@
-import { createPages } from "./createPages";
-import { onCreatePage } from "./onCreatePage";
-
-export { createPages, onCreatePage };
+export { createPages } from "./createPages";
+export { onCreatePage } from "./onCreatePage";
+export { onCreateNode } from "./onCreateNode";

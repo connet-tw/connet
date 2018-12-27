@@ -27,7 +27,7 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
     }
 
     return result.data.allMarkdownRemark.edges
-      .filter(({ node }: any) => node.fields.type === "services")
+      .filter(({ node }: any) => node.fields.slug)
       .forEach(({ node }: any) => {
         createPage({
           path: `/${node.frontmatter.lang}${node.fields.slug}`,
