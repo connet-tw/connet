@@ -2,12 +2,12 @@
 lang: "en"
 title: "Microgrid"
 subtitle: "Independent hybrid power system"
-order: "2"
-image: "/img/microgrid/microgrids.jpg"
+order: 2
+image: "/assets/microgrid/microgrids.jpg"
 ---
 
-![microgrid](/img/microgrid/10.png)
+![microgrid](/assets/microgrid/10.png)
 
-![microgrid](/img/microgrid/microgrid__small.jpg)
+![microgrid](/assets/microgrid/microgrid__small.jpg)
 
-![microgrid](/img/microgrid/microgrid__big.jpg)
+![microgrid](/assets/microgrid/microgrid__big.jpg)
