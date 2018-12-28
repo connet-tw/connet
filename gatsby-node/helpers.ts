@@ -24,7 +24,6 @@ export const replacePath = (node: any, parentPath: string) => {
 
 export const createFields = (node: any, getNode: any, fn: any) => {
   const parentPath = getNode(node.parent).absolutePath;
-  console.log(parentPath);
   forEachObjIndexed(
     (v, k) => fn({ node, name: k, value: v }),
     replacePath(node, parentPath)
