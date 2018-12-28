@@ -32,12 +32,19 @@ const setPath = (
   return assocPath(assetPath, newPath, node);
 };
 
-export const transformAssetPaths = (content: any) => {
-  const extensions = new Set([".png"]);
+const extensions = new Set([".png"]);
+
+export const transformAssetPaths = (content: any): any => {
+  if (Array.isArray(content)) {
+    return content.map(transformAssetPaths);
+  }
   return pickBy((v, k) => {
     if (typeof v === "string") {
       const ext = path.extname(v);
       return extensions.has(ext);
+    }
+    if (Array.isArray(v)) {
+      return transformAssetPaths(v);
     }
     return false;
   }, content);
