@@ -12,8 +12,8 @@ export const onCreateNode: GatsbyOnCreateNode = ({
   const { createNodeField } = actions;
 
   // replace absolute paths with relative for assets
-  const assetPaths = [["frontmatter", "image"]];
-  assetPaths.forEach(ap => (node = replacePath(node, ap)));
+  const assetPaths = [["image"], ["frontmatter", "image"]];
+  assetPaths.forEach(ap => (node = replacePath(node, getNode, ap)));
 
   // prepare pages from markdown
   if (node.internal.type === "MarkdownRemark") {

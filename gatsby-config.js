@@ -43,6 +43,13 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        path: `${__dirname}/src/data/content`,
+        name: "content",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         path: `${__dirname}/src/data/services/`,
         name: "services",
       },
@@ -58,7 +65,7 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-root-import",
     "gatsby-transformer-sharp",
-    "gatsby-transformer-javascript-frontmatter",
+    "gatsby-transformer-yaml",
     {
       resolve: `gatsby-transformer-remark`,
       options: {
