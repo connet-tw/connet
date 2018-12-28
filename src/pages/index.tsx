@@ -14,11 +14,11 @@ interface ServiceNode {
     fields: {
       lang: string;
       slug: string;
-    };
-    frontmatter: {
-      title: string;
-      subtitle: string;
-      image: any;
+      frontmatter: {
+        title: string;
+        subtitle: string;
+        image: any;
+      };
     };
   };
 }
@@ -54,9 +54,9 @@ const Index: React.SFC<IndexProps> = ({ data }) => {
           title={<FormattedMessage {...m.services.title} />}
           body={[<FormattedMessage {...m.services.subtitle} />]}
           categoryLinks={data.services.edges.map(({ node }) => ({
-            label: node.frontmatter.title,
-            text: node.frontmatter.subtitle,
-            image: node.frontmatter.image,
+            label: node.fields.frontmatter.title,
+            text: node.fields.frontmatter.subtitle,
+            image: node.fields.frontmatter.image,
             to: node.fields.slug,
             buttonText: <FormattedMessage {...m.services.learnMore} />,
           }))}
@@ -79,24 +79,25 @@ export const query = graphql`
     }
     services: allMarkdownRemark(
       filter: {
-        fields: { type: { eq: "services" } }
-        frontmatter: { lang: { eq: $locale } }
+        fields: {
+          type: { eq: "services" }
+          frontmatter: { lang: { eq: $locale } }
+        }
       }
-      sort: { fields: [frontmatter___order], order: ASC }
+      sort: { fields: [fields___frontmatter___order] }
     ) {
       edges {
         node {
           fields {
             slug
-          }
-          htmlAst
-          frontmatter {
-            title
-            subtitle
-            image {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
+            frontmatter {
+              title
+              subtitle
+              image {
+                childImageSharp {
+                  fluid(maxWidth: 800) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }
