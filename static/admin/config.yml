@@ -14,12 +14,12 @@ backend:
 
 publish_mode: "editorial_workflow"
 
-media_folder: "static/img/uploads"
-public_folder: "/img/uploads"
+media_folder: "static/assets/uploads"
+public_folder: "/assets/uploads"
 
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: "pages-en"
+    label: "Pages EN"
     files:
       - label: "About Page"
         name: "about"
@@ -27,7 +27,7 @@ collections:
         fields:
           - *lang
           - { label: "Title", name: "title" }
-          - { label: "Subtitle", name: "subtitle" }
+          - { label: "Subtitle", name: "subtitle", required: false }
           - { label: "Intro", name: "intro", widget: "markdown" }
           - { label: "Image", name: "image", widget: "image" }
           - name: "references"
@@ -39,7 +39,30 @@ collections:
                 widget: "boolean"
                 default: true
               - { label: "Title", name: "title" }
-              - { label: "Subtitle", name: "subtitle" }
+              - { label: "Subtitle", name: "subtitle", required: false }
+
+  - name: "pages-zh"
+    label: "Pages ZH"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "src/data/content/about-zh.yml"
+        fields:
+          - *lang
+          - { label: "Title", name: "title" }
+          - { label: "Subtitle", name: "subtitle", required: false }
+          - { label: "Intro", name: "intro", widget: "markdown" }
+          - { label: "Image", name: "image", widget: "image" }
+          - name: "references"
+            label: "References"
+            widget: "object"
+            fields:
+              - label: "Show references"
+                name: "show"
+                widget: "boolean"
+                default: true
+              - { label: "Title", name: "title" }
+              - { label: "Subtitle", name: "subtitle", required: false }
 
   - name: "references"
     label: "References"
@@ -52,7 +75,7 @@ collections:
       - { name: "location", label: "Location" }
 
   - name: "services-en"
-    label: "Services English"
+    label: "Services EN"
     folder: "src/data/services"
     filter: { field: "lang", value: "en" }
     create: true
