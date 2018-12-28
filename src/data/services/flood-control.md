@@ -2,7 +2,7 @@
 lang: "en"
 title: "Flood Control"
 subtitle: "Pumping station automation system"
-order: 4
+order: "4"
 image: "/assets/flood-control/flood-control.jpg"
 ---
 
