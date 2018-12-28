@@ -1,51 +1,32 @@
 import path from "path";
-import {
-  pickBy,
-  always,
-  ifElse,
-  compose,
-  path as p,
-  assocPath,
-  test,
-} from "ramda";
+import { forEachObjIndexed, mapObjIndexed, test } from "ramda";
 
-export const replacePath = (node: any, getNode: any, assetPath: string[]) =>
-  compose(
-    ifElse(
-      test(/^\/assets/),
-      x => setPath(node, getNode(node.parent), assetPath, x),
-      always(node)
-    ),
-    p(assetPath)
-  )(node);
-
-const setPath = (
-  node: any,
-  parent: any,
-  assetPath: string[],
-  originalPath: string
-) => {
-  const newPath = path.relative(
-    path.dirname(parent.absolutePath),
-    path.join(path.resolve(__dirname, ".."), "/static/", originalPath)
-  );
-  return assocPath(assetPath, newPath, node);
+export const transformAssetPaths = (fn: any, content: any): any => {
+  if (Array.isArray(content)) {
+    return content.map(x => transformAssetPaths(fn, x));
+  }
+  return mapObjIndexed((v, k) => {
+    if (typeof v !== "string") return transformAssetPaths(fn, v);
+    if (typeof v === "string" && test(/^\/assets/, v)) return fn(v);
+    else return v;
+  }, content);
 };
 
-const extensions = new Set([".png"]);
+export const replacePath = (node: any, parentPath: string) => {
+  const setPath = (v: string) => {
+    return path.relative(
+      path.dirname(parentPath),
+      path.join(path.resolve(__dirname, ".."), "/static/", v)
+    );
+  };
+  return transformAssetPaths(setPath, node);
+};
 
-export const transformAssetPaths = (content: any): any => {
-  if (Array.isArray(content)) {
-    return content.map(transformAssetPaths);
-  }
-  return pickBy((v, k) => {
-    if (typeof v === "string") {
-      const ext = path.extname(v);
-      return extensions.has(ext);
-    }
-    if (Array.isArray(v)) {
-      return transformAssetPaths(v);
-    }
-    return false;
-  }, content);
+export const createFields = (node: any, getNode: any, fn: any) => {
+  const parentPath = getNode(node.parent).absolutePath;
+  console.log(parentPath);
+  forEachObjIndexed(
+    (v, k) => fn({ node, name: k, value: v }),
+    replacePath(node, parentPath)
+  );
 };
