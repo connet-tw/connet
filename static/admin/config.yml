@@ -18,6 +18,29 @@ media_folder: "static/img/uploads"
 public_folder: "/img/uploads"
 
 collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "src/data/content/about-en.yml"
+        fields:
+          - *lang
+          - { label: "Title", name: "title" }
+          - { label: "Subtitle", name: "subtitle" }
+          - { label: "Intro", name: "intro", widget: "markdown" }
+          - { label: "Image", name: "image", widget: "image" }
+          - name: "references"
+            label: "References"
+            widget: "object"
+            fields:
+              - label: "Show references"
+                name: "show"
+                widget: "boolean"
+                default: true
+              - { label: "Title", name: "title" }
+              - { label: "Subtitle", name: "subtitle" }
+
   - name: "references"
     label: "References"
     folder: "src/data/references"
