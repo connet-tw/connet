@@ -7,7 +7,7 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMarkdown(limit: 1000) {
         edges {
           node {
             fields {
@@ -27,7 +27,7 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
 
-    return result.data.allMarkdownRemark.edges
+    return result.data.allMarkdown.edges
       .filter(({ node }: any) => node.fields.slug)
       .forEach(({ node }: any) => {
         createPage({
