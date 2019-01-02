@@ -12,8 +12,6 @@ export const onCreateNode: GatsbyOnCreateNode = ({
   const { createNodeField } = actions;
 
   if (node.internal.owner === "gatsby-transformer-remark") {
-    console.log(node);
-
     node.frontmatter = replaceAssetPaths(
       node.frontmatter,
       node.fileAbsolutePath

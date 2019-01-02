@@ -28,7 +28,7 @@ collections:
           - *lang
           - { label: "Title", name: "title" }
           - { label: "Subtitle", name: "subtitle", required: false }
-          - { label: "Intro", name: "intro", widget: "markdown" }
+          - { label: "Intro", name: "markdown", widget: "markdown" }
           - { label: "Image", name: "image", widget: "image" }
           - name: "references"
             label: "References"
@@ -51,7 +51,7 @@ collections:
           - *lang
           - { label: "Title", name: "title" }
           - { label: "Subtitle", name: "subtitle", required: false }
-          - { label: "Intro", name: "intro", widget: "markdown" }
+          - { label: "Intro", name: "markdown", widget: "markdown" }
           - { label: "Image", name: "image", widget: "image" }
           - name: "references"
             label: "References"
