@@ -43,6 +43,13 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        path: `${__dirname}/src/data/content`,
+        name: "content",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         path: `${__dirname}/src/data/services`,
         name: "services",
       },
@@ -52,13 +59,6 @@ module.exports = {
       options: {
         path: `${__dirname}/src/data/references`,
         name: "references",
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/data/content`,
-        name: "content",
       },
     },
     "gatsby-plugin-sharp",

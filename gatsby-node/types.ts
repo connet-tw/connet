@@ -39,6 +39,7 @@ export type GatsbySourceNodes = (
     createNodeId: any;
     createContentDigest: any;
     getNodes(): Node[];
+    getNode: any;
     actions: Actions;
   }
 ) => void;

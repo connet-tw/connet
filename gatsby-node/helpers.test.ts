@@ -1,14 +1,14 @@
-import { replaceAssetPaths, transformAssetPaths } from "./helpers";
+import { replaceAssetPaths, processStringProperties } from "./helpers";
 import { always } from "ramda";
 
-describe("transformAssetPaths", () => {
+describe("processStringProperties", () => {
   test("picks properties with assets only", () => {
     const node = { name: "name", image: "/assets/a.png" };
 
     const result = { name: "name", image: "asset" };
     const fn = always("asset");
 
-    expect(transformAssetPaths(fn, node)).toEqual(result);
+    expect(processStringProperties(fn, node)).toEqual(result);
   });
 
   test("picks properties from arrays", () => {
@@ -17,7 +17,7 @@ describe("transformAssetPaths", () => {
     const result = { name: "name", key: [{ image: "asset" }] };
     const fn = always("asset");
 
-    expect(transformAssetPaths(fn, node)).toEqual(result);
+    expect(processStringProperties(fn, node)).toEqual(result);
   });
 });
 
