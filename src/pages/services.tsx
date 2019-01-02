@@ -14,11 +14,11 @@ interface ServiceNode {
     fields: {
       lang: string;
       slug: string;
-      frontmatter: {
-        title: string;
-        subtitle: string;
-        image: any;
-      };
+    };
+    frontmatter: {
+      title: string;
+      subtitle: string;
+      image: any;
     };
   };
 }
@@ -43,10 +43,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
           bg="background.light"
         >
           <Flex w={[1, 1 / 2]}>
-            <Image
-              style={{ width: "100%" }}
-              fluid={node.fields.frontmatter.image}
-            />
+            <Image style={{ width: "100%" }} fluid={node.frontmatter.image} />
           </Flex>
           <Flex
             p={4}
@@ -62,7 +59,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
               color="primary.main"
               fontWeight={2}
             >
-              {node.fields.frontmatter.title}
+              {node.frontmatter.title}
             </Text>
             <Text
               mb={3}
@@ -71,7 +68,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
               fontWeight={3}
               color="text.primary"
             >
-              {node.fields.frontmatter.subtitle}
+              {node.frontmatter.subtitle}
             </Text>
             <Link to={node.fields.slug}>
               <Button mt={2} outlined>
@@ -89,27 +86,25 @@ export default withIntl(ServicesPage);
 
 export const query = graphql`
   query($locale: String!) {
-    services: allMarkdownRemark(
+    services: allMarkdown(
       filter: {
-        fields: {
-          frontmatter: { lang: { eq: $locale } }
-          type: { eq: "services" }
-        }
+        frontmatter: { lang: { eq: $locale } }
+        fields: { type: { eq: "services" } }
       }
-      sort: { fields: [fields___frontmatter___order] }
+      sort: { fields: [frontmatter___order] }
     ) {
       edges {
         node {
           fields {
             slug
-            frontmatter {
-              title
-              subtitle
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 960, quality: 90) {
-                    ...GatsbyImageSharpFluid
-                  }
+          }
+          frontmatter {
+            title
+            subtitle
+            image {
+              childImageSharp {
+                fluid(maxWidth: 960, quality: 90) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
