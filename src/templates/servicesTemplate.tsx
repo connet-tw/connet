@@ -7,7 +7,7 @@ import { Box, Flex, Text } from "primithemes";
 import { Banner } from "../components/Banner";
 import { Section, SectionHeader } from "../components/Section";
 
-interface EventTemplateProps {
+interface ServicesTemplateProps {
   data: {
     markdownRemark: any;
   };
@@ -29,25 +29,22 @@ const renderAst = new rehypeReact({
   },
 }).Compiler;
 
-const EventTemplate: React.SFC<EventTemplateProps> = ({ data }) => {
+const ServicesTemplate: React.SFC<ServicesTemplateProps> = ({ data }) => {
   const { markdownRemark: mk } = data;
   return (
     <Layout>
-      <Banner
-        title={mk.fields.frontmatter.title}
-        image={mk.fields.frontmatter.image}
-      />
+      <Banner title={mk.frontmatter.title} image={mk.frontmatter.image} />
       <Section>
-        <SectionHeader title={mk.fields.frontmatter.subtitle} />
+        <SectionHeader title={mk.frontmatter.subtitle} />
         <Flex p={3} w={1}>
-          {renderAst(mk.fields.htmlAst)}
+          {renderAst(mk.htmlAst)}
         </Flex>
       </Section>
     </Layout>
   );
 };
 
-export default withIntl(EventTemplate);
+export default withIntl(ServicesTemplate);
 
 export const query = graphql`
   query($slug: String!, $locale: String!) {
@@ -55,19 +52,20 @@ export const query = graphql`
       fields: { slug: { eq: $slug } }
       frontmatter: { lang: { eq: $locale } }
     ) {
-      fields {
-        slug
-        frontmatter {
-          title
-          subtitle
-          image {
-            childImageSharp {
-              fluid(maxWidth: 1920, quality: 90) {
-                ...GatsbyImageSharpFluid
-              }
+      frontmatter {
+        title
+        subtitle
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1920, quality: 90) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
+      }
+      htmlAst
+      fields {
+        slug
       }
     }
   }

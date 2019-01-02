@@ -1,4 +1,4 @@
-import { replacePath, transformAssetPaths } from "./helpers";
+import { replaceAssetPaths, transformAssetPaths } from "./helpers";
 import { always } from "ramda";
 
 describe("transformAssetPaths", () => {
@@ -21,11 +21,11 @@ describe("transformAssetPaths", () => {
   });
 });
 
-describe("replacePath", () => {
+describe("replaceAssetPaths", () => {
   test("replaces paths", () => {
     const node = { name: "name", image: "/assets/a.png" };
 
     const result = { name: "name", image: "static/assets/a.png" };
-    expect(replacePath(node, __dirname)).toEqual(result);
+    expect(replaceAssetPaths(node, __dirname)).toEqual(result);
   });
 });

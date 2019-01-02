@@ -1,5 +1,5 @@
 import { contains } from "ramda";
-//import { createFields } from "./helpers";
+import { replaceAssetPaths } from "./helpers";
 import { GatsbyOnCreateNode } from "./types";
 
 const { createFilePath } = require("gatsby-source-filesystem");
@@ -11,9 +11,14 @@ export const onCreateNode: GatsbyOnCreateNode = ({
 }) => {
   const { createNodeField } = actions;
 
-  //if (/(yaml|remark)$/.test(node.internal.owner)) {
-  //createFields(node, getNode, createNodeField);
-  //}
+  if (node.internal.owner === "gatsby-transformer-remark") {
+    console.log(node);
+
+    node.frontmatter = replaceAssetPaths(
+      node.frontmatter,
+      node.fileAbsolutePath
+    );
+  }
 
   // prepare pages from markdown
   if (node.internal.type === "MarkdownRemark") {
