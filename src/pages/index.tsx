@@ -77,7 +77,7 @@ export const query = graphql`
         }
       }
     }
-    services: allMarkdown(
+    services: allMarkdownRemark(
       filter: {
         frontmatter: { lang: { eq: $locale } }
         fields: { type: { eq: "services" } }
