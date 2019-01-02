@@ -86,7 +86,7 @@ export default withIntl(ServicesPage);
 
 export const query = graphql`
   query($locale: String!) {
-    services: allMarkdown(
+    services: allMarkdownRemark(
       filter: {
         frontmatter: { lang: { eq: $locale } }
         fields: { type: { eq: "services" } }
@@ -95,9 +95,6 @@ export const query = graphql`
     ) {
       edges {
         node {
-          fields {
-            slug
-          }
           frontmatter {
             title
             subtitle
@@ -108,6 +105,9 @@ export const query = graphql`
                 }
               }
             }
+          }
+          fields {
+            slug
           }
         }
       }

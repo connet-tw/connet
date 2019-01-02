@@ -21,7 +21,7 @@ export const transformAssetPaths = (fn: any, content: any): any => {
   }, content);
 };
 
-export const replacePath = (node: any, parentPath: string) => {
+export const replaceAssetPaths = (node: any, parentPath: string) => {
   const setPath = (v: string) => {
     return path.relative(
       path.dirname(parentPath),
@@ -35,7 +35,7 @@ export const createFields = (node: any, getNode: any, fn: any) => {
   const parentPath = getNode(node.parent).absolutePath;
   forEachObjIndexed(
     (v, k) => fn({ node, name: k, value: v }),
-    replacePath(node, parentPath)
+    replaceAssetPaths(node, parentPath)
   );
 };
 
