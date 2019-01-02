@@ -7,6 +7,17 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
 
   return graphql(`
     {
+      allContentYaml {
+        edges {
+          node {
+            lang
+            fields {
+              slug
+              template
+            }
+          }
+        }
+      }
       allMarkdownRemark(limit: 1000) {
         edges {
           node {
@@ -22,23 +33,39 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then((result: any) => {
-    if (result.errors) {
-      return Promise.reject(result.errors);
-    }
+  `)
+    .then((result: any) => {
+      if (result.errors) {
+        return Promise.reject(result.errors);
+      }
 
-    return result.data.allMarkdownRemark.edges
-      .filter(({ node }: any) => node.fields.slug)
-      .forEach(({ node }: any) => {
+      result.data.allMarkdownRemark.edges
+        .filter(({ node }: any) => node.fields.slug)
+        .forEach(({ node }: any) => {
+          createPage({
+            path: `/${node.frontmatter.lang}${node.fields.slug}`,
+            component: path.resolve(`src/templates/${node.fields.template}`),
+            context: {
+              languages,
+              locale: node.frontmatter.lang,
+              slug: node.fields.slug,
+            },
+          });
+        });
+      return result;
+    })
+    .then((result: any) => {
+      result.data.allContentYaml.edges.forEach(({ node }: any) => {
         createPage({
-          path: `/${node.frontmatter.lang}${node.fields.slug}`,
+          path: `/${node.lang}${node.fields.slug}`,
           component: path.resolve(`src/templates/${node.fields.template}`),
           context: {
             languages,
-            locale: node.frontmatter.lang,
+            locale: node.lang,
             slug: node.fields.slug,
           },
         });
       });
-  });
+      return result;
+    });
 };
