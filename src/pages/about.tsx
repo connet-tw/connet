@@ -89,7 +89,7 @@ export const query = graphql`
         }
       }
     }
-    services: allMarkdownRemark(
+    services: allMarkdown(
       filter: {
         frontmatter: { lang: { eq: $locale } }
         fields: { type: { eq: "services" } }
@@ -106,7 +106,7 @@ export const query = graphql`
         }
       }
     }
-    references: allMarkdownRemark(
+    references: allMarkdown(
       filter: {
         frontmatter: { lang: { eq: $locale } }
         fields: { type: { eq: "references" } }

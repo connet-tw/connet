@@ -122,15 +122,15 @@ interface TimelineItem {
 }
 
 interface Props {
-  heading: string;
+  title: string;
   items: TimelineItem[];
 }
 
-const Timeline: React.SFC<Props> = ({ heading, items }) => (
+const Timeline: React.SFC<Props> = ({ title, items }) => (
   <Box bg="grey.200" w={1}>
     <Flex mx={3} my={4} flexDirection="column">
       <Text mb={2} textAlign="center" is="h2" color="text.primary">
-        Project References
+        {title}
       </Text>
       <Container>
         <Box p={3}>
