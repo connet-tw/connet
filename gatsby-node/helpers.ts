@@ -1,5 +1,14 @@
 import path from "path";
-import { forEachObjIndexed, mapObjIndexed, test } from "ramda";
+import {
+  mergeWith,
+  isNil,
+  isEmpty,
+  either,
+  forEachObjIndexed,
+  mapObjIndexed,
+  test,
+  defaultTo,
+} from "ramda";
 
 export const transformAssetPaths = (fn: any, content: any): any => {
   if (Array.isArray(content)) {
@@ -29,3 +38,6 @@ export const createFields = (node: any, getNode: any, fn: any) => {
     replacePath(node, parentPath)
   );
 };
+
+export const mergeTranslation = (a: any, b: any) =>
+  mergeWith((a, b) => (either(isNil, isEmpty)(b) ? a : b))(a, defaultTo({}, b));

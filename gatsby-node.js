@@ -12,8 +12,10 @@ const {
   onCreatePage,
   createPages,
   onCreateNode,
+  sourceNodes,
 } = require("./gatsby-node/index.ts");
 
 exports.createPages = createPages;
 exports.onCreatePage = onCreatePage;
 exports.onCreateNode = onCreateNode;
+exports.sourceNodes = sourceNodes;

@@ -5,7 +5,10 @@ interface Page {
   context?: object;
 }
 
+type Node = any;
+
 interface Actions {
+  createNode: (node: any) => void;
   createPage: (page: Page) => void;
   deletePage: (page: Page) => void;
   createRedirect: (
@@ -29,4 +32,13 @@ export type GatsbyOnCreatePage = (
 
 export type GatsbyOnCreateNode = (
   params: { node: any; getNode: any; actions: Actions }
+) => void;
+
+export type GatsbySourceNodes = (
+  params: {
+    createNodeId: any;
+    createContentDigest: any;
+    getNodes(): Node[];
+    actions: Actions;
+  }
 ) => void;
