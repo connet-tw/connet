@@ -50,21 +50,23 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
                 </Flex>
               )}
               {title && (
-                <Text as="h3" fontSize={3} textAlign="center">
+                <Text
+                  mt={3}
+                  color="primary.main"
+                  is="h3"
+                  fontSize={3}
+                  textAlign="center"
+                >
                   {title}
                 </Text>
               )}
               <Flex justifyContent="center" flexDirection="column" p={3}>
                 {navItems.map(x => (
-                  <Button
-                    m={1}
-                    key={x.to}
-                    onClick={injected.handleClose}
-                    w={1}
-                    to={x.to}
-                  >
-                    {x.label}
-                  </Button>
+                  <Link key={x.to} to={x.to}>
+                    <Button m={1} onClick={injected.handleClose} w={1}>
+                      {x.label}
+                    </Button>
+                  </Link>
                 ))}
               </Flex>
             </DrawerContent>
