@@ -22,15 +22,17 @@ interface Props {
 
 const Timeline: React.SFC<Props> = ({ title, subtitle, items }) => (
   <Box bg="grey.200" w={1}>
-    <Flex mx={3} my={4} flexDirection="column">
-      <Text mb={2} color="text.main" textAlign="center" is="h2">
-        {title}
-      </Text>
-      <Text mb={2} textAlign="center" is="p" color="text.primary">
-        {subtitle}
-      </Text>
+    <Flex flexDirection="column">
+      <Box mt={4} mb={3}>
+        <Text m={2} color="text.main" textAlign="center" is="h2">
+          {title}
+        </Text>
+        <Text m={2} textAlign="center" is="p" color="text.primary">
+          {subtitle}
+        </Text>
+      </Box>
       <Container>
-        <Box p={3}>
+        <Box m={3}>
           {items.map(({ node }, i) => (
             <Flex key={i}>
               <Line bg="grey.200" p={3} w={1}>

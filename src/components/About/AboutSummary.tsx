@@ -30,52 +30,54 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
 }) => {
   return (
     <Section>
-      {markdown && (
-        <Container>
-          <Content
-            my={4}
-            w={[1, 1, 3 / 4, 2 / 3]}
-            mx="auto"
-            px={[3, 3, 0]}
-            dangerouslySetInnerHTML={{ __html: markdown }}
-          />
-        </Container>
-      )}
-      {!!highlights && (
-        <Container flexWrap="wrap" w={1} p={3}>
-          {highlights.map((h, i) => (
-            <Flex
-              p={3}
-              w={[1, 1 / 2, 1 / 4]}
-              key={i}
-              alignItems="center"
-              flexDirection="column"
-            >
-              <Box w={1}>
-                <Heading
-                  color="primary.main"
-                  mb={2}
-                  textAlign="center"
-                  is="h5"
-                  fontSize={[5, 6]}
-                  fontWeight={2}
-                >
-                  {h.title}
-                </Heading>
-                <Text
-                  textTransform="uppercase"
-                  color="text.main"
-                  fontSize={1}
-                  is="p"
-                  textAlign="center"
-                >
-                  {h.subtitle}
-                </Text>
-              </Box>
-            </Flex>
-          ))}
-        </Container>
-      )}
+      <Box my={3}>
+        {markdown && (
+          <Container>
+            <Content
+              my={4}
+              w={[1, 1, 3 / 4, 2 / 3]}
+              mx="auto"
+              px={[3, 3, 0]}
+              dangerouslySetInnerHTML={{ __html: markdown }}
+            />
+          </Container>
+        )}
+        {!!highlights && (
+          <Container flexWrap="wrap" w={1} p={3}>
+            {highlights.map((h, i) => (
+              <Flex
+                p={3}
+                w={[1, 1 / 2, 1 / 4]}
+                key={i}
+                alignItems="center"
+                flexDirection="column"
+              >
+                <Box w={1}>
+                  <Heading
+                    color="primary.main"
+                    mb={2}
+                    textAlign="center"
+                    is="h5"
+                    fontSize={[5, 6]}
+                    fontWeight={2}
+                  >
+                    {h.title}
+                  </Heading>
+                  <Text
+                    textTransform="uppercase"
+                    color="text.main"
+                    fontSize={1}
+                    is="p"
+                    textAlign="center"
+                  >
+                    {h.subtitle}
+                  </Text>
+                </Box>
+              </Flex>
+            ))}
+          </Container>
+        )}
+      </Box>
     </Section>
   );
 };
