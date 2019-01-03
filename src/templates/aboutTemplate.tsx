@@ -65,11 +65,9 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
       <Section>
         <Container>
           <Content
-            p={3}
-            w={[1, 3 / 4]}
+            my={4}
+            w={[1, 1, 3 / 4, 2 / 3]}
             mx="auto"
-            flexDirection="column"
-            alignItems="center"
             dangerouslySetInnerHTML={{ __html: content.markdown }}
           />
         </Container>
