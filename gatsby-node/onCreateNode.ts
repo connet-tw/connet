@@ -1,22 +1,61 @@
 import { contains } from "ramda";
-import { replaceAssetPath, replaceAssetPaths } from "./helpers";
+import {
+  processStringProperties,
+  replaceAssetPath,
+  replaceAssetPaths,
+} from "./helpers";
 import { GatsbyOnCreateNode } from "./types";
 import MarkdownIt from "markdown-it";
+
+const md = new MarkdownIt();
 
 const { createFilePath } = require("gatsby-source-filesystem");
 
 export const onCreateNode: GatsbyOnCreateNode = ({
   node,
   getNode,
+  createNodeId,
+  createContentDigest,
   actions,
 }) => {
-  const { createNodeField } = actions;
+  const { createNode, createNodeField, createParentChildLink } = actions;
 
   if (node.internal.owner === "gatsby-transformer-remark") {
     node.frontmatter = replaceAssetPaths(
       node.frontmatter,
       node.fileAbsolutePath
     );
+  }
+
+  // Create Content nodes
+  if (node.internal.type === "ContentYaml") {
+    const { id, parent, children, internal, ...content } = Object.assign(
+      {},
+      node
+    );
+
+    const fn = (v: string, k: string) => {
+      return k === "markdown" ? md.render(v) : v;
+    };
+
+    const c = processStringProperties(
+      [fn, replaceAssetPath(getNode(parent).absolutePath)],
+      content
+    );
+
+    const nodeMeta = {
+      id: createNodeId(`${node.id}-content`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: `Content`,
+        content: JSON.stringify(c),
+        contentDigest: createContentDigest(c),
+      },
+    };
+    const contentNode = Object.assign({ originalId: node.id }, c, nodeMeta);
+    createNode(contentNode);
+    createParentChildLink({ parent: node, child: contentNode });
   }
 
   // prepare pages from markdown
@@ -35,15 +74,9 @@ export const onCreateNode: GatsbyOnCreateNode = ({
     }
   }
 
-  if (node.internal.type === "ContentYaml") {
-    const md = new MarkdownIt();
+  if (node.internal.type === "Content") {
     const slug = `/${node.name}`;
-    const parentPath = getNode(node.parent).absolutePath;
-    const image = replaceAssetPath(parentPath)(node.image, "");
-    const markdown = md.render(node.markdown);
 
-    createNodeField({ node, name: "markdown", value: markdown });
-    createNodeField({ node, name: "image", value: image });
     createNodeField({ node, name: "slug", value: slug });
     createNodeField({
       node,
