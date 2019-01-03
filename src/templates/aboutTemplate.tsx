@@ -5,36 +5,11 @@ import { withIntl } from "../i18n";
 import { Banner } from "../components/Banner";
 import { Section } from "../components/Section";
 import { Timeline } from "../components/Timeline";
-import { styled, Flex } from "primithemes";
+import { Flex } from "primithemes";
 import { Button } from "../components/Button";
 import { Link } from "../components/Link";
 import { Container } from "../components/Container";
-
-const Content = styled(Flex)`
-  font-family: ${props => props.theme.fonts.sans};
-  color: ${props => props.theme.colors.text.dark};
-  & * {
-    margin: 0;
-    padding: 0;
-  }
-  & h1 {
-    font-weight: ${props => props.theme.fontWeights[2]};
-    margin: ${props => props.theme.sizes[3]} 0;
-  }
-  & h2 {
-    color: ${props => props.theme.colors.primary.main};
-    font-weight: ${props => props.theme.fontWeights[3]};
-    font-size: ${props => props.theme.fontSizes[3]};
-    margin: ${props => props.theme.sizes[3]} 0;
-  }
-  & p {
-    font-weight: ${props => props.theme.fontWeights[3]};
-    font-size: ${props => props.theme.fontSizes[2]};
-    text-align: center;
-    margin: ${props => props.theme.sizes[3]} 0;
-    line-height: ${props => props.theme.lineHeights[2]};
-  }
-`;
+import { Content } from "../styles/Content";
 
 interface ServiceNode {
   node: {
@@ -60,15 +35,19 @@ interface ReferenceNode {
     };
   };
 }
+interface AboutContent {
+  title: string;
+  image: any;
+  markdown: any;
+  referencesSection: {
+    title: string;
+    subtitle: string;
+  };
+}
 
 interface AboutTemplateProps {
   data: {
-    content: {
-      title: string;
-      image: any;
-      markdown: any;
-    };
-    headerImg: any;
+    content: AboutContent;
     services: {
       edges: ServiceNode[];
     };
@@ -79,9 +58,10 @@ interface AboutTemplateProps {
 }
 
 const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
+  const { content, services, references } = data;
   return (
     <Layout>
-      <Banner image={data.content.image} title={data.content.title} />
+      <Banner image={content.image} title={content.title} />
       <Section>
         <Container>
           <Content
@@ -90,11 +70,11 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
             mx="auto"
             flexDirection="column"
             alignItems="center"
-            dangerouslySetInnerHTML={{ __html: data.content.markdown }}
+            dangerouslySetInnerHTML={{ __html: content.markdown }}
           />
         </Container>
         <Flex mb={3} p={3} justifyContent="center" flexWrap="wrap">
-          {data.services.edges.map(({ node }, i) => (
+          {services.edges.map(({ node }, i) => (
             <Flex key={i} p={1}>
               <Link to={node.fields.slug}>
                 <Button contained variant="primary">
@@ -104,7 +84,11 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
             </Flex>
           ))}
         </Flex>
-        <Timeline title="Project References" items={data.references.edges} />
+        <Timeline
+          title={content.referencesSection.title}
+          subtitle={content.referencesSection.subtitle}
+          items={references.edges}
+        />
       </Section>
     </Layout>
   );
@@ -114,7 +98,7 @@ export default withIntl(AboutTemplate);
 
 export const query = graphql`
   query($slug: String!, $locale: String!) {
-    content: content(fields: { slug: { eq: $slug } }, lang: { eq: $locale }) {
+    content(fields: { slug: { eq: $slug } }, lang: { eq: $locale }) {
       title
       markdown
       image {
@@ -124,12 +108,9 @@ export const query = graphql`
           }
         }
       }
-    }
-    headerImg: file(relativePath: { eq: "header/microgrids.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1920, quality: 90) {
-          ...GatsbyImageSharpFluid
-        }
+      referencesSection {
+        title
+        subtitle
       }
     }
     services: allMarkdownRemark(

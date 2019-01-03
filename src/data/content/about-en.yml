@@ -13,6 +13,6 @@ markdown: >-
   industries and applications since 1990.
 
 image: /assets/uploads/microgrids.jpg
-references:
-  show: true
-  title: Our Projects
+referencesSection:
+  title: "Our Projects"
+  subtitle: ""
