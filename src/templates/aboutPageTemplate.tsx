@@ -68,6 +68,7 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
             my={4}
             w={[1, 1, 3 / 4, 2 / 3]}
             mx="auto"
+            px={[3, 3, 0]}
             dangerouslySetInnerHTML={{ __html: content.markdown }}
           />
         </Container>
