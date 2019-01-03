@@ -13,7 +13,10 @@ import { Home } from "styled-icons/material/Home";
 
 interface ContactPageProps {
   data: {
-    headerImg: any;
+    content: {
+      title: string;
+      image: any;
+    };
   };
 }
 
@@ -52,13 +55,10 @@ const ContactCard: React.SFC<ContactCardProps> = ({ icon, text }) => {
   );
 };
 
-const ContactPage: React.SFC<ContactPageProps> = ({ data }) => {
+const ContactPage: React.SFC<ContactPageProps> = ({ data: { content } }) => {
   return (
     <Layout>
-      <Banner
-        image={data.headerImg}
-        title={<FormattedMessage {...m.contact.title} />}
-      />
+      <Banner image={content.image} title={content.title} />
       <Box bg="grey.100" style={{ flexGrow: 1 }}>
         <Section>
           <Flex p={2} w={[1, 1, 2 / 3, 1 / 3]} flexWrap="wrap">
@@ -88,11 +88,15 @@ const ContactPage: React.SFC<ContactPageProps> = ({ data }) => {
 export default withIntl(ContactPage);
 
 export const query = graphql`
-  query {
-    headerImg: file(relativePath: { eq: "header/solar-panels.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1920, quality: 90) {
-          ...GatsbyImageSharpFluid
+  query($slug: String!, $locale: String!) {
+    content(fields: { slug: { eq: $slug } }, lang: { eq: $locale }) {
+      title
+      markdown
+      image {
+        childImageSharp {
+          fluid(maxWidth: 1920, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
     }

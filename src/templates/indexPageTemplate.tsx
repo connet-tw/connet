@@ -69,7 +69,18 @@ const Index: React.SFC<IndexProps> = ({ data }) => {
 export default withIntl(Index);
 
 export const query = graphql`
-  query($locale: String!) {
+  query($slug: String!, $locale: String!) {
+    content(fields: { slug: { eq: $slug } }, lang: { eq: $locale }) {
+      title
+      markdown
+      image {
+        childImageSharp {
+          fluid(maxWidth: 1920, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
     headerImg: file(relativePath: { eq: "header/solar-panels.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1920, quality: 90) {

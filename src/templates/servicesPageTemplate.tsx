@@ -85,7 +85,18 @@ const ServicesPage: React.SFC<ServicesProps> = ({ data }) => {
 export default withIntl(ServicesPage);
 
 export const query = graphql`
-  query($locale: String!) {
+  query($slug: String!, $locale: String!) {
+    content(fields: { slug: { eq: $slug } }, lang: { eq: $locale }) {
+      title
+      markdown
+      image {
+        childImageSharp {
+          fluid(maxWidth: 1920, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
     services: allMarkdownRemark(
       filter: {
         frontmatter: { lang: { eq: $locale } }
