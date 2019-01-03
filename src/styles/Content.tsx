@@ -1,8 +1,12 @@
-import { styled, Flex } from "primithemes";
+import { styled, Box } from "primithemes";
 
-export const Content = styled(Flex)`
+export const Content = styled(Box)`
   font-family: ${props => props.theme.fonts.sans};
   color: ${props => props.theme.colors.text.dark};
+  text-align: center;
+  ${props => props.theme.devices[2]} {
+    text-align: center;
+  }
   & * {
     margin: 0;
     padding: 0;
@@ -20,7 +24,6 @@ export const Content = styled(Flex)`
   & p {
     font-weight: ${props => props.theme.fontWeights[3]};
     font-size: ${props => props.theme.fontSizes[2]};
-    text-align: center;
     margin: ${props => props.theme.sizes[3]} 0;
     line-height: ${props => props.theme.lineHeights[2]};
   }
