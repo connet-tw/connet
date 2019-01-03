@@ -29,7 +29,7 @@ export const onCreateNode: GatsbyOnCreateNode = ({
 
   // Create Content nodes
   if (node.internal.type === "ContentYaml") {
-    const { id, parent, children, internal, ...content } = Object.assign(
+    const { id, parent, children, internal, ...nodeContent } = Object.assign(
       {},
       node
     );
@@ -38,9 +38,15 @@ export const onCreateNode: GatsbyOnCreateNode = ({
       return k === "markdown" ? md.render(v) : v;
     };
 
-    const c = processStringProperties(
-      [fn, replaceAssetPath(getNode(parent).absolutePath)],
-      content
+    const { absolutePath, name } = getNode(parent);
+    const [pageName, lang] = name.split(".");
+
+    const content = Object.assign(
+      processStringProperties(
+        [fn, replaceAssetPath(absolutePath)],
+        nodeContent
+      ),
+      { name: pageName, lang }
     );
 
     const nodeMeta = {
@@ -49,13 +55,14 @@ export const onCreateNode: GatsbyOnCreateNode = ({
       children: [],
       internal: {
         type: `Content`,
-        content: JSON.stringify(c),
-        contentDigest: createContentDigest(c),
+        content: JSON.stringify(content),
+        contentDigest: createContentDigest(content),
       },
     };
-    const contentNode = Object.assign({ originalId: node.id }, c, nodeMeta);
+    const contentNode = Object.assign({}, content, nodeMeta);
     createNode(contentNode);
     createParentChildLink({ parent: node, child: contentNode });
+    console.log(contentNode);
   }
 
   // prepare pages from markdown
