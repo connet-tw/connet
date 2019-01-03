@@ -62,7 +62,6 @@ export const onCreateNode: GatsbyOnCreateNode = ({
     const contentNode = Object.assign({}, content, nodeMeta);
     createNode(contentNode);
     createParentChildLink({ parent: node, child: contentNode });
-    console.log(contentNode);
   }
 
   // prepare pages from markdown
@@ -82,13 +81,13 @@ export const onCreateNode: GatsbyOnCreateNode = ({
   }
 
   if (node.internal.type === "Content") {
-    const slug = `/${node.name}`;
+    const slug = `/${node.name === "index" ? "" : node.name}`;
 
     createNodeField({ node, name: "slug", value: slug });
     createNodeField({
       node,
       name: "template",
-      value: `/${node.template || node.name}Template.tsx`,
+      value: `/${node.template || node.name}PageTemplate.tsx`,
     });
   }
 };

@@ -23,7 +23,7 @@ collections:
     files:
       - label: "About Page"
         name: "about"
-        file: "src/data/content/about-en.yml"
+        file: "src/data/content/about.en.yml"
         fields:
           - *lang
           - { label: "Title", name: "title" }
