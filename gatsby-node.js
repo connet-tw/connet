@@ -9,11 +9,11 @@ require("ts-node").register({
 });
 
 const {
-  onCreatePage,
+  //onCreatePage,
   createPages,
   onCreateNode,
 } = require("./gatsby-node/index.ts");
 
 exports.createPages = createPages;
-exports.onCreatePage = onCreatePage;
+//exports.onCreatePage = onCreatePage;
 exports.onCreateNode = onCreateNode;

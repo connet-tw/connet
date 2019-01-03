@@ -5,6 +5,22 @@ import languages from "../src/i18n/locales/languages";
 export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
+  ["/", "/about", "/services", "/contact"].map(pagePath => {
+    const redirect = path.resolve("src/i18n/redirect.tsx");
+
+    const redirectPage = {
+      path: pagePath,
+      component: redirect,
+      context: {
+        languages,
+        locale: "",
+        routed: false,
+        redirectPage: pagePath,
+      },
+    };
+    createPage(redirectPage);
+  });
+
   return graphql(`
     {
       allContent {
