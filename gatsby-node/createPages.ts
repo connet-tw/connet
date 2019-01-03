@@ -7,7 +7,7 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allContentYaml {
+      allContent {
         edges {
           node {
             lang
@@ -55,7 +55,7 @@ export const createPages: GatsbyCreatePages = ({ actions, graphql }) => {
       return result;
     })
     .then((result: any) => {
-      result.data.allContentYaml.edges.forEach(({ node }: any) => {
+      result.data.allContent.edges.forEach(({ node }: any) => {
         createPage({
           path: `/${node.lang}${node.fields.slug}`,
           component: path.resolve(`src/templates/${node.fields.template}`),

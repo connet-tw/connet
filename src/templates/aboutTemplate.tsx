@@ -65,10 +65,8 @@ interface AboutTemplateProps {
   data: {
     content: {
       title: string;
-      fields: {
-        image: any;
-        markdown: any;
-      };
+      image: any;
+      markdown: any;
     };
     headerImg: any;
     services: {
@@ -83,7 +81,7 @@ interface AboutTemplateProps {
 const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
   return (
     <Layout>
-      <Banner image={data.content.fields.image} title={data.content.title} />
+      <Banner image={data.content.image} title={data.content.title} />
       <Section>
         <Container>
           <Content
@@ -92,7 +90,7 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
             mx="auto"
             flexDirection="column"
             alignItems="center"
-            dangerouslySetInnerHTML={{ __html: data.content.fields.markdown }}
+            dangerouslySetInnerHTML={{ __html: data.content.markdown }}
           />
         </Container>
         <Flex mb={3} p={3} justifyContent="center" flexWrap="wrap">
@@ -116,18 +114,13 @@ export default withIntl(AboutTemplate);
 
 export const query = graphql`
   query($slug: String!, $locale: String!) {
-    content: contentYaml(
-      fields: { slug: { eq: $slug } }
-      lang: { eq: $locale }
-    ) {
+    content: content(fields: { slug: { eq: $slug } }, lang: { eq: $locale }) {
       title
-      fields {
-        markdown
-        image {
-          childImageSharp {
-            fluid(maxWidth: 1920, quality: 90) {
-              ...GatsbyImageSharpFluid
-            }
+      markdown
+      image {
+        childImageSharp {
+          fluid(maxWidth: 1920, quality: 90) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
