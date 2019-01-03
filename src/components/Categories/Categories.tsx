@@ -5,6 +5,7 @@ import { Button } from "../Button";
 import { Box, Card, Flex, Text } from "primithemes";
 import { Container } from "../Container";
 import { Link } from "../../i18n";
+import { Content } from "../../styles/Content";
 
 interface CategoryLink {
   label: React.ReactNode;
@@ -15,8 +16,9 @@ interface CategoryLink {
 }
 
 type Props = {
-  title: React.ReactNode;
+  title?: React.ReactNode;
   subtitle?: React.ReactNode;
+  markdown?: any;
   body?: React.ReactNode[];
   categoryLinks: CategoryLink[];
   image?: any;
@@ -28,11 +30,22 @@ const Categories: React.SFC<Props> = ({
   gradient,
   title,
   subtitle,
+  markdown,
   body,
   categoryLinks,
 }) => (
   <Section>
-    <SectionHeader title={title} subtitle={subtitle} body={body} />
+    {markdown && (
+      <Container>
+        <Content
+          my={4}
+          w={[1, 1, 3 / 4, 2 / 3]}
+          mx="auto"
+          px={[3, 3, 0]}
+          dangerouslySetInnerHTML={{ __html: markdown }}
+        />
+      </Container>
+    )}
     <Container>
       <Flex p={2} flexWrap="wrap">
         {categoryLinks.map((x, i) => (

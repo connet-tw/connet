@@ -1,7 +1,8 @@
 import * as React from "react";
 import { styled, Box, Flex } from "primithemes";
 import { Text, Heading } from "../Typography";
-import { Section, SectionHeader } from "../Section";
+import { Section } from "../Section";
+import { Content } from "../../styles/Content";
 
 const Container = styled(Flex)`
   max-width: 900px;
@@ -13,9 +14,10 @@ interface Highlight {
 }
 
 interface AboutSummaryProps {
-  title: React.ReactNode;
+  title?: React.ReactNode;
   subtitle?: React.ReactNode;
   body?: React.ReactNode[];
+  markdown?: any;
   highlights: Highlight[];
 }
 
@@ -24,10 +26,21 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
   subtitle,
   body,
   highlights,
+  markdown,
 }) => {
   return (
     <Section>
-      <SectionHeader title={title} subtitle={subtitle} body={body} />
+      {markdown && (
+        <Container>
+          <Content
+            my={4}
+            w={[1, 1, 3 / 4, 2 / 3]}
+            mx="auto"
+            px={[3, 3, 0]}
+            dangerouslySetInnerHTML={{ __html: markdown }}
+          />
+        </Container>
+      )}
       {!!highlights && (
         <Container flexWrap="wrap" w={1} p={3}>
           {highlights.map((h, i) => (
