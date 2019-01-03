@@ -30,30 +30,7 @@ collections:
           - { label: "Subtitle", name: "subtitle", required: false }
           - { label: "Intro", name: "markdown", widget: "markdown" }
           - { label: "Image", name: "image", widget: "image" }
-          - name: "references"
-            label: "References"
-            widget: "object"
-            fields:
-              - label: "Show references"
-                name: "show"
-                widget: "boolean"
-                default: true
-              - { label: "Title", name: "title" }
-              - { label: "Subtitle", name: "subtitle", required: false }
-
-  - name: "pages-zh"
-    label: "Pages ZH"
-    files:
-      - label: "About Page"
-        name: "about"
-        file: "src/data/content/about-zh.yml"
-        fields:
-          - *lang
-          - { label: "Title", name: "title" }
-          - { label: "Subtitle", name: "subtitle", required: false }
-          - { label: "Intro", name: "markdown", widget: "markdown" }
-          - { label: "Image", name: "image", widget: "image" }
-          - name: "references"
+          - name: "referencesSection"
             label: "References"
             widget: "object"
             fields:
