@@ -16,14 +16,34 @@ media_folder: "static/assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
+  ##### PAGES
   - name: "pages-en"
     label: "Pages EN"
+    editor:
+      preview: false
     files:
+      - label: "Index Page"
+        name: "index"
+        file: "src/data/content/index.en.yml"
+        fields:
+          - { label: "Title", name: "title" }
+          - { label: "Subtitle", name: "subtitle", required: false }
+          - { label: "Image", name: "image", widget: "image" }
+          - name: "welcomeSection"
+            label: "Welcome Section"
+            widget: "object"
+            fields:
+              - { label: "Body", name: "markdown", widget: "markdown" }
+          - name: "servicesSection"
+            label: "Services Section"
+            widget: "object"
+            fields:
+              - { label: "Body", name: "markdown", widget: "markdown" }
+
       - label: "About Page"
         name: "about"
         file: "src/data/content/about.en.yml"
         fields:
-          - *lang
           - { label: "Title", name: "title" }
           - { label: "Subtitle", name: "subtitle", required: false }
           - { label: "Intro", name: "markdown", widget: "markdown" }
@@ -32,13 +52,40 @@ collections:
             label: "References"
             widget: "object"
             fields:
-              - label: "Show references"
-                name: "show"
-                widget: "boolean"
-                default: true
               - { label: "Title", name: "title" }
               - { label: "Subtitle", name: "subtitle", required: false }
 
+      - label: "Contact Page"
+        name: "contact"
+        file: "src/data/content/contact.en.yml"
+        fields:
+          - { label: "Title", name: "title" }
+          - { label: "Subtitle", name: "subtitle", required: false }
+          - { label: "Intro", name: "markdown", widget: "markdown" }
+          - { label: "Image", name: "image", widget: "image" }
+          - name: "contacts"
+            label: "Contacts"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title" }
+              - { label: "Phone", name: "phone" }
+              - { label: "Email", name: "email" }
+              - { label: "Street", name: "street" }
+              - { label: "District", name: "district" }
+              - { label: "City", name: "city" }
+              - { label: "Post Code", name: "postCode" }
+              - { label: "Country", name: "country" }
+
+      - label: "Services Page"
+        name: "services"
+        file: "src/data/content/services.en.yml"
+        fields:
+          - { label: "Title", name: "title" }
+          - { label: "Subtitle", name: "subtitle", required: false }
+          - { label: "Intro", name: "markdown", widget: "markdown" }
+          - { label: "Image", name: "image", widget: "image" }
+
+  ##### REFERENCES
   - name: "references en"
     label: "References EN"
     folder: "src/data/references"
