@@ -79,6 +79,10 @@ export const onCreateNode: GatsbyOnCreateNode = ({
       });
     }
   }
+  if (node.internal.type === "SettingsYaml") {
+    const [, lang] = getNode(node.parent).name.split(".");
+    createNodeField({ node, name: "lang", value: lang });
+  }
 
   if (node.internal.type === "Content") {
     const slug = `/${node.name === "index" ? "" : node.name}`;

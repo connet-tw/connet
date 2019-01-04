@@ -16,6 +16,19 @@ media_folder: "static/assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
+  ##### SETTINGS
+  - name: "settings-en"
+    label: "Settings EN"
+    editor:
+      preview: false
+    files:
+      - label: "General Settings"
+        name: "settings"
+        file: "src/data/settings/settings.en.yml"
+        fields:
+          - { label: "Title", name: "title" }
+          - { label: "Phone", name: "email" }
+          - { label: "Email", name: "phone" }
   ##### PAGES
   - name: "pages-en"
     label: "Pages EN"
