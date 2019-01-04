@@ -45,7 +45,7 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
               {logo && (
                 <Flex justifyContent="center" my={3}>
                   <Link to="/" onClick={injected.handleClose}>
-                    <Logo fixed={logo} />
+                    <Logo critical fixed={logo} />
                   </Link>
                 </Flex>
               )}
