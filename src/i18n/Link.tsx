@@ -6,6 +6,7 @@ export interface I18nLinkProps extends InjectedIntlProps {
   to: string;
   onClick?(): void;
   className?: string;
+  children?: any;
 }
 
 export const I18nLink: React.SFC<I18nLinkProps> = ({
