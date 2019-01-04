@@ -44,10 +44,12 @@ collections:
   - name: "references en"
     label: "References EN"
     folder: "src/data/references"
+    identifier_field: "name"
     create: true
     fields:
       - *lang
       - { name: "date", label: "Date" }
+      - { name: "name", label: "Name" }
       - { name: "title", label: "Title" }
       - { name: "customer", label: "Customer", required: false }
       - { name: "location", label: "Location", required: false }
