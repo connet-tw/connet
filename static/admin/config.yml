@@ -12,8 +12,6 @@ backend:
   repo: "connet-tw/connet"
   branch: "master"
 
-publish_mode: "editorial_workflow"
-
 media_folder: "static/assets/uploads"
 public_folder: "/assets/uploads"
 
@@ -48,8 +46,8 @@ collections:
     create: true
     fields:
       - *lang
-      - { name: "date", label: "Date" }
       - { name: "name", label: "Name" }
+      - { name: "date", label: "Date" }
       - { name: "title", label: "Title" }
       - { name: "customer", label: "Customer", required: false }
       - { name: "location", label: "Location", required: false }
