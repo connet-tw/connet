@@ -2,7 +2,7 @@ import * as React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../theme";
-import { styled, Flex, Box } from "primithemes";
+import { styled, Flex } from "primithemes";
 import { createGlobalStyle } from "styled-components";
 import { FormattedMessage } from "react-intl";
 import * as m from "./Layout.messages";
@@ -35,10 +35,11 @@ const Content = styled(Flex)`
   min-height: 100vh;
 `;
 
-const Main = styled(Box)`
+const Main = styled(Flex)`
   width: 100%;
   margin: 0 auto;
   flex-grow: 1;
+  flex-direction: column;
 `;
 
 interface Data {
