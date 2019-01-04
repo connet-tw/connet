@@ -42,9 +42,22 @@ const Main = styled(Flex)`
   flex-direction: column;
 `;
 
+interface SettingsNode {
+  node: {
+    fields: {
+      lang: string;
+    };
+    title: string;
+    phone: string;
+    email: string;
+  };
+}
 interface Data {
   logo: any;
   logoWhite: any;
+  settings: {
+    edges: SettingsNode[];
+  };
 }
 
 const navItems = [
@@ -54,14 +67,22 @@ const navItems = [
   { to: "/contact", label: <FormattedMessage {...m.nav.contact} /> },
 ];
 
-const title = <FormattedMessage {...m.app.title} />;
-const phone = <FormattedMessage {...m.contact.phoneNumber} />;
-const email = <FormattedMessage {...m.contact.emailAddress} />;
-
-export const Layout: React.SFC<{}> = ({ children }) => (
+export const Layout: React.SFC<{ lang?: string }> = props => (
   <StaticQuery
     query={graphql`
       query Layout2Query {
+        settings: allSettingsYaml {
+          edges {
+            node {
+              title
+              phone
+              email
+              fields {
+                lang
+              }
+            }
+          }
+        }
         logo: file(relativePath: { eq: "logos/logo.png" }) {
           childImageSharp {
             fixed(width: 100, quality: 100) {
@@ -79,6 +100,12 @@ export const Layout: React.SFC<{}> = ({ children }) => (
       }
     `}
     render={(data: Data) => {
+      const lang = props.lang || "en";
+      const {
+        node: { email, phone, title },
+      } = data.settings.edges.find(({ node }) => node.fields.lang === lang) || {
+        node: { email: "", phone: "", title: "Controlnet" },
+      };
       return (
         <ThemeProvider theme={theme}>
           <Root>
@@ -87,7 +114,7 @@ export const Layout: React.SFC<{}> = ({ children }) => (
             <Head />
             <Content bg="background.main">
               <Header title={title} navItems={navItems} logo={data.logo} />
-              <Main>{children}</Main>
+              <Main>{props.children}</Main>
               <Footer email={email} phone={phone} title={title} />
             </Content>
           </Root>

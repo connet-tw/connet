@@ -48,12 +48,22 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
             {title}
           </Text>
           {
-            <Text lineHeight="copy" fontSize={2} textAlign="center">
+            <Text
+              lineHeight={2}
+              color="white.main"
+              fontSize={2}
+              textAlign="center"
+            >
               {phone}
             </Text>
           }
           {email && (
-            <Text lineHeight="copy" fontSize={2} textAlign="center">
+            <Text
+              lineHeight={2}
+              color="white.main"
+              fontSize={2}
+              textAlign="center"
+            >
               {email}
             </Text>
           )}

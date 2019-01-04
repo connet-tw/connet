@@ -61,6 +61,13 @@ module.exports = {
         name: "references",
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/src/data/settings`,
+        name: "settings",
+      },
+    },
     "gatsby-plugin-sharp",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-root-import",
