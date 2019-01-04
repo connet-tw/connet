@@ -46,10 +46,7 @@ interface IndexProps {
 const Index: React.SFC<IndexProps> = ({ data: { content, services } }) => {
   return (
     <Layout>
-      <Banner
-        title={<FormattedMessage {...m.hero.title} />}
-        image={content.image}
-      />
+      <Banner title={content.title} image={content.image} />
       <Box bg="background.light">
         <AboutSummary
           markdown={content.welcomeSection.markdown}
