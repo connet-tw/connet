@@ -77,6 +77,9 @@
     "ts-jest": "^23.10.5",
     "ts-node": "^7.0.1"
   },
+  "resolutions": {
+    "@types/react": "16.7.18"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
