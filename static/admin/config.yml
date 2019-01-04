@@ -41,15 +41,17 @@ collections:
               - { label: "Title", name: "title" }
               - { label: "Subtitle", name: "subtitle", required: false }
 
-  - name: "references"
-    label: "References"
+  - name: "references en"
+    label: "References EN"
     folder: "src/data/references"
     create: true
     fields:
       - *lang
       - { name: "date", label: "Date" }
       - { name: "title", label: "Title" }
-      - { name: "location", label: "Location" }
+      - { name: "customer", label: "Customer", required: false }
+      - { name: "location", label: "Location", required: false }
+      - { name: "body", label: "Content", widget: "markdown", required: false }
 
   - name: "services-en"
     label: "Services EN"
@@ -67,4 +69,4 @@ collections:
           allow_multiple: false,
         }
       - { name: "order", label: "Order", widget: "number" }
-      - { name: "body", label: "content", widget: "markdown" }
+      - { name: "body", label: "Content", widget: "markdown" }
