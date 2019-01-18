@@ -44,34 +44,30 @@ interface State {
 class Drawer extends React.Component<DrawerProps, State> {
   state: State = { animating: false };
 
-  componentDidUpdate(pp: DrawerProps, ps: State) {
-    if (!pp.open && this.props.open) this.setState({ animating: true });
-  }
-
   render() {
     const { width, open, handleClose, children } = this.props;
     return (
       <>
         <Transition
           items={open}
-          from={{ opacity: 0 }}
-          enter={{ opacity: 1 }}
-          leave={{ opacity: 0 }}
-        >
-          {open => props =>
-            open && <DrawerOverlay style={props} onClick={handleClose} />}
-        </Transition>
-        <Transition
-          items={open}
-          from={{ transform: "translate3d(300px,0,0)" }}
-          enter={{ transform: "translate3d(0,0,0)" }}
-          leave={{ transform: "translate3d(300px,0,0)" }}
+          from={{ transform: "translate3d(300px,0,0)", opacity: 0 }}
+          enter={{ transform: "translate3d(0,0,0)", opacity: 1 }}
+          leave={{ transform: "translate3d(300px,0,0)", opacity: 0 }}
         >
           {open => props =>
             open && (
-              <DrawerWrapper width={width} style={props}>
-                <DrawerContent>{children}</DrawerContent>
-              </DrawerWrapper>
+              <>
+                <DrawerOverlay
+                  style={{ opacity: props.opacity }}
+                  onClick={handleClose}
+                />
+                <DrawerWrapper
+                  width={width}
+                  style={{ transform: props.transform }}
+                >
+                  <DrawerContent>{children}</DrawerContent>
+                </DrawerWrapper>
+              </>
             )}
         </Transition>
       </>
