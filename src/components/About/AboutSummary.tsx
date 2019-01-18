@@ -3,6 +3,7 @@ import { styled, Box, Flex } from "primithemes";
 import { Text, Heading } from "../Typography";
 import { Section } from "../Section";
 import { Content } from "../../styles/Content";
+import { FadeIn } from "../Reveal";
 
 const Container = styled(Flex)`
   max-width: 900px;
@@ -52,27 +53,29 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
                 alignItems="center"
                 flexDirection="column"
               >
-                <Box w={1}>
-                  <Heading
-                    color="primary.main"
-                    mb={2}
-                    textAlign="center"
-                    is="h5"
-                    fontSize={[5, 6]}
-                    fontWeight={2}
-                  >
-                    {h.title}
-                  </Heading>
-                  <Text
-                    textTransform="uppercase"
-                    color="text.main"
-                    fontSize={1}
-                    is="p"
-                    textAlign="center"
-                  >
-                    {h.subtitle}
-                  </Text>
-                </Box>
+                <FadeIn once style={{ width: "100%" }}>
+                  <Box w={1}>
+                    <Heading
+                      color="primary.main"
+                      mb={2}
+                      textAlign="center"
+                      is="h5"
+                      fontSize={[5, 6]}
+                      fontWeight={2}
+                    >
+                      {h.title}
+                    </Heading>
+                    <Text
+                      textTransform="uppercase"
+                      color="text.main"
+                      fontSize={1}
+                      is="p"
+                      textAlign="center"
+                    >
+                      {h.subtitle}
+                    </Text>
+                  </Box>
+                </FadeIn>
               </Flex>
             ))}
           </Container>
