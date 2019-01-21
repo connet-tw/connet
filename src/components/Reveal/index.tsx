@@ -6,6 +6,7 @@ const FadeDiv = styled.div<{ isVisible?: boolean }>`
   opacity: ${props => (props.isVisible ? 1 : 0)};
   transform: translateY(${props => (props.isVisible ? "0px" : "-10px")});
   transition: all 400ms ease-out;
+  height: 100%;
 `;
 
 interface Props {

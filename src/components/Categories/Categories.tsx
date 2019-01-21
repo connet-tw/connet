@@ -60,6 +60,7 @@ const Categories: React.SFC<Props> = ({
                   shadow={1}
                   flexDirection="column"
                   bg="background.light"
+                  style={{ height: "100%" }}
                 >
                   <Flex flexDirection="column" style={{ height: "100%" }}>
                     <Image style={{ height: 140 }} fluid={x.image} />
