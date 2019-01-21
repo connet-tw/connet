@@ -31,8 +31,10 @@ module.exports = {
         features: [
           "Number.isInteger",
           "Object.entries",
+          "Set",
           "String.prototype.startsWith",
           "Array.prototype.findIndex",
+          "Array.prototype.includes",
         ],
       },
     },
