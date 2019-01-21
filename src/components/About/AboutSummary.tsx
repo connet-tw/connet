@@ -1,13 +1,9 @@
 import * as React from "react";
-import { styled, Box, Flex } from "primithemes";
+import { Box, Flex } from "primithemes";
 import { Text, Heading } from "../Typography";
-import { Section } from "../Section";
 import { Content } from "../../styles/Content";
 import { FadeIn } from "../Reveal";
-
-const Container = styled(Flex)`
-  max-width: 900px;
-`;
+import { Container } from "../Container";
 
 interface Highlight {
   title: React.ReactNode;
@@ -30,21 +26,20 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
   markdown,
 }) => {
   return (
-    <Section>
-      <Box my={3}>
-        {markdown && (
-          <Container>
-            <Content
-              my={4}
-              w={[1, 1, 3 / 4, 2 / 3]}
-              mx="auto"
-              px={[3, 3, 0]}
-              dangerouslySetInnerHTML={{ __html: markdown }}
-            />
-          </Container>
-        )}
-        {!!highlights && (
-          <Container flexWrap="wrap" w={1} p={3}>
+    <Box p={3}>
+      {markdown && (
+        <Container>
+          <Content
+            w={[1, 1, 3 / 4, 2 / 3]}
+            mx="auto"
+            px={[3, 3, 0]}
+            dangerouslySetInnerHTML={{ __html: markdown }}
+          />
+        </Container>
+      )}
+      {!!highlights && (
+        <Container>
+          <Flex flexWrap="wrap" w={1} p={3}>
             {highlights.map((h, i) => (
               <Flex
                 p={3}
@@ -78,10 +73,10 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
                 </FadeIn>
               </Flex>
             ))}
-          </Container>
-        )}
-      </Box>
-    </Section>
+          </Flex>
+        </Container>
+      )}
+    </Box>
   );
 };
 
