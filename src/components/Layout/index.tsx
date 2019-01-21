@@ -27,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
 const Root = styled.div`
   position: relative;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Content = styled(Flex)`
