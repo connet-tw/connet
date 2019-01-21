@@ -25,6 +25,17 @@ module.exports = {
       },
     },
     "gatsby-plugin-offline",
+    {
+      resolve: `gatsby-plugin-polyfill-io`,
+      options: {
+        features: [
+          "Number.isInteger",
+          "Object.entries",
+          "String.prototype.startsWith",
+          "Array.prototype.findIndex",
+        ],
+      },
+    },
     "gatsby-plugin-typescript",
     {
       resolve: "gatsby-source-filesystem",
