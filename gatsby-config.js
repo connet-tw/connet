@@ -4,6 +4,16 @@ module.exports = {
   siteMetadata,
   //pathPrefix: "connet",
   plugins: [
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: "UA-132891493-1",
+        head: false,
+        anonymize: true,
+        respectDNT: true,
+        exclude: ["/admin/**"],
+      },
+    },
     "gatsby-plugin-netlify-cms",
     "gatsby-plugin-react-helmet",
     {
