@@ -1,9 +1,5 @@
 import * as React from "react";
 import GatsbyImage, { GatsbyImageProps } from "gatsby-image";
-import "intersection-observer";
-import ofi from "object-fit-images";
-
-ofi();
 
 interface ImgProps extends GatsbyImageProps {
   fixed?: any;
