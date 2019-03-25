@@ -16,12 +16,6 @@ module.exports = {
     "gatsby-plugin-netlify-cms",
     "gatsby-plugin-react-helmet",
     {
-      resolve: "gatsby-plugin-favicon",
-      options: {
-        logo: "./src/images/logos/logo-square.jpg",
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "controlnet-international",
